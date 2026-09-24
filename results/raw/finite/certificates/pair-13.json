@@ -1,0 +1,18 @@
+{
+  "admitted": false,
+  "case_id": "pair-13-case-000",
+  "family": "gRPC Health",
+  "frontier": [],
+  "pair": "watch-response-break",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "ledger",
+    "queue",
+    "store"
+  ],
+  "topology": "fanout4",
+  "witness": [
+    "service:gateway:refine"
+  ]
+}

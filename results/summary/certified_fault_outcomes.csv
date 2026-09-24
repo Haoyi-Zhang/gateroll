@@ -1,0 +1,11 @@
+fault,runs,model_unsafe,blocked,all_new,semantic_violations,mean_unaffected_availability,mean_affected_availability,block_reasons
+authorization_mismatch,4,0,4,0,0,1.0,1.0,authorization-mismatch
+corrupt_certificate,4,0,4,0,0,1.0,1.0,certificate-rejected
+crash,4,1,1,3,0,1.0,0.925,model-witness
+delay,4,2,2,2,0,1.0,0.95,model-witness
+duplicate,4,2,2,2,0,1.0,0.95,model-witness
+missing_adapter,4,0,4,0,0,1.0,1.0,missing-adapter
+none,4,0,0,4,0,1.0,0.9,
+partial_migration,4,0,4,0,0,1.0,0.9,migration-cardinality
+reorder,4,1,1,3,0,1.0,0.925,model-witness
+stale_route,4,2,2,2,0,1.0,0.95,model-witness

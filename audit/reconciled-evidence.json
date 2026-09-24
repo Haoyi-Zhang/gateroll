@@ -1,0 +1,33 @@
+{
+  "affected_availability": 0.4107456140350877,
+  "campaigns": 40,
+  "certified_completed_cutovers": 16,
+  "certified_run_violations": 0,
+  "certified_runs": 40,
+  "certified_transactions": 1440,
+  "certified_violations": 0,
+  "failures": [],
+  "files": {
+    "finite_cases": "results/raw/finite/case_decisions.csv",
+    "runs": "results/raw/campaigns/campaign_runs.csv",
+    "transactions": "results/raw/campaigns/campaign_transactions.csv"
+  },
+  "finite_cases": 12000,
+  "pass": true,
+  "run_count_from_transactions": 240,
+  "strategies": [
+    "certified",
+    "health_rollback",
+    "naive_rolling",
+    "schema_only",
+    "stop_the_world",
+    "version_negotiation"
+  ],
+  "strategy_count": 6,
+  "strategy_runs": 240,
+  "transactions": 8640,
+  "transactions_per_run": [
+    36
+  ],
+  "unaffected_availability": 0.9715686274509804
+}

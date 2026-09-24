@@ -1,0 +1,12 @@
+{
+  "attempts": 240,
+  "batches": 20,
+  "campaign_end": 40,
+  "campaign_start": 0,
+  "jobs": 240,
+  "retries": 0,
+  "timeout_seconds_per_strategy_run": 30.0,
+  "timeouts": 0,
+  "wall_seconds": 73.170054,
+  "workers": 4
+}

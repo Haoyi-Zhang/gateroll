@@ -1,0 +1,152 @@
+{
+  "families": [
+    {
+      "name": "Envoy Rate Limit",
+      "source_url": "https://github.com/envoyproxy/data-plane-api/blob/main/envoy/service/ratelimit/v3/rls.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "ShouldRateLimit"
+      ],
+      "fields": [
+        "domain",
+        "descriptors",
+        "hits_addend",
+        "overall_code",
+        "statuses",
+        "dynamic_metadata"
+      ]
+    },
+    {
+      "name": "etcd KV",
+      "source_url": "https://github.com/etcd-io/etcd/blob/main/api/etcdserverpb/rpc.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "Range",
+        "Put",
+        "DeleteRange",
+        "Txn",
+        "Compact"
+      ],
+      "fields": [
+        "key",
+        "range_end",
+        "value",
+        "lease",
+        "prev_kv",
+        "revision"
+      ]
+    },
+    {
+      "name": "etcd Lease",
+      "source_url": "https://github.com/etcd-io/etcd/blob/main/api/etcdserverpb/rpc.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "LeaseGrant",
+        "LeaseRevoke",
+        "LeaseKeepAlive",
+        "LeaseTimeToLive",
+        "LeaseLeases"
+      ],
+      "fields": [
+        "id",
+        "ttl",
+        "keys",
+        "grantedTTL"
+      ]
+    },
+    {
+      "name": "Google Pub/Sub",
+      "source_url": "https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "CreateTopic",
+        "Publish",
+        "Pull",
+        "Acknowledge",
+        "StreamingPull"
+      ],
+      "fields": [
+        "topic",
+        "messages",
+        "attributes",
+        "ack_ids",
+        "ordering_key"
+      ]
+    },
+    {
+      "name": "gRPC Health",
+      "source_url": "https://github.com/grpc/grpc-proto/blob/master/grpc/health/v1/health.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "Check",
+        "List",
+        "Watch"
+      ],
+      "fields": [
+        "service",
+        "status",
+        "statuses"
+      ]
+    },
+    {
+      "name": "gRPC Route Guide",
+      "source_url": "https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "GetFeature",
+        "ListFeatures",
+        "RecordRoute",
+        "RouteChat"
+      ],
+      "fields": [
+        "latitude",
+        "longitude",
+        "name",
+        "location",
+        "message",
+        "point_count"
+      ]
+    },
+    {
+      "name": "Kubernetes Lease",
+      "source_url": "https://github.com/kubernetes/api/blob/master/coordination/v1/types.go",
+      "license": "Apache-2.0",
+      "operations": [
+        "Create",
+        "Get",
+        "Update",
+        "Watch"
+      ],
+      "fields": [
+        "holderIdentity",
+        "leaseDurationSeconds",
+        "acquireTime",
+        "renewTime",
+        "leaseTransitions",
+        "strategy",
+        "preferredHolder"
+      ]
+    },
+    {
+      "name": "OpenTelemetry Logs",
+      "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/collector/logs/v1/logs_service.proto",
+      "license": "Apache-2.0",
+      "operations": [
+        "Export"
+      ],
+      "fields": [
+        "resource_logs",
+        "scope_logs",
+        "log_records",
+        "attributes",
+        "trace_id",
+        "span_id"
+      ],
+      "source_urls": [
+        "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/collector/logs/v1/logs_service.proto",
+        "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto"
+      ]
+    }
+  ],
+  "note": "The artifact consumes these normalized operation and field vocabularies. Where a service declaration imports a separate payload schema, source_urls records both official files. The controlled release pairs are experimental mutations, not historical upstream releases."
+}

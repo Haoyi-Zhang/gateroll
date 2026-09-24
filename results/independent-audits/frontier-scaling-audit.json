@@ -1,0 +1,579 @@
+{
+  "complete": true,
+  "measurements": {
+    "peak_tracemalloc_bytes": 1075980,
+    "rows": [
+      {
+        "admitted": true,
+        "closed_configurations": 9,
+        "configurations": 9,
+        "elapsed_seconds": 0.000103,
+        "frontier_configurations": 9,
+        "scenario": "repaired_chain",
+        "services": 2
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 27,
+        "configurations": 27,
+        "elapsed_seconds": 0.000156,
+        "frontier_configurations": 27,
+        "scenario": "repaired_chain",
+        "services": 3
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 81,
+        "configurations": 81,
+        "elapsed_seconds": 0.000498,
+        "frontier_configurations": 81,
+        "scenario": "repaired_chain",
+        "services": 4
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 243,
+        "configurations": 243,
+        "elapsed_seconds": 0.001668,
+        "frontier_configurations": 243,
+        "scenario": "repaired_chain",
+        "services": 5
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 729,
+        "configurations": 729,
+        "elapsed_seconds": 0.005555,
+        "frontier_configurations": 729,
+        "scenario": "repaired_chain",
+        "services": 6
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 2187,
+        "configurations": 2187,
+        "elapsed_seconds": 0.018505,
+        "frontier_configurations": 2187,
+        "scenario": "repaired_chain",
+        "services": 7
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 6561,
+        "configurations": 6561,
+        "elapsed_seconds": 0.063725,
+        "frontier_configurations": 6561,
+        "scenario": "repaired_chain",
+        "services": 8
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 19683,
+        "configurations": 19683,
+        "elapsed_seconds": 0.209158,
+        "frontier_configurations": 19683,
+        "scenario": "repaired_chain",
+        "services": 9
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 59049,
+        "configurations": 59049,
+        "elapsed_seconds": 0.674868,
+        "frontier_configurations": 59049,
+        "scenario": "repaired_chain",
+        "services": 10
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 177147,
+        "configurations": 177147,
+        "elapsed_seconds": 2.23423,
+        "frontier_configurations": 177147,
+        "scenario": "repaired_chain",
+        "services": 11
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 531441,
+        "configurations": 531441,
+        "elapsed_seconds": 7.005638,
+        "frontier_configurations": 531441,
+        "scenario": "repaired_chain",
+        "services": 12
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 5,
+        "configurations": 9,
+        "elapsed_seconds": 7.2e-05,
+        "frontier_configurations": 4,
+        "scenario": "direction_cycle",
+        "services": 2
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 9,
+        "configurations": 27,
+        "elapsed_seconds": 0.000112,
+        "frontier_configurations": 8,
+        "scenario": "direction_cycle",
+        "services": 3
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 17,
+        "configurations": 81,
+        "elapsed_seconds": 0.000357,
+        "frontier_configurations": 16,
+        "scenario": "direction_cycle",
+        "services": 4
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 33,
+        "configurations": 243,
+        "elapsed_seconds": 0.000855,
+        "frontier_configurations": 32,
+        "scenario": "direction_cycle",
+        "services": 5
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 65,
+        "configurations": 729,
+        "elapsed_seconds": 0.003308,
+        "frontier_configurations": 64,
+        "scenario": "direction_cycle",
+        "services": 6
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 129,
+        "configurations": 2187,
+        "elapsed_seconds": 0.010558,
+        "frontier_configurations": 128,
+        "scenario": "direction_cycle",
+        "services": 7
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 257,
+        "configurations": 6561,
+        "elapsed_seconds": 0.036731,
+        "frontier_configurations": 256,
+        "scenario": "direction_cycle",
+        "services": 8
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 513,
+        "configurations": 19683,
+        "elapsed_seconds": 0.109892,
+        "frontier_configurations": 512,
+        "scenario": "direction_cycle",
+        "services": 9
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 1025,
+        "configurations": 59049,
+        "elapsed_seconds": 0.349133,
+        "frontier_configurations": 1024,
+        "scenario": "direction_cycle",
+        "services": 10
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 2049,
+        "configurations": 177147,
+        "elapsed_seconds": 1.10824,
+        "frontier_configurations": 2048,
+        "scenario": "direction_cycle",
+        "services": 11
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 4097,
+        "configurations": 531441,
+        "elapsed_seconds": 3.532213,
+        "frontier_configurations": 4096,
+        "scenario": "direction_cycle",
+        "services": 12
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 6,
+        "configurations": 9,
+        "elapsed_seconds": 7.6e-05,
+        "frontier_configurations": 3,
+        "scenario": "single_bridge_defect",
+        "services": 2
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 18,
+        "configurations": 27,
+        "elapsed_seconds": 0.000121,
+        "frontier_configurations": 9,
+        "scenario": "single_bridge_defect",
+        "services": 3
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 54,
+        "configurations": 81,
+        "elapsed_seconds": 0.000353,
+        "frontier_configurations": 27,
+        "scenario": "single_bridge_defect",
+        "services": 4
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 162,
+        "configurations": 243,
+        "elapsed_seconds": 0.001154,
+        "frontier_configurations": 81,
+        "scenario": "single_bridge_defect",
+        "services": 5
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 486,
+        "configurations": 729,
+        "elapsed_seconds": 0.004624,
+        "frontier_configurations": 243,
+        "scenario": "single_bridge_defect",
+        "services": 6
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 1458,
+        "configurations": 2187,
+        "elapsed_seconds": 0.01653,
+        "frontier_configurations": 729,
+        "scenario": "single_bridge_defect",
+        "services": 7
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 4374,
+        "configurations": 6561,
+        "elapsed_seconds": 0.055555,
+        "frontier_configurations": 2187,
+        "scenario": "single_bridge_defect",
+        "services": 8
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 13122,
+        "configurations": 19683,
+        "elapsed_seconds": 0.183086,
+        "frontier_configurations": 6561,
+        "scenario": "single_bridge_defect",
+        "services": 9
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 39366,
+        "configurations": 59049,
+        "elapsed_seconds": 0.617089,
+        "frontier_configurations": 19683,
+        "scenario": "single_bridge_defect",
+        "services": 10
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 118098,
+        "configurations": 177147,
+        "elapsed_seconds": 2.034122,
+        "frontier_configurations": 59049,
+        "scenario": "single_bridge_defect",
+        "services": 11
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 354294,
+        "configurations": 531441,
+        "elapsed_seconds": 6.451438,
+        "frontier_configurations": 177147,
+        "scenario": "single_bridge_defect",
+        "services": 12
+      }
+    ],
+    "total_elapsed_seconds": 24.730403
+  },
+  "schema_version": 1,
+  "semantic": {
+    "failures": [],
+    "max_services": 12,
+    "rows": [
+      {
+        "admitted": true,
+        "closed_configurations": 9,
+        "configurations": 9,
+        "frontier_configurations": 9,
+        "scenario": "repaired_chain",
+        "services": 2
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 27,
+        "configurations": 27,
+        "frontier_configurations": 27,
+        "scenario": "repaired_chain",
+        "services": 3
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 81,
+        "configurations": 81,
+        "frontier_configurations": 81,
+        "scenario": "repaired_chain",
+        "services": 4
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 243,
+        "configurations": 243,
+        "frontier_configurations": 243,
+        "scenario": "repaired_chain",
+        "services": 5
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 729,
+        "configurations": 729,
+        "frontier_configurations": 729,
+        "scenario": "repaired_chain",
+        "services": 6
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 2187,
+        "configurations": 2187,
+        "frontier_configurations": 2187,
+        "scenario": "repaired_chain",
+        "services": 7
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 6561,
+        "configurations": 6561,
+        "frontier_configurations": 6561,
+        "scenario": "repaired_chain",
+        "services": 8
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 19683,
+        "configurations": 19683,
+        "frontier_configurations": 19683,
+        "scenario": "repaired_chain",
+        "services": 9
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 59049,
+        "configurations": 59049,
+        "frontier_configurations": 59049,
+        "scenario": "repaired_chain",
+        "services": 10
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 177147,
+        "configurations": 177147,
+        "frontier_configurations": 177147,
+        "scenario": "repaired_chain",
+        "services": 11
+      },
+      {
+        "admitted": true,
+        "closed_configurations": 531441,
+        "configurations": 531441,
+        "frontier_configurations": 531441,
+        "scenario": "repaired_chain",
+        "services": 12
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 5,
+        "configurations": 9,
+        "frontier_configurations": 4,
+        "scenario": "direction_cycle",
+        "services": 2
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 9,
+        "configurations": 27,
+        "frontier_configurations": 8,
+        "scenario": "direction_cycle",
+        "services": 3
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 17,
+        "configurations": 81,
+        "frontier_configurations": 16,
+        "scenario": "direction_cycle",
+        "services": 4
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 33,
+        "configurations": 243,
+        "frontier_configurations": 32,
+        "scenario": "direction_cycle",
+        "services": 5
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 65,
+        "configurations": 729,
+        "frontier_configurations": 64,
+        "scenario": "direction_cycle",
+        "services": 6
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 129,
+        "configurations": 2187,
+        "frontier_configurations": 128,
+        "scenario": "direction_cycle",
+        "services": 7
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 257,
+        "configurations": 6561,
+        "frontier_configurations": 256,
+        "scenario": "direction_cycle",
+        "services": 8
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 513,
+        "configurations": 19683,
+        "frontier_configurations": 512,
+        "scenario": "direction_cycle",
+        "services": 9
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 1025,
+        "configurations": 59049,
+        "frontier_configurations": 1024,
+        "scenario": "direction_cycle",
+        "services": 10
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 2049,
+        "configurations": 177147,
+        "frontier_configurations": 2048,
+        "scenario": "direction_cycle",
+        "services": 11
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 4097,
+        "configurations": 531441,
+        "frontier_configurations": 4096,
+        "scenario": "direction_cycle",
+        "services": 12
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 6,
+        "configurations": 9,
+        "frontier_configurations": 3,
+        "scenario": "single_bridge_defect",
+        "services": 2
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 18,
+        "configurations": 27,
+        "frontier_configurations": 9,
+        "scenario": "single_bridge_defect",
+        "services": 3
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 54,
+        "configurations": 81,
+        "frontier_configurations": 27,
+        "scenario": "single_bridge_defect",
+        "services": 4
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 162,
+        "configurations": 243,
+        "frontier_configurations": 81,
+        "scenario": "single_bridge_defect",
+        "services": 5
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 486,
+        "configurations": 729,
+        "frontier_configurations": 243,
+        "scenario": "single_bridge_defect",
+        "services": 6
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 1458,
+        "configurations": 2187,
+        "frontier_configurations": 729,
+        "scenario": "single_bridge_defect",
+        "services": 7
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 4374,
+        "configurations": 6561,
+        "frontier_configurations": 2187,
+        "scenario": "single_bridge_defect",
+        "services": 8
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 13122,
+        "configurations": 19683,
+        "frontier_configurations": 6561,
+        "scenario": "single_bridge_defect",
+        "services": 9
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 39366,
+        "configurations": 59049,
+        "frontier_configurations": 19683,
+        "scenario": "single_bridge_defect",
+        "services": 10
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 118098,
+        "configurations": 177147,
+        "frontier_configurations": 59049,
+        "scenario": "single_bridge_defect",
+        "services": 11
+      },
+      {
+        "admitted": false,
+        "closed_configurations": 354294,
+        "configurations": 531441,
+        "frontier_configurations": 177147,
+        "scenario": "single_bridge_defect",
+        "services": 12
+      }
+    ],
+    "scenario_count": 3
+  },
+  "semantic_sha256": "3f5fce5356b952a01c5d4ab92bdaa41f5395452a8c0a755acb428c8b5eaf69f7"
+}

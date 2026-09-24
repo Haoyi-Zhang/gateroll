@@ -1,0 +1,7 @@
+strategy,runs,unaffected_availability,affected_availability,overall_availability,semantic_violations,violating_runs,completed_expected_cutovers,expected_cutover_runs,all_new_runs,blocked_runs
+Certified GATEROLL,40,1.0,0.95,0.981481,0,0,16,16,16,24
+Stop-the-world,40,0.894118,0.8825,0.889815,12,6,16,16,34,6
+Naive rolling,40,0.976471,0.4325,0.775,40,40,16,16,40,0
+Schema-only,40,0.991176,0.9675,0.982407,62,39,16,16,39,1
+Version negotiation,40,0.991176,0.99,0.990741,37,37,0,16,0,3
+Health rollback,40,0.976471,0.46,0.785185,36,36,13,16,36,0

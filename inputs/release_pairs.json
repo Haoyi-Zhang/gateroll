@@ -1,0 +1,35 @@
+{
+  "pairs": [
+    {"family":"Envoy Rate Limit","pair":"descriptor-additive","change":"additive","topology":"chain3","default_defects":[]},
+    {"family":"Envoy Rate Limit","pair":"guest-quota-weakening","change":"authorization","topology":"diamond4","default_defects":["service:ledger:auth"]},
+    {"family":"Envoy Rate Limit","pair":"quota-state-recode","change":"state recoding","topology":"fanout4","default_defects":[]},
+
+    {"family":"etcd KV","pair":"additive-compare-field","change":"additive","topology":"diamond4","default_defects":[]},
+    {"family":"etcd KV","pair":"lease-write-authorization","change":"authorization","topology":"chain3","default_defects":["service:ledger:auth"]},
+    {"family":"etcd KV","pair":"revision-state-recode","change":"state recoding","topology":"cycle5","default_defects":[]},
+
+    {"family":"etcd Lease","pair":"renewal-session-bridge","change":"protocol","topology":"fanout4","default_defects":[]},
+    {"family":"etcd Lease","pair":"revoke-replay-break","change":"replay","topology":"cycle5","default_defects":["service:ledger:idem"]},
+    {"family":"etcd Lease","pair":"ttl-additive","change":"additive","topology":"chain3","default_defects":[]},
+
+    {"family":"Google Pub/Sub","pair":"ack-session-bridge","change":"protocol","topology":"cycle5","default_defects":[]},
+    {"family":"Google Pub/Sub","pair":"message-attributes-additive","change":"additive","topology":"fanout4","default_defects":[]},
+    {"family":"Google Pub/Sub","pair":"publish-replay-break","change":"replay","topology":"diamond4","default_defects":["service:ledger:idem"]},
+
+    {"family":"gRPC Health","pair":"status-enum-additive","change":"additive","topology":"chain3","default_defects":[]},
+    {"family":"gRPC Health","pair":"watch-response-break","change":"response","topology":"fanout4","default_defects":["service:gateway:refine"]},
+    {"family":"gRPC Health","pair":"watch-state-recode","change":"state recoding","topology":"diamond4","default_defects":[]},
+
+    {"family":"gRPC Route Guide","pair":"point-metadata-additive","change":"additive","topology":"fanout4","default_defects":[]},
+    {"family":"gRPC Route Guide","pair":"stream-phase-bridge","change":"protocol","topology":"cycle5","default_defects":[]},
+    {"family":"gRPC Route Guide","pair":"stream-phase-drop","change":"protocol","topology":"chain3","default_defects":["service:gateway:session"]},
+
+    {"family":"Kubernetes Lease","pair":"duration-additive","change":"additive","topology":"diamond4","default_defects":[]},
+    {"family":"Kubernetes Lease","pair":"holder-state-recode","change":"state recoding","topology":"chain3","default_defects":[]},
+    {"family":"Kubernetes Lease","pair":"partial-holder-migration","change":"migration","topology":"fanout4","default_defects":["service:ledger:migrate"]},
+
+    {"family":"OpenTelemetry Logs","pair":"attributes-additive","change":"additive","topology":"cycle5","default_defects":[]},
+    {"family":"OpenTelemetry Logs","pair":"collector-order-cycle","change":"ordering","topology":"cycle5","default_defects":["edge:gateway>ledger:n2o","edge:ledger>store:n2o","edge:store>gateway:n2o"]},
+    {"family":"OpenTelemetry Logs","pair":"record-layout-recode","change":"state recoding","topology":"diamond4","default_defects":[]}
+  ]
+}

@@ -1,0 +1,65 @@
+key,type,year,title,venue,doi,url,cited
+ajmani2003scheduling,inproceedings,2003,Scheduling and Simulation: How to Upgrade Distributed Systems,9th Workshop on Hot Topics in Operating Systems (HotOS IX),,https://www.usenix.org/conference/hotos-ix/scheduling-and-simulation-how-upgrade-distributed-systems,yes
+ajmani2006modular,inproceedings,2006,Modular Software Upgrades for Distributed Systems,European Conference on Object-Oriented Programming (ECOOP),10.1007/11785477_26,,yes
+alagappan2016correlated,inproceedings,2016,Correlated Crash Vulnerabilities,12th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi16/technical-sessions/presentation/alagappan,yes
+altekar2005opus,inproceedings,2005,OPUS: Online Patches and Updates for Security,14th USENIX Security Symposium,,https://www.usenix.org/conference/14th-usenix-security-symposium/opus-online-patches-and-updates-security,yes
+alvaro2015ldfi,inproceedings,2015,Lineage-Driven Fault Injection,ACM SIGMOD International Conference on Management of Data,10.1145/2723372.2723711,,yes
+anderson2014netkat,inproceedings,2014,NetKAT: Semantic Foundations for Networks,ACM Symposium on Principles of Programming Languages (POPL),10.1145/2535838.2535862,,yes
+arnold2009ksplice,inproceedings,2009,Ksplice: Automatic Rebootless Kernel Updates,European Conference on Computer Systems (EuroSys),10.1145/1519065.1519085,,yes
+baumann2005providing,inproceedings,2005,Providing Dynamic Update in an Operating System,USENIX Annual Technical Conference,,https://www.usenix.org/legacy/event/usenix05/tech/general/baumann.html,yes
+baumann2007reboots,inproceedings,2007,Reboots Are for Hardware: Challenges and Solutions to Updating an Operating System on the Fly,USENIX Annual Technical Conference,,https://www.usenix.org/legacy/event/usenix07/tech/full_papers/baumann/baumann_html/,yes
+birrell1984rpc,article,1984,Implementing Remote Procedure Calls,ACM Transactions on Computer Systems,10.1145/2080.357392,,yes
+brand1983communicating,article,1983,On Communicating Finite-State Machines,Journal of the ACM,10.1145/322374.322380,,yes
+canini2015transactional,inproceedings,2015,A Distributed and Robust SDN Control Plane for Transactional Network Updates,IEEE INFOCOM,10.1109/infocom.2015.7218382,,yes
+chaitroth2026consistent,article,2026,Consistent Updates for Scalable Microservices,Proceedings of the ACM on Programming Languages,10.1145/3776700,,yes
+chajed2019argosy,inproceedings,2019,Argosy: Verifying Layered Storage Systems with Recovery Refinement,ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI),10.1145/3314221.3314585,,yes
+chajed2019perennial,inproceedings,2019,"Verifying Concurrent, Crash-Safe Systems with Perennial",27th ACM Symposium on Operating Systems Principles (SOSP),10.1145/3341301.3359632,,yes
+chen2015fscq,inproceedings,2015,Using Crash Hoare Logic for Certifying the FSCQ File System,25th ACM Symposium on Operating Systems Principles (SOSP),10.1145/2815400.2815402,,yes
+dealfaro2001interface,inproceedings,2001,Interface Automata,Joint European Software Engineering Conference and ACM SIGSOFT Symposium on the Foundations of Software Engineering (ESEC/FSE),10.1145/503209.503226,,yes
+dealfaro2001theories,inproceedings,2001,Interface Theories for Component-Based Design,International Workshop on Embedded Software (EMSOFT),10.1007/3-540-45449-7_11,,yes
+denielou2013multiparty,inproceedings,2013,Multiparty Compatibility in Communicating Automata: Characterisation and Synthesis of Global Session Types,"International Colloquium on Automata, Languages, and Programming (ICALP)",10.1007/978-3-642-39212-2_18,,yes
+foerster2019survey,article,2019,Survey of Consistent Software-Defined Network Updates,IEEE Communications Surveys and Tutorials,10.1109/comst.2018.2876749,,yes
+giuffrida2013safe,inproceedings,2013,Safe and Automatic Live Update for Operating Systems,International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS),10.1145/2451116.2451147,,yes
+gunawi2011fate,inproceedings,2011,FATE and DESTINI: A Framework for Cloud Recovery Testing,8th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi11/fate-and-destini-framework-cloud-recovery-testing,yes
+han2026upfuzz,inproceedings,2026,UpFuzz: Detecting Data Format Incompatibility Bugs during Distributed Storage System Upgrade,23rd USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi26/presentation/han,yes
+hance2020storage,inproceedings,2020,Storage Systems Are Distributed Systems (So Verify Them That Way!),14th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi20/presentation/hance,yes
+hawblitzel2015ironfleet,inproceedings,2015,IronFleet: Proving Practical Distributed Systems Correct,25th ACM Symposium on Operating Systems Principles (SOSP),10.1145/2815400.2815428,,yes
+hayden2012kitsune,inproceedings,2012,"Kitsune: Efficient, General-Purpose Dynamic Software Updating for C",ACM SIGPLAN Conference on Object-Oriented Programming Systems Languages and Applications (OOPSLA),10.1145/2384616.2384635,,yes
+heinloth2023luci,inproceedings,2023,Luci: Loader-based Dynamic Software Updates for Off-the-shelf Shared Objects,USENIX Annual Technical Conference,,https://www.usenix.org/conference/atc23/presentation/heinloth,yes
+hicks2005dynamic,article,2005,Dynamic Software Updating,ACM Transactions on Programming Languages and Systems,10.1145/1108970.1108971,,yes
+honda2008multiparty,inproceedings,2008,Multiparty Asynchronous Session Types,ACM Symposium on Principles of Programming Languages (POPL),10.1145/1328438.1328472,,yes
+hong2013swan,inproceedings,2013,Achieving High Utilization with Software-Driven WAN,ACM SIGCOMM Conference,10.1145/2534169.2486012,,yes
+jin2014dionysus,inproceedings,2014,Dynamic Scheduling of Network Updates,ACM SIGCOMM Conference,10.1145/2619239.2626307,,yes
+joshi2011prefail,inproceedings,2011,PREFAIL: A Programmable Tool for Multiple-Failure Injection,ACM SIGPLAN Conference on Object-Oriented Programming Systems Languages and Applications (OOPSLA),10.1145/2048066.2048082,,yes
+katta2013incremental,inproceedings,2013,Incremental Consistent Updates,ACM SIGCOMM Workshop on Hot Topics in Software Defined Networking (HotSDN),10.1145/2491185.2491191,,yes
+killian2007liveness,inproceedings,2007,"Life, Death, and the Critical Transition: Finding Liveness Bugs in Systems Code",4th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/legacy/event/nsdi07/tech/killian/,yes
+lange2015choreographies,inproceedings,2015,From Communicating Machines to Graphical Choreographies,ACM Symposium on Principles of Programming Languages (POPL),10.1145/2676726.2676964,,yes
+lee2015rifl,inproceedings,2015,Implementing Linearizability at Large Scale and Low Latency,25th ACM Symposium on Operating Systems Principles (SOSP),10.1145/2815400.2815416,,yes
+leesatapornwongsa2014samc,inproceedings,2014,SAMC: Semantic-Aware Model Checking for Fast Discovery of Deep Bugs in Cloud Systems,11th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi14/technical-sessions/presentation/leesatapornwongsa,yes
+li2020gandalf,inproceedings,2020,"Gandalf: An Intelligent, End-to-End Analytics Service for Safe Deployment in Large-Scale Cloud Infrastructure",17th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi20/presentation/li,yes
+liu2013zupdate,inproceedings,2013,zUpdate: Updating Data Center Networks with Zero Loss,ACM SIGCOMM Conference,10.1145/2486001.2486005,,yes
+liu2019suffix,inproceedings,2019,Efficient and Safe Network Updates with Suffix Causal Consistency,European Conference on Computer Systems (EuroSys),10.1145/3302424.3303965,,yes
+mahajan2013consistent,inproceedings,2013,On Consistent Updates in Software Defined Networks,ACM Workshop on Hot Topics in Networks (HotNets),10.1145/2535771.2535791,,yes
+makris2009immediate,inproceedings,2009,Immediate Multi-Threaded Dynamic Software Updates Using Stack Reconstruction,USENIX Annual Technical Conference,,https://www.usenix.org/conference/usenix-09/immediate-multi-threaded-dynamic-software-updates-using-stack-reconstruction,yes
+musuvathi2004model,inproceedings,2004,Model Checking Large Network Protocol Implementations,First Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi-04/model-checking-large-network-protocol-implementations,yes
+neamtiu2006practical,inproceedings,2006,Practical Dynamic Software Updating for C,ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI),10.1145/1133255.1133991,,yes
+newcombe2015amazon,article,2015,How Amazon Web Services Uses Formal Methods,Communications of the ACM,10.1145/2699417,,yes
+padon2016ivy,inproceedings,2016,Ivy: Safety Verification by Interactive Generalization,ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI),10.1145/2908080.2908118,,yes
+park2019curp,inproceedings,2019,Exploiting Commutativity for Practical Fast Replication,16th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi19/presentation/park,yes
+pina2014rubah,inproceedings,2014,Rubah: DSU for Java on a Stock JVM,ACM SIGPLAN Conference on Object-Oriented Programming Systems Languages and Applications (OOPSLA),10.1145/2660193.2660220,,yes
+pina2016tedsuto,inproceedings,2016,Tedsuto: A General Framework for Testing Dynamic Software Updates,"IEEE International Conference on Software Testing, Verification and Validation (ICST)",10.1109/icst.2016.27,,yes
+qiu2023flexplan,inproceedings,2023,Synthesizing Runtime Programmable Switch Updates,20th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi23/presentation/qiu,yes
+reitblatt2012abstractions,inproceedings,2012,Abstractions for Network Update,ACM SIGCOMM Conference,10.1145/2342356.2342427,,yes
+rommel2020wfpatch,inproceedings,2020,From Global to Local Quiescence: Wait-Free Code Patching of Multi-Threaded Processes,14th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi20/presentation/rommel,yes
+saltzer1984endtoend,article,1984,End-to-End Arguments in System Design,ACM Transactions on Computer Systems,10.1145/357401.357402,,yes
+saur2016kvolve,inproceedings,2016,Evolving NoSQL Databases Without Downtime,IEEE International Conference on Software Maintenance and Evolution (ICSME),10.1109/icsme.2016.47,,yes
+saur2016morpheus,inproceedings,2016,Morpheus: Safe and Flexible Controller Upgrades for SDNs,Symposium on SDN Research (SOSR),10.1145/2890955.2890966,,yes
+sergey2018disel,article,2018,Programming and Proving with Distributed Protocols,Proceedings of the ACM on Programming Languages,10.1145/3158116,,yes
+sigurbjarnarson2016crash,inproceedings,2016,Push-Button Verification of File Systems via Crash Refinement,12th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi16/technical-sessions/presentation/sigurbjarnarson,yes
+stoyle2007mutatis,article,2007,Mutatis Mutandis: Safe and Predictable Dynamic Software Updating,ACM Transactions on Programming Languages and Systems,10.1145/1255450.1255455,,yes
+sun2024anvil,inproceedings,2024,Anvil: Verifying Liveness of Cluster Management Controllers,18th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi24/presentation/sun-xudong,yes
+wilcox2015verdi,inproceedings,2015,Verdi: A Framework for Implementing and Formally Verifying Distributed Systems,ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI),10.1145/2737924.2737958,,yes
+yang2009modist,inproceedings,2009,MODIST: Transparent Model Checking of Unmodified Distributed Systems,6th USENIX Symposium on Networked Systems Design and Implementation (NSDI),,https://www.usenix.org/conference/nsdi-09/presentation/modist-transparent-model-checking-unmodified-distributed-systems,yes
+yuan2014simple,inproceedings,2014,Simple Testing Can Prevent Most Critical Failures: An Analysis of Production Failures in Distributed Data-Intensive Systems,11th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi14/technical-sessions/presentation/yuan,yes
+zhang2021upgrade,inproceedings,2021,Understanding and Detecting Software Upgrade Failures in Distributed Systems,28th ACM Symposium on Operating Systems Principles (SOSP),10.1145/3477132.3483577,,yes
+zhang2025basilisk,inproceedings,2025,Basilisk: Using Provenance Invariants to Automate Proofs of Undecidable Protocols,19th USENIX Symposium on Operating Systems Design and Implementation (OSDI),,https://www.usenix.org/conference/osdi25/presentation/zhang-tony,yes

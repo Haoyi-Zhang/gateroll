@@ -1,0 +1,15 @@
+{
+  "complete": false,
+  "schema_version": 1,
+  "semantic": {
+    "common_compared": 0,
+    "files": [],
+    "left_file_count": 0,
+    "left_only": [],
+    "mismatches": [],
+    "right_file_count": 0,
+    "right_only": [],
+    "unreadable": []
+  },
+  "semantic_sha256": "fe8e0881fad950ae478a9c1ad917b6bbc586dfd64121540d52847b8a041299c8"
+}

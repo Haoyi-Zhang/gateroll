@@ -1,0 +1,13 @@
+{
+  "campaign_internal_wall_seconds": 73.170054,
+  "campaign_stage_seconds": 73.863715,
+  "external_wall_seconds": 98.89,
+  "finite_stage_seconds": 19.926727,
+  "internal_wall_seconds": 98.245952,
+  "interpretation": "Local resource accounting only; semantic counts, not timings, are the reproduction invariant.",
+  "maximum_resident_kib": 123936,
+  "measurement_scope": "clean one-command reproduction",
+  "strategy_run_retries": 0,
+  "strategy_run_timeouts": 0,
+  "workers": 4
+}

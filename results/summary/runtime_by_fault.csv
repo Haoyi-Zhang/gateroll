@@ -1,0 +1,61 @@
+strategy,fault,runs,semantic_violations,violating_runs,all_new_runs,mean_unaffected_availability,mean_affected_availability,mean_overall_availability
+Certified GATEROLL,authorization_mismatch,4,0,0,0,1.0,1.0,1.0
+Certified GATEROLL,corrupt_certificate,4,0,0,0,1.0,1.0,1.0
+Certified GATEROLL,crash,4,0,0,3,1.0,0.925,0.972222
+Certified GATEROLL,delay,4,0,0,2,1.0,0.95,0.981481
+Certified GATEROLL,duplicate,4,0,0,2,1.0,0.95,0.981481
+Certified GATEROLL,missing_adapter,4,0,0,0,1.0,1.0,1.0
+Certified GATEROLL,none,4,0,0,4,1.0,0.9,0.962963
+Certified GATEROLL,partial_migration,4,0,0,0,1.0,0.9,0.962963
+Certified GATEROLL,reorder,4,0,0,3,1.0,0.925,0.972222
+Certified GATEROLL,stale_route,4,0,0,2,1.0,0.95,0.981481
+Stop-the-world,authorization_mismatch,4,8,3,4,0.882353,0.9,0.888889
+Stop-the-world,corrupt_certificate,4,0,0,4,0.882353,0.9,0.888889
+Stop-the-world,crash,4,0,0,3,0.852941,0.675,0.787037
+Stop-the-world,delay,4,0,0,2,0.941176,0.95,0.944444
+Stop-the-world,duplicate,4,0,0,4,0.882353,0.9,0.888889
+Stop-the-world,missing_adapter,4,0,0,4,0.882353,0.825,0.861111
+Stop-the-world,none,4,0,0,4,0.882353,0.9,0.888889
+Stop-the-world,partial_migration,4,3,2,4,0.882353,0.9,0.888889
+Stop-the-world,reorder,4,0,0,3,0.911765,0.925,0.916667
+Stop-the-world,stale_route,4,1,1,2,0.941176,0.95,0.944444
+Naive rolling,authorization_mismatch,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,corrupt_certificate,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,crash,4,4,4,4,0.897059,0.425,0.722222
+Naive rolling,delay,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,duplicate,4,4,4,4,0.985294,0.4,0.768519
+Naive rolling,missing_adapter,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,none,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,partial_migration,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,reorder,4,4,4,4,0.985294,0.425,0.777778
+Naive rolling,stale_route,4,4,4,4,0.985294,0.525,0.814815
+Schema-only,authorization_mismatch,4,13,4,4,1.0,1.0,1.0
+Schema-only,corrupt_certificate,4,4,4,4,1.0,1.0,1.0
+Schema-only,crash,4,3,3,3,0.911765,0.775,0.861111
+Schema-only,delay,4,10,4,4,1.0,1.0,1.0
+Schema-only,duplicate,4,4,4,4,1.0,0.975,0.990741
+Schema-only,missing_adapter,4,4,4,4,1.0,0.925,0.972222
+Schema-only,none,4,4,4,4,1.0,1.0,1.0
+Schema-only,partial_migration,4,7,4,4,1.0,1.0,1.0
+Schema-only,reorder,4,4,4,4,1.0,1.0,1.0
+Schema-only,stale_route,4,9,4,4,1.0,1.0,1.0
+Version negotiation,authorization_mismatch,4,4,4,0,1.0,1.0,1.0
+Version negotiation,corrupt_certificate,4,4,4,0,1.0,1.0,1.0
+Version negotiation,crash,4,3,3,0,0.911765,1.0,0.944444
+Version negotiation,delay,4,4,4,0,1.0,1.0,1.0
+Version negotiation,duplicate,4,2,2,0,1.0,1.0,1.0
+Version negotiation,missing_adapter,4,4,4,0,1.0,1.0,1.0
+Version negotiation,none,4,4,4,0,1.0,1.0,1.0
+Version negotiation,partial_migration,4,4,4,0,1.0,1.0,1.0
+Version negotiation,reorder,4,4,4,0,1.0,1.0,1.0
+Version negotiation,stale_route,4,4,4,0,1.0,0.9,0.962963
+Health rollback,authorization_mismatch,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,corrupt_certificate,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,crash,4,0,0,0,0.897059,0.7,0.824074
+Health rollback,delay,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,duplicate,4,4,4,4,0.985294,0.4,0.768519
+Health rollback,missing_adapter,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,none,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,partial_migration,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,reorder,4,4,4,4,0.985294,0.425,0.777778
+Health rollback,stale_route,4,4,4,4,0.985294,0.525,0.814815

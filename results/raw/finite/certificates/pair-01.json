@@ -1,0 +1,18 @@
+{
+  "admitted": false,
+  "case_id": "pair-01-case-000",
+  "family": "Envoy Rate Limit",
+  "frontier": [],
+  "pair": "guest-quota-weakening",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "auth",
+    "ledger",
+    "store"
+  ],
+  "topology": "diamond4",
+  "witness": [
+    "service:ledger:auth"
+  ]
+}

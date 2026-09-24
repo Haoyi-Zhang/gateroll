@@ -1,0 +1,241 @@
+authorization_failures,availability_affected,availability_overall,availability_unaffected,block_reason,campaign_id,family,fault,final_new,model_admitted,pair,proxy_calls,recovery_ms,rollout_ms,safe_cutover_target,semantic_violations,strategy,strategy_admitted,topology,transaction_records,violating_run
+0,0.9,0.9629629629629629,1.0,,campaign-00,Envoy Rate Limit,none,1,1,descriptor-additive,36,0.0,56.49312900004588,1,0,certified,1,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-00,Envoy Rate Limit,none,1,1,descriptor-additive,36,0.0,55.23304400048801,1,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-00,Envoy Rate Limit,none,1,1,descriptor-additive,36,0.0,34.806814000148734,1,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-00,Envoy Rate Limit,none,1,1,descriptor-additive,36,0.0,39.51338000024407,1,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-00,Envoy Rate Limit,none,0,1,descriptor-additive,36,0.0,62.04346699996677,1,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-00,Envoy Rate Limit,none,1,1,descriptor-additive,36,0.0,44.47516599975643,1,1,health_rollback,1,chain3,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-01,etcd Lease,crash,1,1,ttl-additive,36,29.501510999580205,111.66242099989176,1,0,certified,1,chain3,36,0
+3,0.7,0.7407407407407407,0.7647058823529411,,campaign-01,etcd Lease,crash,1,1,ttl-additive,36,0.002222999682999216,48.818058000506426,1,0,stop_the_world,1,chain3,36,0
+6,0.4,0.6666666666666666,0.8235294117647058,,campaign-01,etcd Lease,crash,1,1,ttl-additive,36,0.0010309995559509844,45.50055100025929,1,1,naive_rolling,1,chain3,36,1
+2,0.8,0.8148148148148148,0.8235294117647058,,campaign-01,etcd Lease,crash,1,1,ttl-additive,36,0.0011319998520775698,35.51328300000023,1,1,schema_only,1,chain3,36,1
+0,1.0,0.8888888888888888,0.8235294117647058,,campaign-01,etcd Lease,crash,0,1,ttl-additive,36,0.001442999746359419,43.665644999236974,1,1,version_negotiation,1,chain3,36,1
+4,0.5,0.7037037037037037,0.8235294117647058,,campaign-01,etcd Lease,crash,0,1,ttl-additive,36,0.2790300004562596,39.774137000677,1,0,health_rollback,1,chain3,36,0
+0,0.9,0.9629629629629629,1.0,,campaign-02,gRPC Health,delay,1,1,status-enum-additive,36,0.0,49.995391000265954,1,0,certified,1,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-02,gRPC Health,delay,1,1,status-enum-additive,36,0.0,112.53904900058842,1,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-02,gRPC Health,delay,1,1,status-enum-additive,37,0.0,439.8414179995598,1,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-02,gRPC Health,delay,1,1,status-enum-additive,36,0.0,121.28473899974779,1,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-02,gRPC Health,delay,0,1,status-enum-additive,36,0.0,29.518886000005296,1,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-02,gRPC Health,delay,1,1,status-enum-additive,37,0.0,377.03233000047476,1,1,health_rollback,1,chain3,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-03,Kubernetes Lease,reorder,1,1,holder-state-recode,36,0.0,45.29437799919833,1,0,certified,1,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-03,Kubernetes Lease,reorder,1,1,holder-state-recode,36,0.0,87.61142899948027,1,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-03,Kubernetes Lease,reorder,1,1,holder-state-recode,36,0.0,113.79307900006097,1,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-03,Kubernetes Lease,reorder,1,1,holder-state-recode,36,0.0,34.72495000005438,1,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-03,Kubernetes Lease,reorder,0,1,holder-state-recode,36,0.0,39.879961000224284,1,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-03,Kubernetes Lease,reorder,1,1,holder-state-recode,36,0.0,20.25600300021324,1,1,health_rollback,1,chain3,36,1
+0,1.0,1.0,1.0,model-witness,campaign-04,etcd KV,stale_route,0,0,lease-write-authorization,36,0.0,29.421078999803285,0,0,certified,0,chain3,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-04,etcd KV,stale_route,0,0,lease-write-authorization,36,0.0,34.588284000165004,0,0,stop_the_world,0,chain3,36,0
+6,0.5,0.8148148148148148,1.0,,campaign-04,etcd KV,stale_route,1,0,lease-write-authorization,36,0.0,29.36187599971163,0,1,naive_rolling,1,chain3,36,1
+2,1.0,1.0,1.0,,campaign-04,etcd KV,stale_route,1,0,lease-write-authorization,36,0.0,41.05842900025891,0,4,schema_only,1,chain3,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-04,etcd KV,stale_route,0,0,lease-write-authorization,36,0.0,34.62068800035922,0,1,version_negotiation,1,chain3,36,1
+6,0.5,0.8148148148148148,1.0,,campaign-04,etcd KV,stale_route,1,0,lease-write-authorization,36,0.0,30.654453999886755,0,1,health_rollback,1,chain3,36,1
+0,1.0,1.0,1.0,missing-adapter,campaign-05,Envoy Rate Limit,missing_adapter,0,1,descriptor-additive,36,0.0,37.69423199992161,0,0,certified,0,chain3,36,0
+3,0.7,0.8148148148148148,0.8823529411764706,,campaign-05,Envoy Rate Limit,missing_adapter,1,1,descriptor-additive,36,0.0,31.53639300035138,0,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-05,Envoy Rate Limit,missing_adapter,1,1,descriptor-additive,36,0.0,27.550263999728486,0,1,naive_rolling,1,chain3,36,1
+2,0.8,0.9259259259259259,1.0,,campaign-05,Envoy Rate Limit,missing_adapter,1,1,descriptor-additive,36,0.0,28.444893000596494,0,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-05,Envoy Rate Limit,missing_adapter,0,1,descriptor-additive,36,0.0,42.309034999561845,0,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-05,Envoy Rate Limit,missing_adapter,1,1,descriptor-additive,36,0.0,24.723362999793608,0,1,health_rollback,1,chain3,36,1
+0,1.0,1.0,1.0,authorization-mismatch,campaign-06,etcd Lease,authorization_mismatch,0,1,ttl-additive,36,0.0,31.51913700003206,0,0,certified,0,chain3,36,0
+3,0.9,0.8888888888888888,0.8823529411764706,,campaign-06,etcd Lease,authorization_mismatch,1,1,ttl-additive,36,0.0,30.350794999321806,0,2,stop_the_world,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-06,etcd Lease,authorization_mismatch,1,1,ttl-additive,36,0.0,37.66372500012949,0,1,naive_rolling,1,chain3,36,1
+2,1.0,1.0,1.0,,campaign-06,etcd Lease,authorization_mismatch,1,1,ttl-additive,36,0.0,45.29307799930393,0,3,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-06,etcd Lease,authorization_mismatch,0,1,ttl-additive,36,0.0,65.5115929994281,0,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-06,etcd Lease,authorization_mismatch,1,1,ttl-additive,36,0.0,28.05056799934391,0,1,health_rollback,1,chain3,36,1
+0,0.9,0.9629629629629629,1.0,migration-cardinality,campaign-07,gRPC Health,partial_migration,0,1,status-enum-additive,36,0.0,53.15130899998621,0,0,certified,0,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-07,gRPC Health,partial_migration,1,1,status-enum-additive,36,0.0,45.75705699971877,0,2,stop_the_world,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-07,gRPC Health,partial_migration,1,1,status-enum-additive,36,0.0,33.02827300012723,0,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-07,gRPC Health,partial_migration,1,1,status-enum-additive,36,0.0,51.32143599985284,0,3,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-07,gRPC Health,partial_migration,0,1,status-enum-additive,36,0.0,52.51772300016455,0,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-07,gRPC Health,partial_migration,1,1,status-enum-additive,36,0.0,22.987215000284777,0,1,health_rollback,1,chain3,36,1
+0,1.0,1.0,1.0,certificate-rejected,campaign-08,Kubernetes Lease,corrupt_certificate,0,1,holder-state-recode,36,0.0,27.28257200033113,0,0,certified,0,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-08,Kubernetes Lease,corrupt_certificate,1,1,holder-state-recode,36,0.0,27.48340900052426,0,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-08,Kubernetes Lease,corrupt_certificate,1,1,holder-state-recode,36,0.0,36.91937399980816,0,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-08,Kubernetes Lease,corrupt_certificate,1,1,holder-state-recode,36,0.0,44.97366799932934,0,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-08,Kubernetes Lease,corrupt_certificate,0,1,holder-state-recode,36,0.0,53.2442510002511,0,1,version_negotiation,1,chain3,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-08,Kubernetes Lease,corrupt_certificate,1,1,holder-state-recode,36,0.0,37.66377700048906,0,1,health_rollback,1,chain3,36,1
+0,1.0,1.0,1.0,model-witness,campaign-09,gRPC Route Guide,duplicate,0,0,stream-phase-drop,36,0.0,28.132532000199717,0,0,certified,0,chain3,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-09,gRPC Route Guide,duplicate,1,0,stream-phase-drop,36,0.0,39.18502400028956,0,0,stop_the_world,1,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-09,gRPC Route Guide,duplicate,1,0,stream-phase-drop,36,0.0,29.913942999883147,0,1,naive_rolling,1,chain3,36,1
+0,1.0,1.0,1.0,,campaign-09,gRPC Route Guide,duplicate,1,0,stream-phase-drop,36,0.0,30.738265999389114,0,1,schema_only,1,chain3,36,1
+0,1.0,1.0,1.0,baseline-projection,campaign-09,gRPC Route Guide,duplicate,0,0,stream-phase-drop,36,0.0,24.691264000466617,0,0,version_negotiation,0,chain3,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-09,gRPC Route Guide,duplicate,1,0,stream-phase-drop,36,0.0,23.820581999643764,0,1,health_rollback,1,chain3,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-10,etcd KV,none,1,1,additive-compare-field,36,0.0,69.63918300061778,1,0,certified,1,diamond4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-10,etcd KV,none,1,1,additive-compare-field,36,0.0,51.495179000085045,1,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-10,etcd KV,none,1,1,additive-compare-field,36,0.0,35.770486999354034,1,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-10,etcd KV,none,1,1,additive-compare-field,36,0.0,48.175373999583826,1,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-10,etcd KV,none,0,1,additive-compare-field,36,0.0,41.535074000421446,1,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-10,etcd KV,none,1,1,additive-compare-field,36,0.0,26.911021000159963,1,1,health_rollback,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-11,gRPC Health,crash,1,1,watch-state-recode,36,23.624856999958865,79.96052299949952,1,0,certified,1,diamond4,36,0
+1,0.3,0.6666666666666666,0.8823529411764706,,campaign-11,gRPC Health,crash,1,1,watch-state-recode,36,0.0017630000002100132,35.2619710001818,1,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-11,gRPC Health,crash,1,1,watch-state-recode,36,0.0012720001905108802,38.73822999958065,1,1,naive_rolling,1,diamond4,36,1
+0,0.4,0.7777777777777778,1.0,,campaign-11,gRPC Health,crash,1,1,watch-state-recode,36,0.0013419994502328336,46.032518000174605,1,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-11,gRPC Health,crash,0,1,watch-state-recode,36,0.0014920005924068391,44.53133299921319,1,1,version_negotiation,1,diamond4,36,1
+6,0.9,0.9629629629629629,1.0,,campaign-11,gRPC Health,crash,0,1,watch-state-recode,36,0.3767279995372519,48.0201529999249,1,0,health_rollback,1,diamond4,36,0
+0,1.0,1.0,1.0,model-witness,campaign-12,Envoy Rate Limit,delay,0,0,guest-quota-weakening,36,0.0,20.712426000500272,0,0,certified,0,diamond4,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-12,Envoy Rate Limit,delay,0,0,guest-quota-weakening,36,0.0,32.2459520002667,0,0,stop_the_world,0,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-12,Envoy Rate Limit,delay,1,0,guest-quota-weakening,37,0.0,357.42447699976765,0,1,naive_rolling,1,diamond4,36,1
+6,1.0,1.0,1.0,,campaign-12,Envoy Rate Limit,delay,1,0,guest-quota-weakening,37,0.0,453.8956940004937,0,7,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-12,Envoy Rate Limit,delay,0,0,guest-quota-weakening,36,0.0,102.5429110004552,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-12,Envoy Rate Limit,delay,1,0,guest-quota-weakening,37,0.0,327.60310100002243,0,1,health_rollback,1,diamond4,36,1
+0,1.0,1.0,1.0,model-witness,campaign-13,Google Pub/Sub,reorder,0,0,publish-replay-break,36,0.0,97.52334200038604,0,0,certified,0,diamond4,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-13,Google Pub/Sub,reorder,0,0,publish-replay-break,36,0.0,27.258330999757163,0,0,stop_the_world,0,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-13,Google Pub/Sub,reorder,1,0,publish-replay-break,36,0.0,50.90243900031055,0,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-13,Google Pub/Sub,reorder,1,0,publish-replay-break,36,0.0,33.58903099979216,0,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-13,Google Pub/Sub,reorder,0,0,publish-replay-break,36,0.0,30.586705000132497,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-13,Google Pub/Sub,reorder,1,0,publish-replay-break,36,0.0,21.72279099977459,0,1,health_rollback,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-14,Kubernetes Lease,stale_route,1,1,duration-additive,36,0.0,58.503292999375844,1,0,certified,1,diamond4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-14,Kubernetes Lease,stale_route,1,1,duration-additive,36,0.0,37.85511800015229,1,1,stop_the_world,1,diamond4,36,1
+6,0.5,0.8148148148148148,1.0,,campaign-14,Kubernetes Lease,stale_route,1,1,duration-additive,36,0.0,27.850814999510476,1,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-14,Kubernetes Lease,stale_route,1,1,duration-additive,36,0.0,46.2849269997605,1,2,schema_only,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-14,Kubernetes Lease,stale_route,0,1,duration-additive,36,0.0,41.39271100029873,1,1,version_negotiation,1,diamond4,36,1
+6,0.5,0.8148148148148148,1.0,,campaign-14,Kubernetes Lease,stale_route,1,1,duration-additive,36,0.0,28.048287999808963,1,1,health_rollback,1,diamond4,36,1
+0,1.0,1.0,1.0,missing-adapter,campaign-15,OpenTelemetry Logs,missing_adapter,0,1,record-layout-recode,36,0.0,40.04283599988412,0,0,certified,0,diamond4,36,0
+6,0.9,0.8888888888888888,0.8823529411764706,,campaign-15,OpenTelemetry Logs,missing_adapter,1,1,record-layout-recode,36,0.0,32.55806200013467,0,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-15,OpenTelemetry Logs,missing_adapter,1,1,record-layout-recode,36,0.0,44.27897400000802,0,1,naive_rolling,1,diamond4,36,1
+6,1.0,1.0,1.0,,campaign-15,OpenTelemetry Logs,missing_adapter,1,1,record-layout-recode,36,0.0,45.29272800027684,0,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-15,OpenTelemetry Logs,missing_adapter,0,1,record-layout-recode,36,0.0,53.83993799932796,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-15,OpenTelemetry Logs,missing_adapter,1,1,record-layout-recode,36,0.0,40.4696210007387,0,1,health_rollback,1,diamond4,36,1
+0,1.0,1.0,1.0,authorization-mismatch,campaign-16,etcd KV,authorization_mismatch,0,1,additive-compare-field,36,0.0,24.509078999471967,0,0,certified,0,diamond4,36,0
+6,0.9,0.8888888888888888,0.8823529411764706,,campaign-16,etcd KV,authorization_mismatch,1,1,additive-compare-field,36,0.0,44.19812600008299,0,5,stop_the_world,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-16,etcd KV,authorization_mismatch,1,1,additive-compare-field,36,0.0,31.014031000268005,0,1,naive_rolling,1,diamond4,36,1
+6,1.0,1.0,1.0,,campaign-16,etcd KV,authorization_mismatch,1,1,additive-compare-field,36,0.0,59.36328000007052,0,7,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-16,etcd KV,authorization_mismatch,0,1,additive-compare-field,36,0.0,36.42203600065841,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-16,etcd KV,authorization_mismatch,1,1,additive-compare-field,36,0.0,28.886250000141445,0,1,health_rollback,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,migration-cardinality,campaign-17,gRPC Health,partial_migration,0,1,watch-state-recode,36,0.0,40.82435800046369,0,0,certified,0,diamond4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-17,gRPC Health,partial_migration,1,1,watch-state-recode,36,0.0,50.1179039993076,0,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-17,gRPC Health,partial_migration,1,1,watch-state-recode,36,0.0,25.680597000246053,0,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-17,gRPC Health,partial_migration,1,1,watch-state-recode,36,0.0,38.77186900081142,0,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-17,gRPC Health,partial_migration,0,1,watch-state-recode,36,0.0,34.053069000037794,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-17,gRPC Health,partial_migration,1,1,watch-state-recode,36,0.0,33.44543299954239,0,1,health_rollback,1,diamond4,36,1
+0,1.0,1.0,1.0,certificate-rejected,campaign-18,Kubernetes Lease,corrupt_certificate,0,1,duration-additive,36,0.0,31.75339300014457,0,0,certified,0,diamond4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-18,Kubernetes Lease,corrupt_certificate,1,1,duration-additive,36,0.0,34.28771299968503,0,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-18,Kubernetes Lease,corrupt_certificate,1,1,duration-additive,36,0.0,29.074664000290795,0,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-18,Kubernetes Lease,corrupt_certificate,1,1,duration-additive,36,0.0,51.890761999857205,0,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-18,Kubernetes Lease,corrupt_certificate,0,1,duration-additive,36,0.0,39.24583299976803,0,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-18,Kubernetes Lease,corrupt_certificate,1,1,duration-additive,36,0.0,31.337725999946997,0,1,health_rollback,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-19,OpenTelemetry Logs,duplicate,1,1,record-layout-recode,36,0.0,68.42456800040964,1,0,certified,1,diamond4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-19,OpenTelemetry Logs,duplicate,1,1,record-layout-recode,36,0.0,40.70637099994201,1,0,stop_the_world,1,diamond4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-19,OpenTelemetry Logs,duplicate,1,1,record-layout-recode,36,0.0,38.506499000504846,1,1,naive_rolling,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-19,OpenTelemetry Logs,duplicate,1,1,record-layout-recode,36,0.0,37.55643699969369,1,1,schema_only,1,diamond4,36,1
+0,1.0,1.0,1.0,,campaign-19,OpenTelemetry Logs,duplicate,0,1,record-layout-recode,36,0.0,46.701188999577425,1,1,version_negotiation,1,diamond4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-19,OpenTelemetry Logs,duplicate,1,1,record-layout-recode,36,0.0,34.48051400027907,1,1,health_rollback,1,diamond4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-20,Envoy Rate Limit,none,1,1,quota-state-recode,36,0.0,66.82518400066328,1,0,certified,1,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-20,Envoy Rate Limit,none,1,1,quota-state-recode,36,0.0,49.66732699995191,1,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-20,Envoy Rate Limit,none,1,1,quota-state-recode,36,0.0,31.54823299973941,1,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-20,Envoy Rate Limit,none,1,1,quota-state-recode,36,0.0,53.52355600007286,1,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-20,Envoy Rate Limit,none,0,1,quota-state-recode,36,0.0,39.123642000049585,1,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-20,Envoy Rate Limit,none,1,1,quota-state-recode,36,0.0,40.71734400076821,1,1,health_rollback,1,fanout4,36,1
+0,1.0,1.0,1.0,model-witness,campaign-21,gRPC Health,crash,0,0,watch-response-break,36,0.0,23.495722000006936,0,0,certified,0,fanout4,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-21,gRPC Health,crash,0,0,watch-response-break,36,0.0,38.5845889995835,0,0,stop_the_world,0,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-21,gRPC Health,crash,1,0,watch-response-break,36,0.0007909993655630387,25.79147800042847,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,baseline-projection,campaign-21,gRPC Health,crash,0,0,watch-response-break,36,0.0,26.58962599980441,0,0,schema_only,0,fanout4,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-21,gRPC Health,crash,0,0,watch-response-break,36,0.0,30.294200999378518,0,0,version_negotiation,0,fanout4,36,0
+6,0.9,0.9629629629629629,1.0,,campaign-21,gRPC Health,crash,0,0,watch-response-break,36,0.2624060007292428,30.442860000221117,0,0,health_rollback,1,fanout4,36,0
+0,0.9,0.9629629629629629,1.0,,campaign-22,etcd Lease,delay,1,1,renewal-session-bridge,36,0.0,43.47994999989169,1,0,certified,1,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-22,etcd Lease,delay,1,1,renewal-session-bridge,36,0.0,42.537428999821714,1,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-22,etcd Lease,delay,1,1,renewal-session-bridge,37,0.0,414.748031000272,1,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-22,etcd Lease,delay,1,1,renewal-session-bridge,36,0.0,33.9013189995967,1,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-22,etcd Lease,delay,0,1,renewal-session-bridge,36,0.0,35.901709999961895,1,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-22,etcd Lease,delay,1,1,renewal-session-bridge,37,0.0,398.14231199943606,1,1,health_rollback,1,fanout4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-23,Google Pub/Sub,reorder,1,1,message-attributes-additive,36,0.0,54.78715200024453,1,0,certified,1,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-23,Google Pub/Sub,reorder,1,1,message-attributes-additive,36,0.0,111.98696100018424,1,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-23,Google Pub/Sub,reorder,1,1,message-attributes-additive,36,0.0,34.8065640000641,1,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-23,Google Pub/Sub,reorder,1,1,message-attributes-additive,36,0.0,44.09731499981717,1,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-23,Google Pub/Sub,reorder,0,1,message-attributes-additive,36,0.0,33.160215999487264,1,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-23,Google Pub/Sub,reorder,1,1,message-attributes-additive,36,0.0,23.83181400000467,1,1,health_rollback,1,fanout4,36,1
+0,1.0,1.0,1.0,model-witness,campaign-24,Kubernetes Lease,stale_route,0,0,partial-holder-migration,36,0.0,31.12774800047191,0,0,certified,0,fanout4,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-24,Kubernetes Lease,stale_route,0,0,partial-holder-migration,36,0.0,34.241798000039125,0,0,stop_the_world,0,fanout4,36,0
+6,0.5,0.8148148148148148,1.0,,campaign-24,Kubernetes Lease,stale_route,1,0,partial-holder-migration,36,0.0,36.25017099966499,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-24,Kubernetes Lease,stale_route,1,0,partial-holder-migration,36,0.0,38.90897299970675,0,2,schema_only,1,fanout4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-24,Kubernetes Lease,stale_route,0,0,partial-holder-migration,36,0.0,33.94999700049084,0,1,version_negotiation,1,fanout4,36,1
+6,0.5,0.8148148148148148,1.0,,campaign-24,Kubernetes Lease,stale_route,1,0,partial-holder-migration,36,0.0,36.698116000479786,0,1,health_rollback,1,fanout4,36,1
+0,1.0,1.0,1.0,missing-adapter,campaign-25,gRPC Route Guide,missing_adapter,0,1,point-metadata-additive,36,0.0,31.359988000076555,0,0,certified,0,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-25,gRPC Route Guide,missing_adapter,1,1,point-metadata-additive,36,0.0,39.58035100004054,0,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-25,gRPC Route Guide,missing_adapter,1,1,point-metadata-additive,36,0.0,39.74869000012404,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-25,gRPC Route Guide,missing_adapter,1,1,point-metadata-additive,36,0.0,39.089455000066664,0,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-25,gRPC Route Guide,missing_adapter,0,1,point-metadata-additive,36,0.0,38.90291999960027,0,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-25,gRPC Route Guide,missing_adapter,1,1,point-metadata-additive,36,0.0,31.428711999978987,0,1,health_rollback,1,fanout4,36,1
+0,1.0,1.0,1.0,authorization-mismatch,campaign-26,Envoy Rate Limit,authorization_mismatch,0,1,quota-state-recode,36,0.0,35.331595000570815,0,0,certified,0,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-26,Envoy Rate Limit,authorization_mismatch,1,1,quota-state-recode,36,0.0,34.82536599949526,0,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-26,Envoy Rate Limit,authorization_mismatch,1,1,quota-state-recode,36,0.0,37.17815399977553,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-26,Envoy Rate Limit,authorization_mismatch,1,1,quota-state-recode,36,0.0,44.54086399982771,0,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-26,Envoy Rate Limit,authorization_mismatch,0,1,quota-state-recode,36,0.0,39.9326110000402,0,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-26,Envoy Rate Limit,authorization_mismatch,1,1,quota-state-recode,36,0.0,31.652218000090215,0,1,health_rollback,1,fanout4,36,1
+0,0.9,0.9629629629629629,1.0,migration-cardinality,campaign-27,etcd Lease,partial_migration,0,1,renewal-session-bridge,36,0.0,29.77621999980329,0,0,certified,0,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-27,etcd Lease,partial_migration,1,1,renewal-session-bridge,36,0.0,53.56953099999373,0,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-27,etcd Lease,partial_migration,1,1,renewal-session-bridge,36,0.0,29.741057000137516,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-27,etcd Lease,partial_migration,1,1,renewal-session-bridge,36,0.0,38.28549799982284,0,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-27,etcd Lease,partial_migration,0,1,renewal-session-bridge,36,0.0,44.88677100016503,0,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-27,etcd Lease,partial_migration,1,1,renewal-session-bridge,36,0.0,30.135581000649836,0,1,health_rollback,1,fanout4,36,1
+0,1.0,1.0,1.0,certificate-rejected,campaign-28,Google Pub/Sub,corrupt_certificate,0,1,message-attributes-additive,36,0.0,33.808668999881775,0,0,certified,0,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-28,Google Pub/Sub,corrupt_certificate,1,1,message-attributes-additive,36,0.0,42.45223999987502,0,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-28,Google Pub/Sub,corrupt_certificate,1,1,message-attributes-additive,36,0.0,28.15829999963171,0,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-28,Google Pub/Sub,corrupt_certificate,1,1,message-attributes-additive,36,0.0,43.29642199991213,0,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-28,Google Pub/Sub,corrupt_certificate,0,1,message-attributes-additive,36,0.0,54.37867999989976,0,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-28,Google Pub/Sub,corrupt_certificate,1,1,message-attributes-additive,36,0.0,53.83824500040646,0,1,health_rollback,1,fanout4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-29,gRPC Route Guide,duplicate,1,1,point-metadata-additive,36,0.0,74.39050500033773,1,0,certified,1,fanout4,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-29,gRPC Route Guide,duplicate,1,1,point-metadata-additive,36,0.0,61.13038800049253,1,0,stop_the_world,1,fanout4,36,0
+6,0.4,0.7777777777777778,1.0,,campaign-29,gRPC Route Guide,duplicate,1,1,point-metadata-additive,36,0.0,31.85259500060056,1,1,naive_rolling,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-29,gRPC Route Guide,duplicate,1,1,point-metadata-additive,36,0.0,38.603578000220296,1,1,schema_only,1,fanout4,36,1
+0,1.0,1.0,1.0,,campaign-29,gRPC Route Guide,duplicate,0,1,point-metadata-additive,36,0.0,46.809112999653735,1,1,version_negotiation,1,fanout4,36,1
+6,0.4,0.7777777777777778,1.0,,campaign-29,gRPC Route Guide,duplicate,1,1,point-metadata-additive,36,0.0,28.60435300044628,1,1,health_rollback,1,fanout4,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-30,etcd KV,none,1,1,revision-state-recode,36,0.0,59.86744799974986,1,0,certified,1,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-30,etcd KV,none,1,1,revision-state-recode,36,0.0,43.33741999926133,1,0,stop_the_world,1,cycle5,36,0
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-30,etcd KV,none,1,1,revision-state-recode,36,0.0,38.35187399999995,1,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-30,etcd KV,none,1,1,revision-state-recode,36,0.0,43.49638000076084,1,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-30,etcd KV,none,0,1,revision-state-recode,36,0.0,29.069325999444118,1,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-30,etcd KV,none,1,1,revision-state-recode,36,0.0,28.02754499953153,1,1,health_rollback,1,cycle5,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-31,Google Pub/Sub,crash,1,1,ack-session-bridge,36,25.07883100042818,84.5449339994957,1,0,certified,1,cycle5,36,0
+2,0.7,0.7407407407407407,0.7647058823529411,,campaign-31,Google Pub/Sub,crash,1,1,ack-session-bridge,36,0.0010909998309216462,37.56144300041342,1,0,stop_the_world,1,cycle5,36,0
+5,0.5,0.6666666666666666,0.7647058823529411,,campaign-31,Google Pub/Sub,crash,1,1,ack-session-bridge,36,0.0014919996829121374,29.62872900025104,1,1,naive_rolling,1,cycle5,36,1
+1,0.9,0.8518518518518519,0.8235294117647058,,campaign-31,Google Pub/Sub,crash,1,1,ack-session-bridge,36,0.0010309995559509844,37.479515000086394,1,1,schema_only,1,cycle5,36,1
+0,1.0,0.8888888888888888,0.8235294117647058,,campaign-31,Google Pub/Sub,crash,0,1,ack-session-bridge,36,0.0013720000424655154,35.33759000038117,1,1,version_negotiation,1,cycle5,36,1
+4,0.5,0.6666666666666666,0.7647058823529411,,campaign-31,Google Pub/Sub,crash,0,1,ack-session-bridge,36,0.3795629991145688,29.977430000144523,1,0,health_rollback,1,cycle5,36,0
+0,1.0,1.0,1.0,model-witness,campaign-32,etcd Lease,delay,0,0,revoke-replay-break,36,0.0,26.265830000738788,0,0,certified,0,cycle5,36,0
+0,1.0,1.0,1.0,baseline-projection,campaign-32,etcd Lease,delay,0,0,revoke-replay-break,36,0.0,30.295129000478482,0,0,stop_the_world,0,cycle5,36,0
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-32,etcd Lease,delay,1,0,revoke-replay-break,37,0.0,431.83417699947313,0,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-32,etcd Lease,delay,1,0,revoke-replay-break,36,0.0,45.464106000508764,0,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-32,etcd Lease,delay,0,0,revoke-replay-break,36,0.0,54.14342000040051,0,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-32,etcd Lease,delay,1,0,revoke-replay-break,37,0.0,398.4887520000484,0,1,health_rollback,1,cycle5,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-33,gRPC Route Guide,reorder,1,1,stream-phase-bridge,36,0.0,57.82266699952743,1,0,certified,1,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-33,gRPC Route Guide,reorder,1,1,stream-phase-bridge,36,0.0,99.46195099928445,1,0,stop_the_world,1,cycle5,36,0
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-33,gRPC Route Guide,reorder,1,1,stream-phase-bridge,36,0.0,30.03836500010948,1,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-33,gRPC Route Guide,reorder,1,1,stream-phase-bridge,36,0.0,36.19717000037781,1,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-33,gRPC Route Guide,reorder,0,1,stream-phase-bridge,36,0.0,35.4109640002207,1,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-33,gRPC Route Guide,reorder,1,1,stream-phase-bridge,36,0.0,26.063197000439686,1,1,health_rollback,1,cycle5,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-34,OpenTelemetry Logs,stale_route,1,1,attributes-additive,36,0.0,45.60470299929875,1,0,certified,1,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-34,OpenTelemetry Logs,stale_route,1,1,attributes-additive,36,0.0,44.34696599946619,1,0,stop_the_world,1,cycle5,36,0
+5,0.6,0.8148148148148148,0.9411764705882353,,campaign-34,OpenTelemetry Logs,stale_route,1,1,attributes-additive,36,0.0,46.781947999988915,1,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-34,OpenTelemetry Logs,stale_route,1,1,attributes-additive,36,0.0,51.15784899953724,1,1,schema_only,1,cycle5,36,1
+0,0.9,0.9629629629629629,1.0,,campaign-34,OpenTelemetry Logs,stale_route,0,1,attributes-additive,36,0.0,52.3549939998702,1,1,version_negotiation,1,cycle5,36,1
+5,0.6,0.8148148148148148,0.9411764705882353,,campaign-34,OpenTelemetry Logs,stale_route,1,1,attributes-additive,36,0.0,48.99224899963883,1,1,health_rollback,1,cycle5,36,1
+0,1.0,1.0,1.0,missing-adapter,campaign-35,etcd KV,missing_adapter,0,1,revision-state-recode,36,0.0,30.60256200024014,0,0,certified,0,cycle5,36,0
+2,0.8,0.8518518518518519,0.8823529411764706,,campaign-35,etcd KV,missing_adapter,1,1,revision-state-recode,36,0.0,30.60345299945766,0,0,stop_the_world,1,cycle5,36,0
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-35,etcd KV,missing_adapter,1,1,revision-state-recode,36,0.0,31.28135499991913,0,1,naive_rolling,1,cycle5,36,1
+1,0.9,0.9629629629629629,1.0,,campaign-35,etcd KV,missing_adapter,1,1,revision-state-recode,36,0.0,41.56674100067903,0,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-35,etcd KV,missing_adapter,0,1,revision-state-recode,36,0.0,33.987394999712706,0,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-35,etcd KV,missing_adapter,1,1,revision-state-recode,36,0.0,24.60502599933534,0,1,health_rollback,1,cycle5,36,1
+0,1.0,1.0,1.0,authorization-mismatch,campaign-36,Google Pub/Sub,authorization_mismatch,0,1,ack-session-bridge,36,0.0,21.851612999853387,0,0,certified,0,cycle5,36,0
+2,0.9,0.8888888888888888,0.8823529411764706,,campaign-36,Google Pub/Sub,authorization_mismatch,1,1,ack-session-bridge,36,0.0,44.57922599976882,0,1,stop_the_world,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-36,Google Pub/Sub,authorization_mismatch,1,1,ack-session-bridge,36,0.0,33.459682000284374,0,1,naive_rolling,1,cycle5,36,1
+1,1.0,1.0,1.0,,campaign-36,Google Pub/Sub,authorization_mismatch,1,1,ack-session-bridge,36,0.0,52.16858699986915,0,2,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-36,Google Pub/Sub,authorization_mismatch,0,1,ack-session-bridge,36,0.0,44.80579299979581,0,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-36,Google Pub/Sub,authorization_mismatch,1,1,ack-session-bridge,36,0.0,31.471534999582218,0,1,health_rollback,1,cycle5,36,1
+0,0.9,0.9629629629629629,1.0,migration-cardinality,campaign-37,gRPC Route Guide,partial_migration,0,1,stream-phase-bridge,36,0.0,24.42401099960989,0,0,certified,0,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-37,gRPC Route Guide,partial_migration,1,1,stream-phase-bridge,36,0.0,32.055416000730474,0,1,stop_the_world,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-37,gRPC Route Guide,partial_migration,1,1,stream-phase-bridge,36,0.0,28.74024799984909,0,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-37,gRPC Route Guide,partial_migration,1,1,stream-phase-bridge,36,0.0,36.89854100048251,0,2,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-37,gRPC Route Guide,partial_migration,0,1,stream-phase-bridge,36,0.0,43.68139200050791,0,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-37,gRPC Route Guide,partial_migration,1,1,stream-phase-bridge,36,0.0,24.315262000527582,0,1,health_rollback,1,cycle5,36,1
+0,1.0,1.0,1.0,certificate-rejected,campaign-38,OpenTelemetry Logs,corrupt_certificate,0,1,attributes-additive,36,0.0,39.24803300014901,0,0,certified,0,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-38,OpenTelemetry Logs,corrupt_certificate,1,1,attributes-additive,36,0.0,49.22586100019544,0,0,stop_the_world,1,cycle5,36,0
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-38,OpenTelemetry Logs,corrupt_certificate,1,1,attributes-additive,36,0.0,58.83907299994462,0,1,naive_rolling,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-38,OpenTelemetry Logs,corrupt_certificate,1,1,attributes-additive,36,0.0,47.700600999633025,0,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,,campaign-38,OpenTelemetry Logs,corrupt_certificate,0,1,attributes-additive,36,0.0,44.46098099924711,0,1,version_negotiation,1,cycle5,36,1
+5,0.5,0.7777777777777778,0.9411764705882353,,campaign-38,OpenTelemetry Logs,corrupt_certificate,1,1,attributes-additive,36,0.0,41.76192100021581,0,1,health_rollback,1,cycle5,36,1
+0,1.0,1.0,1.0,model-witness,campaign-39,OpenTelemetry Logs,duplicate,0,0,collector-order-cycle,36,0.0,41.574294000383816,0,0,certified,0,cycle5,36,0
+1,0.9,0.8888888888888888,0.8823529411764706,,campaign-39,OpenTelemetry Logs,duplicate,1,0,collector-order-cycle,36,0.0,62.40167499981908,0,0,stop_the_world,1,cycle5,36,0
+6,0.4,0.7407407407407407,0.9411764705882353,,campaign-39,OpenTelemetry Logs,duplicate,1,0,collector-order-cycle,36,0.0,22.919484000340162,0,1,naive_rolling,1,cycle5,36,1
+1,0.9,0.9629629629629629,1.0,,campaign-39,OpenTelemetry Logs,duplicate,1,0,collector-order-cycle,36,0.0,34.434915999554505,0,1,schema_only,1,cycle5,36,1
+0,1.0,1.0,1.0,baseline-projection,campaign-39,OpenTelemetry Logs,duplicate,0,0,collector-order-cycle,36,0.0,32.435326000268105,0,0,version_negotiation,0,cycle5,36,0
+6,0.4,0.7407407407407407,0.9411764705882353,,campaign-39,OpenTelemetry Logs,duplicate,1,0,collector-order-cycle,36,0.0,32.725819000006595,0,1,health_rollback,1,cycle5,36,1

@@ -1,0 +1,487 @@
+{
+  "measurements": {
+    "exhaustive_seconds": 1.575752050999995,
+    "random_seconds": 29.307069829000056,
+    "scale": [
+      {
+        "admitted": true,
+        "certificate_bytes": 516,
+        "checker": true,
+        "seconds": 0.00010711899994930718,
+        "services": 8,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 798,
+        "checker": true,
+        "seconds": 0.0001525870000023133,
+        "services": 8,
+        "shape": "ring",
+        "witness_size": 8
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 798,
+        "checker": true,
+        "seconds": 0.000145586000030562,
+        "services": 8,
+        "shape": "reverse-ring",
+        "witness_size": 8
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 598,
+        "checker": true,
+        "seconds": 0.00017690200002107304,
+        "services": 12,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 979,
+        "checker": true,
+        "seconds": 0.0002272870000297189,
+        "services": 12,
+        "shape": "ring",
+        "witness_size": 12
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 979,
+        "checker": true,
+        "seconds": 0.0005264599999463826,
+        "services": 12,
+        "shape": "reverse-ring",
+        "witness_size": 12
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 686,
+        "checker": true,
+        "seconds": 0.00017283600004702748,
+        "services": 16,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1171,
+        "checker": true,
+        "seconds": 0.0002972409999983938,
+        "services": 16,
+        "shape": "ring",
+        "witness_size": 16
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1171,
+        "checker": true,
+        "seconds": 0.00030136700002003636,
+        "services": 16,
+        "shape": "reverse-ring",
+        "witness_size": 16
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 862,
+        "checker": true,
+        "seconds": 0.0002649329999258043,
+        "services": 24,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1555,
+        "checker": true,
+        "seconds": 0.0004974280000169529,
+        "services": 24,
+        "shape": "ring",
+        "witness_size": 24
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1555,
+        "checker": true,
+        "seconds": 0.000513011000066399,
+        "services": 24,
+        "shape": "reverse-ring",
+        "witness_size": 24
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1038,
+        "checker": true,
+        "seconds": 0.00034405999997488834,
+        "services": 32,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1939,
+        "checker": true,
+        "seconds": 0.0007409080000115864,
+        "services": 32,
+        "shape": "ring",
+        "witness_size": 32
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1939,
+        "checker": true,
+        "seconds": 0.000731745000052797,
+        "services": 32,
+        "shape": "reverse-ring",
+        "witness_size": 32
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1390,
+        "checker": true,
+        "seconds": 0.0007794160000003103,
+        "services": 48,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 2707,
+        "checker": true,
+        "seconds": 0.0013419089999615608,
+        "services": 48,
+        "shape": "ring",
+        "witness_size": 48
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 2707,
+        "checker": true,
+        "seconds": 0.0013548980000450683,
+        "services": 48,
+        "shape": "reverse-ring",
+        "witness_size": 48
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1742,
+        "checker": true,
+        "seconds": 0.0006518669999877602,
+        "services": 64,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 3475,
+        "checker": true,
+        "seconds": 0.002315463000059026,
+        "services": 64,
+        "shape": "ring",
+        "witness_size": 64
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 3475,
+        "checker": true,
+        "seconds": 0.002042097000071408,
+        "services": 64,
+        "shape": "reverse-ring",
+        "witness_size": 64
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 2446,
+        "checker": true,
+        "seconds": 0.0009932519999438227,
+        "services": 96,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 5011,
+        "checker": true,
+        "seconds": 0.0043351059999849895,
+        "services": 96,
+        "shape": "ring",
+        "witness_size": 96
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 5011,
+        "checker": true,
+        "seconds": 0.0040929570000116655,
+        "services": 96,
+        "shape": "reverse-ring",
+        "witness_size": 96
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 3234,
+        "checker": true,
+        "seconds": 0.0014850109999997585,
+        "services": 128,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 6716,
+        "checker": true,
+        "seconds": 0.006670167999914156,
+        "services": 128,
+        "shape": "ring",
+        "witness_size": 128
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 6716,
+        "checker": true,
+        "seconds": 0.006898146000025918,
+        "services": 128,
+        "shape": "reverse-ring",
+        "witness_size": 128
+      }
+    ]
+  },
+  "pass": false,
+  "semantic": {
+    "exhaustive_admitted": 4,
+    "exhaustive_assignments": 16384,
+    "exhaustive_checker_failures": 0,
+    "exhaustive_decision_mismatches": 16128,
+    "exhaustive_frontier_membership_mismatches": 0,
+    "exhaustive_missing_witnesses": 0,
+    "permutation_failures": 0,
+    "random_cases": 12000,
+    "random_checker_failures": 0,
+    "random_decision_mismatches": 4204,
+    "random_explicit_oracle_cases": 6000,
+    "random_frontier_membership_mismatches": 0,
+    "repair_monotonicity_failures": 0,
+    "scale_semantics": [
+      {
+        "admitted": true,
+        "certificate_bytes": 516,
+        "checker": true,
+        "services": 8,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 798,
+        "checker": true,
+        "services": 8,
+        "shape": "ring",
+        "witness_size": 8
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 798,
+        "checker": true,
+        "services": 8,
+        "shape": "reverse-ring",
+        "witness_size": 8
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 598,
+        "checker": true,
+        "services": 12,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 979,
+        "checker": true,
+        "services": 12,
+        "shape": "ring",
+        "witness_size": 12
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 979,
+        "checker": true,
+        "services": 12,
+        "shape": "reverse-ring",
+        "witness_size": 12
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 686,
+        "checker": true,
+        "services": 16,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1171,
+        "checker": true,
+        "services": 16,
+        "shape": "ring",
+        "witness_size": 16
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1171,
+        "checker": true,
+        "services": 16,
+        "shape": "reverse-ring",
+        "witness_size": 16
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 862,
+        "checker": true,
+        "services": 24,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1555,
+        "checker": true,
+        "services": 24,
+        "shape": "ring",
+        "witness_size": 24
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1555,
+        "checker": true,
+        "services": 24,
+        "shape": "reverse-ring",
+        "witness_size": 24
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1038,
+        "checker": true,
+        "services": 32,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1939,
+        "checker": true,
+        "services": 32,
+        "shape": "ring",
+        "witness_size": 32
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 1939,
+        "checker": true,
+        "services": 32,
+        "shape": "reverse-ring",
+        "witness_size": 32
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1390,
+        "checker": true,
+        "services": 48,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 2707,
+        "checker": true,
+        "services": 48,
+        "shape": "ring",
+        "witness_size": 48
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 2707,
+        "checker": true,
+        "services": 48,
+        "shape": "reverse-ring",
+        "witness_size": 48
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 1742,
+        "checker": true,
+        "services": 64,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 3475,
+        "checker": true,
+        "services": 64,
+        "shape": "ring",
+        "witness_size": 64
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 3475,
+        "checker": true,
+        "services": 64,
+        "shape": "reverse-ring",
+        "witness_size": 64
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 2446,
+        "checker": true,
+        "services": 96,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 5011,
+        "checker": true,
+        "services": 96,
+        "shape": "ring",
+        "witness_size": 96
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 5011,
+        "checker": true,
+        "services": 96,
+        "shape": "reverse-ring",
+        "witness_size": 96
+      },
+      {
+        "admitted": true,
+        "certificate_bytes": 3234,
+        "checker": true,
+        "services": 128,
+        "shape": "chain",
+        "witness_size": 0
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 6716,
+        "checker": true,
+        "services": 128,
+        "shape": "ring",
+        "witness_size": 128
+      },
+      {
+        "admitted": false,
+        "certificate_bytes": 6716,
+        "checker": true,
+        "services": 128,
+        "shape": "reverse-ring",
+        "witness_size": 128
+      }
+    ],
+    "schema": "gateroll.compact-precedence-audit.v1"
+  },
+  "semantic_sha256": "1923c487278b846c0ab87ed2f935e47b3a68c04afd5a2ccce52a0900b1e00d47"
+}

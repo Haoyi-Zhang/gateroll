@@ -1,0 +1,63 @@
+{
+  "admitted": false,
+  "case_id": "pair-17-case-000",
+  "family": "gRPC Route Guide",
+  "frontier": [
+    [
+      2,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      1
+    ],
+    [
+      2,
+      0,
+      2
+    ],
+    [
+      2,
+      1,
+      0
+    ],
+    [
+      2,
+      1,
+      1
+    ],
+    [
+      2,
+      1,
+      2
+    ],
+    [
+      2,
+      2,
+      0
+    ],
+    [
+      2,
+      2,
+      1
+    ],
+    [
+      2,
+      2,
+      2
+    ]
+  ],
+  "pair": "stream-phase-drop",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "ledger",
+    "store"
+  ],
+  "topology": "chain3",
+  "witness": [
+    "service:gateway:session"
+  ]
+}

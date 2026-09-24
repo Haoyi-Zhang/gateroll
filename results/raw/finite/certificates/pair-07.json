@@ -1,0 +1,19 @@
+{
+  "admitted": false,
+  "case_id": "pair-07-case-000",
+  "family": "etcd Lease",
+  "frontier": [],
+  "pair": "revoke-replay-break",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "profile",
+    "ledger",
+    "queue",
+    "store"
+  ],
+  "topology": "cycle5",
+  "witness": [
+    "service:ledger:idem"
+  ]
+}

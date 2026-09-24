@@ -1,0 +1,108 @@
+{
+  "campaign_matrix": {
+    "attempts": 240,
+    "batches": 20,
+    "campaign_end": 40,
+    "campaign_start": 0,
+    "jobs": 240,
+    "retries": 0,
+    "timeout_seconds_per_strategy_run": 30.0,
+    "timeouts": 0,
+    "wall_seconds": 73.170054,
+    "workers": 4
+  },
+  "offline_cost_sample": {
+    "certificate_bytes": {
+      "max": 3270,
+      "median": 239.0,
+      "p95": 1256.05
+    },
+    "checker_ms": {
+      "max": 3.047484,
+      "median": 0.4455165,
+      "p95": 1.6445002999999998
+    },
+    "planner_ms": {
+      "max": 11.535981,
+      "median": 0.39425449999999995,
+      "p95": 2.0877525999999995
+    },
+    "sample_count": 1200
+  },
+  "run_rollout_ms": {
+    "certified": {
+      "maximum": 111.662421,
+      "median": 40.433597,
+      "p95": 85.193854
+    },
+    "health_rollback": {
+      "maximum": 398.488752,
+      "median": 31.383219,
+      "p95": 378.087829
+    },
+    "naive_rolling": {
+      "maximum": 439.841418,
+      "median": 34.806689,
+      "p95": 415.602338
+    },
+    "schema_only": {
+      "maximum": 453.895694,
+      "median": 42.431582,
+      "p95": 62.459353
+    },
+    "stop_the_world": {
+      "maximum": 112.539049,
+      "median": 41.579305,
+      "p95": 100.088201
+    },
+    "version_negotiation": {
+      "maximum": 102.542911,
+      "median": 40.662661,
+      "p95": 62.216873
+    }
+  },
+  "runtime_latency": [
+    {
+      "maximum_latency_ms": 15.280447,
+      "median_latency_ms": 1.437322,
+      "p95_latency_ms": 4.127093,
+      "strategy": "Certified GATEROLL",
+      "usable_authorized_responses": 1060
+    },
+    {
+      "maximum_latency_ms": 29.500255,
+      "median_latency_ms": 1.328222,
+      "p95_latency_ms": 4.234865,
+      "strategy": "Stop-the-world",
+      "usable_authorized_responses": 961
+    },
+    {
+      "maximum_latency_ms": 62.40604,
+      "median_latency_ms": 1.313795,
+      "p95_latency_ms": 4.597715,
+      "strategy": "Naive rolling",
+      "usable_authorized_responses": 837
+    },
+    {
+      "maximum_latency_ms": 11.90692,
+      "median_latency_ms": 1.249974,
+      "p95_latency_ms": 3.423622,
+      "strategy": "Schema-only",
+      "usable_authorized_responses": 1061
+    },
+    {
+      "maximum_latency_ms": 10.772452,
+      "median_latency_ms": 1.265783,
+      "p95_latency_ms": 3.210712,
+      "strategy": "Version negotiation",
+      "usable_authorized_responses": 1070
+    },
+    {
+      "maximum_latency_ms": 25.196225,
+      "median_latency_ms": 1.229424,
+      "p95_latency_ms": 3.923667,
+      "strategy": "Health rollback",
+      "usable_authorized_responses": 848
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "campaigns": 40,
+  "fault_classes": 10,
+  "strategies": {
+    "certified": {
+      "all_new_runs": 16,
+      "blocked_runs": 24,
+      "completed_expected_cutovers": 16,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.95,
+      "mean_overall_availability": 0.9814814814814815,
+      "mean_unaffected_availability": 1.0,
+      "runs": 40,
+      "semantic_violations": 0,
+      "violating_runs": 0
+    },
+    "health_rollback": {
+      "all_new_runs": 36,
+      "blocked_runs": 0,
+      "completed_expected_cutovers": 13,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.4600000000000001,
+      "mean_overall_availability": 0.7851851851851852,
+      "mean_unaffected_availability": 0.9764705882352942,
+      "runs": 40,
+      "semantic_violations": 36,
+      "violating_runs": 36
+    },
+    "naive_rolling": {
+      "all_new_runs": 40,
+      "blocked_runs": 0,
+      "completed_expected_cutovers": 16,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.4325,
+      "mean_overall_availability": 0.775,
+      "mean_unaffected_availability": 0.9764705882352942,
+      "runs": 40,
+      "semantic_violations": 40,
+      "violating_runs": 40
+    },
+    "schema_only": {
+      "all_new_runs": 39,
+      "blocked_runs": 1,
+      "completed_expected_cutovers": 16,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.9675,
+      "mean_overall_availability": 0.9824074074074074,
+      "mean_unaffected_availability": 0.9911764705882353,
+      "runs": 40,
+      "semantic_violations": 62,
+      "violating_runs": 39
+    },
+    "stop_the_world": {
+      "all_new_runs": 34,
+      "blocked_runs": 6,
+      "completed_expected_cutovers": 16,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.8825,
+      "mean_overall_availability": 0.8898148148148147,
+      "mean_unaffected_availability": 0.8941176470588236,
+      "runs": 40,
+      "semantic_violations": 12,
+      "violating_runs": 6
+    },
+    "version_negotiation": {
+      "all_new_runs": 0,
+      "blocked_runs": 3,
+      "completed_expected_cutovers": 0,
+      "expected_cutover_runs": 16,
+      "mean_affected_availability": 0.99,
+      "mean_overall_availability": 0.9907407407407407,
+      "mean_unaffected_availability": 0.9911764705882353,
+      "runs": 40,
+      "semantic_violations": 37,
+      "violating_runs": 37
+    }
+  },
+  "strategy_runs": 240,
+  "topologies": 4,
+  "transaction_records": 8640
+}

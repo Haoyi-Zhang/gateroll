@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "semantic_summary": "summary/semantic_summary.json",
+  "steps": [
+    {
+      "elapsed_seconds": 19.926727,
+      "exit_code": 0,
+      "step": "finite"
+    },
+    {
+      "elapsed_seconds": 0.718096,
+      "exit_code": 0,
+      "step": "tiny-exhaustive"
+    },
+    {
+      "elapsed_seconds": 73.863715,
+      "exit_code": 0,
+      "step": "campaign-matrix"
+    },
+    {
+      "elapsed_seconds": 0.783195,
+      "exit_code": 0,
+      "step": "aggregate"
+    },
+    {
+      "elapsed_seconds": 0.618266,
+      "exit_code": 0,
+      "step": "verify"
+    },
+    {
+      "elapsed_seconds": 2.335288,
+      "exit_code": 0,
+      "step": "tests"
+    }
+  ],
+  "total_elapsed_seconds": 98.245952,
+  "verification_report": "verification_report.json",
+  "workers": 4
+}

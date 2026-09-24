@@ -1,0 +1,27 @@
+{
+  "pass": false,
+  "failures": [
+    "2 citation clusters over five works"
+  ],
+  "metrics": {
+    "abstract_words": 234,
+    "sentences": 767,
+    "mean_sentence_words": 16.12,
+    "p95_sentence_words": 34,
+    "max_sentence_words": 235,
+    "citation_clusters_over_5": 2,
+    "claim_tokens": {
+      "novel": 0,
+      "first": 14,
+      "unprecedented": 0,
+      "guarantee": 1,
+      "always": 0,
+      "never": 6,
+      "optimal": 1,
+      "independent": 15
+    },
+    "figures": 4,
+    "tables": 14,
+    "sections": 16
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "schema_version": 1,
+  "styles": [
+    {
+      "identical": true,
+      "project": "paper/usenix.sty",
+      "project_sha256": "2278c83173e084a00fcf76d3227acb971f5137ecea993a5b4e13a9b2bd67b45e",
+      "template": "usenix.sty",
+      "template_sha256": "2278c83173e084a00fcf76d3227acb971f5137ecea993a5b4e13a9b2bd67b45e"
+    }
+  ]
+}

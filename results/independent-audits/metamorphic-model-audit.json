@@ -1,0 +1,49 @@
+{
+  "complete": true,
+  "elapsed_seconds": 1.327108,
+  "schema_version": 1,
+  "semantic": {
+    "differential_disagreements": 0,
+    "exhaustive_two_service_admitted": 4,
+    "exhaustive_two_service_assignments": 16384,
+    "exhaustive_two_service_blocked": 16380,
+    "frontier_invariant_failures": 0,
+    "minimal_witness_checks": 256,
+    "minimal_witness_failures": 0,
+    "model": "frozen O/B/N closure with six local and two directional edge obligations",
+    "permutation_invariance_failures": 0,
+    "random_cases_by_service_count": {
+      "3": {
+        "admitted": 8,
+        "cases": 128
+      },
+      "4": {
+        "admitted": 1,
+        "cases": 128
+      },
+      "5": {
+        "admitted": 0,
+        "cases": 128
+      },
+      "6": {
+        "admitted": 1,
+        "cases": 128
+      },
+      "7": {
+        "admitted": 0,
+        "cases": 128
+      },
+      "8": {
+        "admitted": 0,
+        "cases": 128
+      }
+    },
+    "random_differential_disagreements": 0,
+    "random_permutation_failures": 0,
+    "random_topology_cases": 768,
+    "repair_monotonicity_failures": 0,
+    "seed": 20260916,
+    "shortest_path_length_failures": 0
+  },
+  "semantic_sha256": "2cb8e6749f256b86cb503f3c5d73a4a0d1d8f2f3026813ea6ce6e1e8082d80e3"
+}
