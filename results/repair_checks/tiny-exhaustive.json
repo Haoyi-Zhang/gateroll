@@ -1,0 +1,7 @@
+{
+  "admitted": 4,
+  "atom_count": 8,
+  "blocked": 252,
+  "models": 256,
+  "planner_oracle_checker_agreement": 256
+}

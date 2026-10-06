@@ -15,7 +15,7 @@ def main():
     ap=argparse.ArgumentParser(description='Offline structural, literature, and integrity audit for the GATEROLL delivery.')
     ap.add_argument('--root',type=Path,default=Path.cwd())
     a=ap.parse_args(); root=a.root.resolve(); failures=[]
-    main_layout={"README.md", "artifact", "paper"}
+    main_layout={'paper','artifact','research-plan.md','CURRENT-STATE.md'}
     is_main=(root/'paper').is_dir() and (root/'artifact').is_dir()
     art=root/'artifact' if is_main else root
     if is_main:

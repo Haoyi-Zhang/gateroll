@@ -12,7 +12,7 @@ Each missing direction induces a predecessor requirement. Together they form a c
 
 ## Closure without viability
 
-A configuration may satisfy all currently exposed local and edge obligations yet have no closed monotone continuation to all-new. Such a configuration is closed but excluded from the compatibility frontier. A controller that chooses the first locally valid step can enter this dead end; reverse target reachability removes it before scheduling.
+A configuration may satisfy all currently exposed local and edge obligations yet have no closed monotone continuation to all-new. A blocked one-role example has `bridge=False` and all other facts true: `O` is closed but has no legal successor, whereas `N` is in the frontier. For an admitted static manifest, the event-precedence graph is acyclic and every closed state has a topological continuation, so `C_M=F_M`. The frozen model therefore does not support a claim that a greedy closed step can strand an initially admitted rollout.
 
 ## Dimension necessity in the generated corpus
 

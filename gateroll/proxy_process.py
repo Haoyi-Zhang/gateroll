@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from .rpcutil import call
+from .pending_writes import PendingWrites
 
 
 class ProxyState:
@@ -17,6 +18,8 @@ class ProxyState:
         self.config_path = config_path
         self.pins: dict[str, str] = {}
         self.lock = threading.Lock()
+        self.request_lock = threading.Lock()
+        self.pending = PendingWrites(config_path)
 
     def config(self) -> dict[str, Any]:
         return json.loads(self.config_path.read_text(encoding="utf-8"))
@@ -60,6 +63,12 @@ class ProxyState:
         return selected
 
     def handle(self, request: dict[str, Any]) -> dict[str, Any]:
+        # One coordinator serializes forwarding/intent updates. Controller
+        # actions are separately serialized with requests by the harness.
+        with self.request_lock:
+            return self._handle(request)
+
+    def _handle(self, request: dict[str, Any]) -> dict[str, Any]:
         config = self.config()
         target = str(request["target"])
         service = config["services"][target]
@@ -70,6 +79,16 @@ class ProxyState:
             return {"available": False, "error": "unsupported-mixed-direction", "target": target}
         if config.get("auth_guard") and request["op"] == "inc" and request["role"] not in {"writer", "admin"}:
             return {"available": True, "denied": True, "target": target, "proxy_guard": True}
+
+        recovery = config.get("pending_dual_write", config["strategy"] == "certified")
+        intent = self.pending.for_key(target, key) if recovery else None
+        if intent is not None:
+            if request["op"] != "inc" or str(request["req_id"]) != intent["rpc"]["req_id"]:
+                return {"available": False, "error": "pending-dual-write", "target": target}
+            if PendingWrites.effect(request) != intent["rpc"]:
+                return {"available": False, "error": "pending-request-mismatch", "target": target}
+            if service["mode"] != intent["mode"] or not service.get("dual_write"):
+                return {"available": False, "error": "pending-phase-mismatch", "target": target}
 
         selected = self._select_version(config, request, service)
         if selected == "protocol-mismatch":
@@ -98,12 +117,17 @@ class ProxyState:
             "role": request["role"],
             "delay_after_ms": request.get("delay_after_ms", 0),
         }
+        dual = request["op"] == "inc" and service.get("dual_write") and service["mode"] in {"B", "N"}
+        if recovery and dual and intent is None:
+            # Must persist BEFORE either endpoint can apply the write. Do not
+            # consume unavailable reads/new IDs to silently finish another ID.
+            self.pending.begin(target, service["mode"], rpc)
         try:
             primary = call(int(endpoint["port"]), rpc, timeout=float(config.get("service_timeout", 0.25)))
         except (TimeoutError, socket.timeout, OSError, ConnectionError) as exc:
             return {"available": False, "error": "service-timeout", "target": target}
 
-        if request["op"] == "inc" and service.get("dual_write") and service["mode"] in {"B", "N"}:
+        if dual:
             other = "old" if selected == "new" else "new"
             peer = service.get(other, {})
             if peer.get("live"):
@@ -113,6 +137,20 @@ class ProxyState:
                         return {"available": False, "error": "dual-write-failed", "target": target}
                 except Exception:
                     return {"available": False, "error": "dual-write-failed", "target": target}
+            elif recovery:
+                return {"available": False, "error": "dual-write-failed", "target": target}
+            if recovery:
+                def write_value(reply):
+                    if not reply.get("ok") or reply.get("denied") or reply.get("effect") != "write":
+                        return None
+                    if "value" in reply:
+                        return reply["value"]
+                    return reply.get("result", {}).get("value")
+
+                value = write_value(primary)
+                if value is None or value != write_value(secondary):
+                    return {"available": False, "error": "dual-write-disagreement", "target": target}
+                self.pending.finish(target, key)
 
         if primary.get("denied"):
             return {"available": True, "denied": True, "target": target, "service_version": selected}

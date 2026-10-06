@@ -1,0 +1,13 @@
+{
+  "base_command_succeeded": true,
+  "compact_precedence_pass": true,
+  "compact_semantic_match": false,
+  "compact_semantic_sha256": "2936e5722bfd69c7c715bb18bd7e4282833571dc764c213865920c70ada7d0ae",
+  "complete": false,
+  "historical_compact_pass": false,
+  "public_history_pass": null,
+  "public_history_status": "unavailable",
+  "release_complete": false,
+  "schema": "gateroll.reviewer-hardening-reproduction.v2",
+  "scientific_complete": true
+}

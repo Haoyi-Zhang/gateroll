@@ -1,0 +1,64 @@
+{
+  "schema": "gateroll.current-evidence.v1",
+  "measurement_date": "2026-10-06",
+  "platform": "Windows local, synthetic localhost-only workloads",
+  "sources_relative_to_artifact": {
+    "main": "results/runtime_reproductions/dw-muw1wlby-full",
+    "recovery_controls": "results/runtime_reproductions/dw-muw1wlby-controls-v2",
+    "mechanism_disabled_ablation": "results/runtime_reproductions/dualwrite-muw1wlby-ablation"
+  },
+  "archive": {
+    "file": "runtime-evidence.zip",
+    "entry_root_relative_to_project": "artifact/results/current/",
+    "files": 3692,
+    "main_files": 3656,
+    "recovery_control_files": 31,
+    "ablation_files": 5,
+    "bytes": 2232223,
+    "uncompressed_bytes": 22772386,
+    "source_byte_equality_checked": true,
+    "includes_prior_full_result": false
+  },
+  "records": {
+    "semantics": "summary/semantic_summary.json",
+    "timing": "summary/timing_summary.json",
+    "base": "reproduction_summary.json",
+    "status": "reviewer-hardening-summary.json",
+    "expected_comparison": "verification_report.json",
+    "response_recount": "runtime-recount.json",
+    "tests": "logs/tests.stderr",
+    "recovery_controls": "controls/recovery_summary.json",
+    "ablation": "ablation/counterexample.json"
+  },
+  "measured_regression": {
+    "scenarios": 40,
+    "strategies": 6,
+    "runs": 240,
+    "logical_transaction_records": 8640,
+    "workload_proxy_attempts": 8649,
+    "job_retries": 0,
+    "job_timeouts": 0,
+    "campaign_seconds": 153.389480,
+    "base_seconds": 195.644487,
+    "tests_passed": 46,
+    "optional_metadata_skips": 1,
+    "runtime_median_range_ms": [2.9423, 3.2894],
+    "runtime_p95_range_ms": [23.9947, 30.719935]
+  },
+  "boundaries": {
+    "scientific_complete": true,
+    "release_complete": false,
+    "top_level_complete": false,
+    "timing_is_portable_speedup": false,
+    "main_matrix_tests_interrupted_write_recovery": false,
+    "dedicated_recovery_controls_passed": 5,
+    "same_id_resolved_route_reads": [12, 12],
+    "mechanism_disabled_ablation_reads": [12, 11],
+    "recovery_scope": "Per-key durable intent; same-ID/same-effect retry; one proxy/controller; serialized requests/actions; truthful idempotent endpoints and surviving atomic same-machine files.",
+    "lost_final_reply_histories_verified": false,
+    "general_concurrent_recovery_proved": false,
+    "formal_theorem_premises_changed": false,
+    "source_outputs_and_history_preserved": true
+  },
+  "previous_current_retention_relative_to_repair_workspace": "retained/P028/before-intent-integration/current"
+}

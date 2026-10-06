@@ -21,6 +21,10 @@ def precedence(m: Manifest):
         succ[a].add(b); pred[b].add(a); provenance.setdefault((a,b),set()).add(atom)
     for s in m.services: add(event("B",s),event("N",s),f"intrinsic:{s}")
     for e in m.edges:
+        # Self-edges never expose different source/destination modes under
+        # the frozen closure rules, so their directional guards are vacuous.
+        if e.caller == e.callee:
+            continue
         if not e.n2o: add(event("B",e.callee),event("B",e.caller),f"edge:{e.caller}->{e.callee}:n2o")
         if not e.o2n: add(event("N",e.caller),event("N",e.callee),f"edge:{e.caller}->{e.callee}:o2n")
     return nodes,succ,pred,provenance
@@ -41,6 +45,8 @@ def _shortest_cycle_in_layer(m: Manifest, kind: str):
     # Intrinsic B->N edges cannot belong to a directed cycle because no edge returns N->B.
     verts=list(m.services); adj={v:[] for v in verts}; atom={}
     for e in m.edges:
+        if e.caller == e.callee:
+            continue
         if kind=="B" and not e.n2o:
             a,b=e.callee,e.caller; at=f"edge:{e.caller}->{e.callee}:n2o"
         elif kind=="N" and not e.o2n:
@@ -150,13 +156,17 @@ def plan(m: Manifest) -> dict:
           "frontier_summary":compact_frontier_summary(m)}
     if admitted:
         cert.update({"event_order":order, "witness":None,
-                     "complexity":"O(|S|+|E|) decision and certificate"})
+                     "complexity":"linear-size event graph; topological decision with canonical sorting"})
     else:
         cert.update({"event_order":None,"witness":minimum_blocking_witness(m),
-                     "complexity":"O(|S|+|E|) decision; O(|S||E|) shortest-cycle witness"})
+                     "complexity":"linear-size event graph; all-sources BFS minimum cycle with canonical sorting"})
     return cert
 
 def closed(m: Manifest, cfg: dict[str,str]) -> bool:
+    if not isinstance(cfg, dict) or set(cfg) != set(m.services):
+        return False
+    if any(mode not in ("O", "B", "N") for mode in cfg.values()):
+        return False
     lm=m.local_map()
     for s,mode in cfg.items():
         f=lm[s]
@@ -175,7 +185,7 @@ def explicit_frontier(m: Manifest):
     key=lambda c: tuple(c[s] for s in m.services)
     closed_states={key(c):c for c in states if closed(m,c)}
     target=tuple("N" for _ in m.services)
-    if target not in closed_states: return set(),None
+    if target not in closed_states: return set(),False
     preds={k:[] for k in closed_states}
     for k,c in closed_states.items():
         for i,s in enumerate(m.services):

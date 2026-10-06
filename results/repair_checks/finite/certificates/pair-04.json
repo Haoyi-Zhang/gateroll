@@ -1,0 +1,17 @@
+{
+  "admitted": false,
+  "case_id": "pair-04-case-000",
+  "family": "etcd KV",
+  "frontier": [],
+  "pair": "lease-write-authorization",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "ledger",
+    "store"
+  ],
+  "topology": "chain3",
+  "witness": [
+    "service:ledger:auth"
+  ]
+}

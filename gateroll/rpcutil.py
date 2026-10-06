@@ -9,9 +9,11 @@ import tempfile
 import time
 from pathlib import Path
 from typing import Any
+from .portable_runtime import filesystem_path
 
 
 def atomic_json(path: Path, value: Any) -> None:
+    path = filesystem_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, tmp_name = tempfile.mkstemp(prefix=path.name + ".", dir=path.parent)
     try:
@@ -52,7 +54,8 @@ def call(port: int, request: dict[str, Any], timeout: float = 1.0) -> dict[str, 
         # bounded campaign calls do not consume the loopback ephemeral range
         # in TIME_WAIT.  This is harness transport cleanup, not a service fault.
         try:
-            sock.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, struct.pack("ii", 1, 0))
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER,
+                            struct.pack("hh" if os.name == "nt" else "ii", 1, 0))
         except OSError:
             pass
         sock.close()

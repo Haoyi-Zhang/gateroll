@@ -7,6 +7,7 @@ import os
 import sys
 import unittest
 from pathlib import Path
+from gateroll.portable_runtime import wait_start_gate
 
 
 def main() -> int:
@@ -16,6 +17,7 @@ def main() -> int:
     parser.add_argument("--skip-runtime-preflight", action="store_true")
     args = parser.parse_args()
     root = args.artifact_root.resolve()
+    wait_start_gate(root)
     if args.results is not None:
         os.environ["GATEROLL_RESULTS"] = str(args.results.resolve())
     pattern = "test_*.py"

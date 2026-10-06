@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "semantic_summary": "summary\\semantic_summary.json",
+  "steps": [
+    {
+      "elapsed_seconds": 17.862556,
+      "exit_code": 0,
+      "step": "finite"
+    },
+    {
+      "elapsed_seconds": 0.0951,
+      "exit_code": 0,
+      "step": "tiny-exhaustive"
+    },
+    {
+      "elapsed_seconds": 153.489696,
+      "exit_code": 0,
+      "step": "campaign-matrix"
+    },
+    {
+      "elapsed_seconds": 0.090576,
+      "exit_code": 0,
+      "step": "aggregate"
+    },
+    {
+      "elapsed_seconds": 0.046353,
+      "exit_code": 0,
+      "step": "verify"
+    },
+    {
+      "elapsed_seconds": 24.059425,
+      "exit_code": 0,
+      "step": "tests"
+    }
+  ],
+  "total_elapsed_seconds": 195.644487,
+  "verification_report": "verification_report.json",
+  "workers": 4
+}

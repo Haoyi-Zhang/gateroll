@@ -1,0 +1,52 @@
+test_frozen_counts_and_uniqueness (tests.test_corpus.CorpusTests.test_frozen_counts_and_uniqueness) ... ok
+test_representative_pairs_have_three_way_agreement (tests.test_corpus.CorpusTests.test_representative_pairs_have_three_way_agreement) ... ok
+test_real_localhost_faults_and_crash_cuts (tests.test_dual_write_recovery.LiveRecoveryTests.test_real_localhost_faults_and_crash_cuts) ... ok
+test_changed_effect_or_phase_is_refused_before_forwarding (tests.test_dual_write_recovery.PendingWriteTests.test_changed_effect_or_phase_is_refused_before_forwarding) ... ok
+test_clear_failure_leaves_replayable_intent (tests.test_dual_write_recovery.PendingWriteTests.test_clear_failure_leaves_replayable_intent) ... ok
+test_completion_preserves_other_pending_keys (tests.test_dual_write_recovery.PendingWriteTests.test_completion_preserves_other_pending_keys) ... ok
+test_guard_denial_does_not_create_an_intent (tests.test_dual_write_recovery.PendingWriteTests.test_guard_denial_does_not_create_an_intent) ... ok
+test_intent_persisted_before_first_endpoint_call (tests.test_dual_write_recovery.PendingWriteTests.test_intent_persisted_before_first_endpoint_call) ... ok
+test_known_dead_peer_is_not_silent_single_write_success (tests.test_dual_write_recovery.PendingWriteTests.test_known_dead_peer_is_not_silent_single_write_success) ... ok
+test_malformed_pending_file_fails_closed (tests.test_dual_write_recovery.PendingWriteTests.test_malformed_pending_file_fails_closed) ... ok
+test_persistence_failure_sends_no_effect (tests.test_dual_write_recovery.PendingWriteTests.test_persistence_failure_sends_no_effect) ... ok
+test_primary_timeout_retains_intent_and_blocks_reads (tests.test_dual_write_recovery.PendingWriteTests.test_primary_timeout_retains_intent_and_blocks_reads) ... ok
+test_secondary_disagreement_does_not_clear_or_succeed (tests.test_dual_write_recovery.PendingWriteTests.test_secondary_disagreement_does_not_clear_or_succeed) ... ok
+test_all_comparisons_expose_semantic_counterexamples (tests.test_evidence.EvidenceTests.test_all_comparisons_expose_semantic_counterexamples) ... ok
+test_campaign_dimensions (tests.test_evidence.EvidenceTests.test_campaign_dimensions) ... ok
+test_certified_outcomes (tests.test_evidence.EvidenceTests.test_certified_outcomes) ... ok
+test_every_projection_has_a_negative_control (tests.test_evidence.EvidenceTests.test_every_projection_has_a_negative_control) ... ok
+test_executable_preflight_reasons_and_journal (tests.test_evidence.EvidenceTests.test_executable_preflight_reasons_and_journal) ... ok
+test_finite_evidence_closes (tests.test_evidence.EvidenceTests.test_finite_evidence_closes) ... ok
+test_no_fault_stop_world_is_semantically_clean (tests.test_evidence.EvidenceTests.test_no_fault_stop_world_is_semantically_clean) ... ok
+test_frozen_model_audit_evidence_complete (tests.test_independent_release_audits.IndependentReleaseAuditTests.test_frozen_model_audit_evidence_complete) ... ok
+test_optional_reference_metadata_evidence_complete (tests.test_independent_release_audits.IndependentReleaseAuditTests.test_optional_reference_metadata_evidence_complete) ... skipped 'optional administrative reference metadata evidence is not supplied'
+test_repair_monotonicity_on_boundary_masks (tests.test_independent_release_audits.IndependentReleaseAuditTests.test_repair_monotonicity_on_boundary_masks) ... ok
+test_scale_structural_oracles_small (tests.test_independent_release_audits.IndependentReleaseAuditTests.test_scale_structural_oracles_small) ... ok
+test_two_independent_deciders_agree_on_boundary_masks (tests.test_independent_release_audits.IndependentReleaseAuditTests.test_two_independent_deciders_agree_on_boundary_masks) ... ok
+test_bridge_requires_local_obligations (tests.test_model.ModelTests.test_bridge_requires_local_obligations) ... ok
+test_checker_rejects_frontier_omission (tests.test_model.ModelTests.test_checker_rejects_frontier_omission) ... ok
+test_direction_cycle_is_blocking_and_minimum (tests.test_model.ModelTests.test_direction_cycle_is_blocking_and_minimum) ... ok
+test_repaired_manifest_has_complete_frontier_path (tests.test_model.ModelTests.test_repaired_manifest_has_complete_frontier_path) ... ok
+test_long_owned_path_preserves_atomic_state (tests.test_portable_runtime.PortableRuntimeTests.test_long_owned_path_preserves_atomic_state) ... ok
+test_mechanism_off_control_retains_partial_dual_write_failure (tests.test_portable_runtime.PortableRuntimeTests.test_mechanism_off_control_retains_partial_dual_write_failure) ... ok
+test_missing_history_is_not_a_pass (tests.test_portable_runtime.PortableRuntimeTests.test_missing_history_is_not_a_pass) ... ok
+test_reproduction_step_runs_nested_campaigns (tests.test_portable_runtime.PortableRuntimeTests.test_reproduction_step_runs_nested_campaigns) ... ok
+test_reproduction_step_timeout_closes_owned_subtree (tests.test_portable_runtime.PortableRuntimeTests.test_reproduction_step_timeout_closes_owned_subtree) ... ok
+test_timeout_kills_owned_localhost_descendant (tests.test_portable_runtime.PortableRuntimeTests.test_timeout_kills_owned_localhost_descendant) ... ok
+test_unknown_and_historical_outputs_are_refused (tests.test_portable_runtime.PortableRuntimeTests.test_unknown_and_historical_outputs_are_refused) ... ok
+test_admission_requires_a_boolean (tests.test_repair_model.CertificateDomainTests.test_admission_requires_a_boolean) ... ok
+test_empty_manifest_is_admitted (tests.test_repair_model.CertificateDomainTests.test_empty_manifest_is_admitted) ... ok
+test_schedule_digits_are_valid_before_encoding (tests.test_repair_model.CertificateDomainTests.test_schedule_digits_are_valid_before_encoding) ... ok
+test_witness_must_be_unique_and_false_in_manifest (tests.test_repair_model.CertificateDomainTests.test_witness_must_be_unique_and_false_in_manifest) ... ok
+test_bridge_defect_can_be_in_past_but_not_crossed (tests.test_repair_model.CompactBoundaryTests.test_bridge_defect_can_be_in_past_but_not_crossed) ... ok
+test_checker_rejects_nonminimum_cycle_and_false_cardinality (tests.test_repair_model.CompactBoundaryTests.test_checker_rejects_nonminimum_cycle_and_false_cardinality) ... ok
+test_configuration_domain_is_exact (tests.test_repair_model.CompactBoundaryTests.test_configuration_domain_is_exact) ... ok
+test_invalid_target_has_boolean_blocked_decision (tests.test_repair_model.CompactBoundaryTests.test_invalid_target_has_boolean_blocked_decision) ... ok
+test_self_direction_guards_are_vacuous (tests.test_repair_model.CompactBoundaryTests.test_self_direction_guards_are_vacuous) ... ok
+test_live_inventory_and_certificate_preflights (tests.test_runtime_preflight.RuntimePreflightTests.test_live_inventory_and_certificate_preflights) ... ok
+test_partial_migration_is_detected_by_cardinality (tests.test_runtime_preflight.RuntimePreflightTests.test_partial_migration_is_detected_by_cardinality) ... ok
+
+----------------------------------------------------------------------
+Ran 47 tests in 23.878s
+
+OK (skipped=1)

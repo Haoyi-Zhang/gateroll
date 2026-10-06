@@ -24,6 +24,8 @@ from .planner import plan
 from .rpcutil import atomic_json, call, free_port, wait_healthy
 from .service_process import serve as serve_backend
 from .proxy_process import serve as serve_proxy
+from .portable_runtime import fresh_directory, filesystem_path
+from .pending_writes import PendingWrites
 
 FAULTS = (
     "none",
@@ -88,6 +90,7 @@ class RuntimeRun:
         fault: str,
     ):
         self.artifact_root = artifact_root
+        run_dir = filesystem_path(run_dir)
         self.run_dir = run_dir
         self.manifest = manifest
         self.certificate = certificate
@@ -121,7 +124,7 @@ class RuntimeRun:
         self.request_count = 0
         self.proxy_calls = 0
         self._log_handles: list[Any] = []
-        self.mp = multiprocessing.get_context("fork")
+        self.mp = multiprocessing.get_context("spawn")
 
     def _service_flags(self, role: str, version: str) -> tuple[bool, bool, bool]:
         false = set(false_atoms(self.manifest))
@@ -151,9 +154,10 @@ class RuntimeRun:
             daemon=True,
         )
         process.start()
-        wait_healthy(port, process)
         backend = Backend(role, version, port, state_path, process, idempotent, auth_weak, response_break)
+        # Register before readiness so a failed start is also cleaned up.
         self.backends[(role, version)] = backend
+        wait_healthy(port, process, timeout=10.0)
         return backend
 
     def _spawn_proxy(self) -> None:
@@ -164,7 +168,7 @@ class RuntimeRun:
             target=serve_proxy, args=(self.proxy_port, str(self.config_path)), daemon=True
         )
         self.proxy_process.start()
-        wait_healthy(self.proxy_port, self.proxy_process)
+        wait_healthy(self.proxy_port, self.proxy_process, timeout=10.0)
 
     def _write_config(self) -> None:
         atomic_json(self.config_path, self.config)
@@ -177,7 +181,7 @@ class RuntimeRun:
             os.fsync(handle.fileno())
 
     def start(self) -> None:
-        self.run_dir.mkdir(parents=True, exist_ok=True)
+        self.run_dir = fresh_directory(self.artifact_root, self.run_dir)
         services: dict[str, Any] = {}
         for role in self.manifest.names:
             old = self._spawn_backend(role, "old")
@@ -208,6 +212,7 @@ class RuntimeRun:
             "strategy": self.strategy,
             "service_timeout": 0.12,
             "auth_guard": self.strategy == "certified",
+            "pending_dual_write": self.strategy == "certified",
             "quiesced_keys": [],
             "services": services,
             "edges": [edge.__dict__ for edge in self.manifest.edges],
@@ -238,6 +243,7 @@ class RuntimeRun:
         return call(self.backends[(role, version)].port, {"cmd": "dump"})
 
     def _migrate(self, role: str, *, publish: bool, partial: bool = False) -> tuple[int, int]:
+        self._require_no_pending(role)
         old_dump = self._dump(role, "old")
         values = dict(old_dump["values"])
         if partial or f"service:{role}:migrate" in set(false_atoms(self.manifest)):
@@ -286,11 +292,17 @@ class RuntimeRun:
 
     def _reset_old_routes(self) -> None:
         """Fail closed by restoring every preferred route to the old endpoint."""
+        for role in self.manifest.names:
+            self._require_no_pending(role)
         self.config["quiesced_keys"] = []
         for service in self.config["services"].values():
             service["mode"] = "O"
             service["preferred"] = "old"
         self._write_config()
+
+    def _require_no_pending(self, role: str) -> None:
+        if self.config.get("pending_dual_write") and PendingWrites(self.config_path).for_target(role):
+            raise RolloutBlocked("pending-dual-write")
 
     def _step_certified(self, left: list[int], right: list[int]) -> None:
         changed = [i for i, (a, b) in enumerate(zip(left, right)) if a != b]
@@ -298,6 +310,7 @@ class RuntimeRun:
             raise RuntimeError("invalid certified step")
         i = changed[0]
         role = self.manifest.names[i]
+        self._require_no_pending(role)
         if left[i] == O and right[i] == B:
             self._append_journal("prepare", role=role, from_mode="O", to_mode="B")
             partial = self.fault == "partial_migration" and not self.partial_fault_injected
@@ -337,6 +350,9 @@ class RuntimeRun:
         backend = self.backends[(role, "new")]
         backend.process.kill()
         backend.process.join(timeout=2)
+        if backend.process.is_alive():
+            raise RuntimeError("owned backend did not stop")
+        backend.process.close()
         self.config["services"][role]["new"]["live"] = False
         self._write_config()
         self.crash_injected = True
@@ -416,17 +432,30 @@ class RuntimeRun:
             request["client_shape"] = "old"
         return request
 
+    def _record_attempt(self, request: dict[str, Any], response: dict[str, Any], attempt: int) -> None:
+        row: dict[str, Any] = {"request": request, "response": response, "attempt": attempt}
+        target = str(request["target"])
+        service = self.config["services"][target]
+        if self.strategy == "certified" and service["mode"] in {"B", "N"}:
+            # Observation only: never changes routing, retry or oracle decisions.
+            row["replicas"] = {version: self._dump(target, version) for version in ("old", "new")}
+            row["mode"] = service["mode"]
+        with (self.run_dir / "rpc_observations.jsonl").open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n")
+
     def _send(self, request: dict[str, Any]) -> tuple[dict[str, Any], float, int]:
         start = time.perf_counter()
         attempts = 1
         response = call(self.proxy_port, request, timeout=0.5)
         self.proxy_calls += 1
+        self._record_attempt(request, response, 1)
         if self.fault == "delay" and request.get("delay_after_ms") and not response.get("available"):
             time.sleep(0.30)
             retry = dict(request)
             retry.pop("delay_after_ms", None)
             response = call(self.proxy_port, retry, timeout=0.5)
             self.proxy_calls += 1
+            self._record_attempt(retry, response, 2)
             attempts = 2
         latency_ms = (time.perf_counter() - start) * 1000.0
         return response, latency_ms, attempts
@@ -776,7 +805,7 @@ def aggregate(run_rows: list[dict[str, Any]], tx_rows: list[dict[str, Any]]) -> 
 
 
 def run_all(artifact_root: Path, input_dir: Path, output_dir: Path, *, keep_run_dirs: bool = False) -> dict[str, Any]:
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir = fresh_directory(artifact_root, output_dir)
     all_tx: list[dict[str, Any]] = []
     all_runs: list[dict[str, Any]] = []
     scenarios = scenario_specs(input_dir)

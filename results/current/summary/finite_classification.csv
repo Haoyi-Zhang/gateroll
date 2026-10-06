@@ -1,0 +1,7 @@
+method,false_admission,false_block,correct,accuracy
+Certified GATEROLL,0,0,12000,1.0
+Stop-the-world,822,0,11178,0.9315
+Version negotiation,415,1989,9596,0.799667
+Schema-only,3116,0,8884,0.740333
+Naive rolling,9987,0,2013,0.16775
+Health gate,9987,0,2013,0.16775

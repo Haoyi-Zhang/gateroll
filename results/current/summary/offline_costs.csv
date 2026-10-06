@@ -1,0 +1,4 @@
+measure,unit,sample_count,median,p95,maximum
+Planner,ms,1200,0.3697,1.849445,7.1577
+Checker,ms,1200,0.42205,1.50259,2.7282
+Certificate,bytes,1200,239.0,1256.05,3270.0

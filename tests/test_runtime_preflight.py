@@ -14,8 +14,11 @@ class RuntimePreflightTests(unittest.TestCase):
         cls.root = Path(__file__).resolve().parents[1]
 
     def run_case(self, campaign: int, strategy: str = "certified") -> dict:
-        with tempfile.TemporaryDirectory(prefix="gateroll-test-") as temp:
-            return execute(self.root, campaign, strategy, Path(temp) / "run")
+        anchor = self.root / "results" / "runtime_reproductions"
+        anchor.mkdir(parents=True, exist_ok=True)
+        # Preserve test evidence; no implicit TemporaryDirectory recursive cleanup.
+        temp = tempfile.mkdtemp(prefix="preflight-test-", dir=anchor)
+        return execute(self.root, campaign, strategy, Path(temp) / "run")
 
     def test_live_inventory_and_certificate_preflights(self) -> None:
         for campaign, reason in ((5, "missing-adapter"), (6, "authorization-mismatch"), (8, "certificate-rejected")):

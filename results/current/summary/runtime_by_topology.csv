@@ -1,0 +1,25 @@
+strategy,topology,runs,semantic_violations,violating_runs,all_new_runs,mean_unaffected_availability,mean_affected_availability,mean_overall_availability
+Certified GATEROLL,chain3,10,0,0,4,1.0,0.95,0.981481
+Certified GATEROLL,cycle5,10,0,0,4,1.0,0.95,0.981481
+Certified GATEROLL,diamond4,10,0,0,4,1.0,0.95,0.981481
+Certified GATEROLL,fanout4,10,0,0,4,1.0,0.95,0.981481
+Stop-the-world,chain3,10,4,2,9,0.882353,0.87,0.877778
+Stop-the-world,cycle5,10,2,2,9,0.882353,0.88,0.881481
+Stop-the-world,diamond4,10,6,2,8,0.905882,0.86,0.888889
+Stop-the-world,fanout4,10,0,0,8,0.905882,0.92,0.911111
+Naive rolling,chain3,10,10,10,10,0.982353,0.41,0.77037
+Naive rolling,cycle5,10,10,10,10,0.923529,0.5,0.766667
+Naive rolling,diamond4,10,10,10,10,1.0,0.41,0.781481
+Naive rolling,fanout4,10,10,10,10,1.0,0.41,0.781481
+Schema-only,chain3,10,17,10,10,0.982353,0.96,0.974074
+Schema-only,cycle5,10,12,10,10,0.982353,0.97,0.977778
+Schema-only,diamond4,10,23,10,10,1.0,0.94,0.977778
+Schema-only,fanout4,10,10,9,9,1.0,1.0,1.0
+Version negotiation,chain3,10,9,9,0,0.982353,0.99,0.985185
+Version negotiation,cycle5,10,9,9,0,0.982353,0.99,0.985185
+Version negotiation,diamond4,10,10,10,0,1.0,0.99,0.996296
+Version negotiation,fanout4,10,9,9,0,1.0,0.99,0.996296
+Health rollback,chain3,10,9,9,9,0.982353,0.42,0.774074
+Health rollback,cycle5,10,9,9,9,0.923529,0.5,0.766667
+Health rollback,diamond4,10,9,9,9,1.0,0.46,0.8
+Health rollback,fanout4,10,9,9,9,1.0,0.46,0.8

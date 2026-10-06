@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Run the 40 x 6 campaign matrix in isolated, bounded subprocesses."""
+"""Run 40 x 6 localhost campaigns with fresh attempts and bounded owned children."""
 from __future__ import annotations
 
 import argparse
 import json
 import os
-import shutil
-import signal
 import subprocess
 import sys
 import time
@@ -15,224 +13,171 @@ from pathlib import Path
 from typing import Any
 
 from gateroll.campaigns import STRATEGIES, _write_csv, aggregate
+from gateroll.portable_runtime import WindowsJob, fresh_directory, wait_start_gate
 from gateroll.rpcutil import atomic_json
 
 
-def _launch(
-    artifact_root: Path,
-    output_dir: Path,
-    campaign: int,
-    strategy: str,
-    attempt: int,
-) -> dict[str, Any]:
+def _launch(root: Path, output: Path, campaign: int, strategy: str, attempt: int) -> dict[str, Any]:
     key = f"{campaign:02d}-{strategy}"
-    job_path = output_dir / "jobs" / f"{key}.json"
-    run_dir = output_dir / "runs" / key
-    if run_dir.exists():
-        shutil.rmtree(run_dir)
-    run_dir.mkdir(parents=True, exist_ok=True)
-    job_path.unlink(missing_ok=True)
-    cmd = [
-        sys.executable,
-        "-B",
-        str(artifact_root / "scripts" / "run_campaign_case.py"),
-        "--artifact-root",
-        str(artifact_root),
-        "--campaign",
-        str(campaign),
-        "--strategy",
-        strategy,
-        "--run-dir",
-        str(run_dir),
-        "--output",
-        str(job_path),
+    attempt_key = f"{key}-attempt-{attempt}"
+    job_path = output / "jobs" / f"{attempt_key}.json"
+    run_dir = output / "runs" / attempt_key
+    gate = output / "gates" / f"{attempt_key}.json"
+    command = [
+        sys.executable, "-B", "-m", "scripts.run_campaign_case",
+        "--artifact-root", str(root), "--campaign", str(campaign), "--strategy", strategy,
+        "--run-dir", str(run_dir), "--output", str(job_path), "--start-gate", str(gate),
     ]
-    env = dict(os.environ)
-    env["PYTHONPATH"] = str(artifact_root)
-    log_dir = output_dir / "logs"
-    log_dir.mkdir(parents=True, exist_ok=True)
-    stdout_path = log_dir / f"{key}-attempt-{attempt}.stdout"
-    stderr_path = log_dir / f"{key}-attempt-{attempt}.stderr"
-    stdout_handle = stdout_path.open("w", encoding="utf-8")
-    stderr_handle = stderr_path.open("w", encoding="utf-8")
-    process = subprocess.Popen(
-        cmd,
-        cwd=artifact_root,
-        env=env,
-        stdout=stdout_handle,
-        stderr=stderr_handle,
-        text=True,
-        start_new_session=True,
-    )
-    return {
-        "campaign": campaign,
-        "strategy": strategy,
-        "attempt": attempt,
-        "key": key,
-        "job_path": job_path,
-        "process": process,
-        "stdout_path": stdout_path,
-        "stderr_path": stderr_path,
-        "stdout_handle": stdout_handle,
-        "stderr_handle": stderr_handle,
-        "started": time.perf_counter(),
-    }
+    stdout_path = output / "logs" / f"{attempt_key}.stdout"
+    stderr_path = output / "logs" / f"{attempt_key}.stderr"
+    stdout = stdout_path.open("x", encoding="utf-8")
+    stderr = stderr_path.open("x", encoding="utf-8")
+    process = None
+    owner = None
+    try:
+        process = subprocess.Popen(
+            command, cwd=root,
+            env={**os.environ, "PYTHONPATH": str(root), "PYTHONUTF8": "1", "PYTHONDONTWRITEBYTECODE": "1"},
+            stdout=stdout, stderr=stderr, text=True,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+        owner = WindowsJob(process)
+        atomic_json(gate, {"ready": True})
+    except BaseException:
+        if owner is not None:
+            owner.close()
+        if process is not None and process.poll() is None:
+            process.kill()
+            process.wait(timeout=5)
+        stdout.close()
+        stderr.close()
+        raise
+    return dict(campaign=campaign, strategy=strategy, attempt=attempt, key=key, job_path=job_path,
+                process=process, owner=owner, stdout_path=stdout_path, stderr_path=stderr_path,
+                stdout_handle=stdout, stderr_handle=stderr, started=time.perf_counter())
 
 
 def _finish(active: dict[str, Any], timed_out: bool) -> dict[str, Any]:
-    process: subprocess.Popen[str] = active["process"]
-    if timed_out and process.poll() is None:
-        os.killpg(process.pid, signal.SIGKILL)
-    try:
-        process.wait(timeout=2.0)
-    except subprocess.TimeoutExpired:
-        os.killpg(process.pid, signal.SIGKILL)
-        process.wait(timeout=2.0)
+    process = active["process"]
+    # This handle owns only this campaign subtree, including stalled servers.
+    active["owner"].close()
+    if process.poll() is None:
+        process.kill()
+    process.wait(timeout=5)
     active["stdout_handle"].close()
     active["stderr_handle"].close()
-    stdout = active["stdout_path"].read_text(encoding="utf-8", errors="replace")
-    stderr = active["stderr_path"].read_text(encoding="utf-8", errors="replace")
     return {
-        "campaign": active["campaign"],
-        "strategy": active["strategy"],
-        "attempt": active["attempt"],
+        "campaign": active["campaign"], "strategy": active["strategy"], "attempt": active["attempt"],
         "elapsed_s": round(time.perf_counter() - active["started"], 6),
-        "exit_code": process.returncode,
-        "timed_out": timed_out,
-        "stdout": stdout[-2000:],
-        "stderr": stderr[-4000:],
+        "exit_code": process.returncode, "timed_out": timed_out,
+        "stdout": active["stdout_path"].read_text(encoding="utf-8", errors="replace")[-2000:],
+        "stderr": active["stderr_path"].read_text(encoding="utf-8", errors="replace")[-4000:],
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-root", type=Path, default=Path("."))
-    parser.add_argument("--output", type=Path, default=Path("results/raw/campaigns"))
+    parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=4)
-    parser.add_argument("--timeout-seconds", type=float, default=30.0)
+    parser.add_argument("--timeout-seconds", type=float, default=30)
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--end", type=int, default=40)
+    parser.add_argument("--chunk-campaigns", type=int, help="legacy option; spawn needs no fork batches")
     parser.add_argument("--prune-runs", action="store_true")
     args = parser.parse_args()
-    if not (1 <= args.workers <= 4):
-        raise SystemExit("workers must be in [1,4]")
-    if not (0 <= args.start < args.end <= 40):
-        raise SystemExit("campaign range must lie within [0,40]")
+    if not 1 <= args.workers <= 4:
+        parser.error("workers must be in [1,4]")
+    if not 0 <= args.start < args.end <= 40:
+        parser.error("campaign range must lie within [0,40]")
+    if not 5 <= args.timeout_seconds <= 120:
+        parser.error("timeout-seconds must be in [5,120]")
+    if args.prune_runs:
+        parser.error("pruning is disabled: raw attempts must be preserved")
     root = args.artifact_root.resolve()
-    output = args.output.resolve()
-    if output.exists():
-        shutil.rmtree(output)
-    (output / "jobs").mkdir(parents=True)
-    (output / "runs").mkdir(parents=True)
-
+    wait_start_gate(root)
+    output = fresh_directory(root, args.output)
+    for folder in ("jobs", "runs", "logs", "gates"):
+        (output / folder).mkdir()
     started = time.perf_counter()
-    tasks = [(campaign, strategy) for campaign in range(args.start, args.end) for strategy in STRATEGIES]
-    pending = deque((campaign, strategy, 1) for campaign, strategy in tasks)
+    tasks = [(c, s) for c in range(args.start, args.end) for s in STRATEGIES]
+    pending = deque((c, s, 1) for c, s in tasks)
     active: dict[int, dict[str, Any]] = {}
     events: list[dict[str, Any]] = []
-    completed_keys: set[str] = set()
-
-    # Launch and reap only from the main thread.  At most four isolated
-    # campaign parents are live, and every strategy run owns a fresh set of
-    # service processes and descriptors.
-    while pending or active:
-        while pending and len(active) < args.workers:
-            campaign, strategy, attempt = pending.popleft()
-            job = _launch(root, output, campaign, strategy, attempt)
-            active[job["process"].pid] = job
-        now = time.perf_counter()
-        finished: list[tuple[int, bool]] = []
-        for pid, job in active.items():
-            process = job["process"]
-            if process.poll() is not None:
-                finished.append((pid, False))
-            elif now - job["started"] > args.timeout_seconds:
-                finished.append((pid, True))
-        if not finished:
-            time.sleep(0.02)
-            continue
-        for pid, timed_out in finished:
-            job = active.pop(pid)
-            event = _finish(job, timed_out)
-            events.append(event)
-            success = event["exit_code"] == 0 and job["job_path"].exists()
-            if not success:
-                if job["attempt"] < 2:
-                    pending.append((job["campaign"], job["strategy"], job["attempt"] + 1))
-                    continue
-                raise RuntimeError(f"campaign job failed after two attempts: {job['key']}: {event}")
-            completed_keys.add(job["key"])
-            payload = json.loads(job["job_path"].read_text(encoding="utf-8"))
-            row = payload["run"]
-            print(
-                f"campaign={job['campaign']:02d} strategy={job['strategy']} "
-                f"violations={row['semantic_violations']} availability={row['availability_overall']:.3f}",
-                flush=True,
-            )
-
-    if len(completed_keys) != len(tasks):
-        raise AssertionError((len(completed_keys), len(tasks)))
-
-    run_rows: list[dict[str, Any]] = []
-    transaction_rows: list[dict[str, Any]] = []
-    journal_rows: list[dict[str, Any]] = []
+    completed: dict[str, Path] = {}
+    try:
+        while pending or active:
+            while pending and len(active) < args.workers:
+                job = _launch(root, output, *pending.popleft())
+                active[job["process"].pid] = job
+            finished = [(pid, job["process"].poll() is None) for pid, job in active.items()
+                        if job["process"].poll() is not None or
+                        time.perf_counter() - job["started"] > args.timeout_seconds]
+            if not finished:
+                time.sleep(0.02)
+                continue
+            for pid, timed_out in finished:
+                job = active.pop(pid)
+                event = _finish(job, timed_out)
+                events.append(event)
+                with (output / "execution_events.jsonl").open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(event, sort_keys=True, separators=(",", ":")) + "\n")
+                if event["exit_code"] != 0 or not job["job_path"].exists():
+                    if job["attempt"] < 2:
+                        pending.append((job["campaign"], job["strategy"], job["attempt"] + 1))
+                        continue
+                    raise RuntimeError(f"campaign failed after two retained attempts: {job['key']}: {event}")
+                completed[job["key"]] = job["job_path"]
+                row = json.loads(job["job_path"].read_text(encoding="utf-8"))["run"]
+                print(f"campaign={job['campaign']:02d} strategy={job['strategy']} "
+                      f"violations={row['semantic_violations']} availability={row['availability_overall']:.3f}",
+                      flush=True)
+    except BaseException as exc:
+        atomic_json(output / "matrix_failure.json", {"error": f"{type(exc).__name__}: {exc}",
+                                                     "completed_runs": len(completed), "attempts": len(events)})
+        raise
+    finally:
+        for job in active.values():
+            _finish(job, True)
+    runs: list[dict[str, Any]] = []
+    transactions: list[dict[str, Any]] = []
+    journals: list[dict[str, Any]] = []
     for campaign, strategy in tasks:
-        payload = json.loads((output / "jobs" / f"{campaign:02d}-{strategy}.json").read_text(encoding="utf-8"))
-        run_rows.append(payload["run"])
-        transaction_rows.extend(payload["transactions"])
+        payload = json.loads(completed[f"{campaign:02d}-{strategy}"].read_text(encoding="utf-8"))
+        runs.append(payload["run"])
+        transactions.extend(payload["transactions"])
         if strategy == "certified":
-            for sequence, entry in enumerate(payload["journal"]):
-                journal_rows.append({
-                    "campaign_id": f"campaign-{campaign:02d}",
-                    "sequence": sequence,
-                    **entry,
-                })
-
-    expected_campaigns = args.end - args.start
-    if len(run_rows) != expected_campaigns * len(STRATEGIES):
-        raise AssertionError(len(run_rows))
-    if len(transaction_rows) != expected_campaigns * len(STRATEGIES) * 36:
-        raise AssertionError(len(transaction_rows))
-    _write_csv(output / "campaign_runs.csv", run_rows)
-    _write_csv(output / "campaign_transactions.csv", transaction_rows)
-    if journal_rows:
-        with (output / "certified_journals.jsonl").open("w", encoding="utf-8") as handle:
-            for row in journal_rows:
-                handle.write(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n")
-
-    summary = aggregate(run_rows, transaction_rows)
-    if args.start == 0 and args.end == 40:
-        if summary["campaigns"] != 40 or summary["strategy_runs"] != 240 or summary["transaction_records"] != 8640:
-            raise AssertionError(summary)
-        if summary["strategies"]["certified"]["semantic_violations"] != 0:
-            raise AssertionError("certified path returned a semantic violation")
-        for strategy in STRATEGIES[1:]:
-            if summary["strategies"][strategy]["violating_runs"] == 0:
-                raise AssertionError(f"negative control did not violate: {strategy}")
+            journals.extend({"campaign_id": f"campaign-{campaign:02d}", "sequence": i, **entry}
+                            for i, entry in enumerate(payload["journal"]))
+    _write_csv(output / "campaign_runs.csv", runs)
+    _write_csv(output / "campaign_transactions.csv", transactions)
+    with (output / "certified_journals.jsonl").open("w", encoding="utf-8") as handle:
+        for row in journals:
+            handle.write(json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n")
+    summary = aggregate(runs, transactions)
+    # Save raw outcomes even when assertions subsequently fail.
     atomic_json(output / "campaign_summary.json", summary)
-
-    events.sort(key=lambda x: (x["campaign"], STRATEGIES.index(x["strategy"]), x["attempt"]))
-    with (output / "execution_events.jsonl").open("w", encoding="utf-8") as handle:
-        for event in events:
-            handle.write(json.dumps(event, sort_keys=True, separators=(",", ":")) + "\n")
     execution = {
-        "workers": args.workers,
-        "timeout_seconds_per_strategy_run": args.timeout_seconds,
-        "campaign_start": args.start,
-        "campaign_end": args.end,
-        "jobs": len(tasks),
-        "attempts": len(events),
-        "retries": len(events) - len(tasks),
-        "timeouts": sum(int(event["timed_out"]) for event in events),
+        "workers": args.workers, "timeout_seconds_per_strategy_run": args.timeout_seconds,
+        "campaign_start": args.start, "campaign_end": args.end, "jobs": len(tasks),
+        "attempts": len(events), "retries": len(events) - len(tasks),
+        "timeouts": sum(int(e["timed_out"]) for e in events),
         "wall_seconds": round(time.perf_counter() - started, 6),
+        "start_method": "spawn", "platform": sys.platform,
+        "owned_subtree_cleanup": "Windows Job Object" if os.name == "nt" else "direct process",
     }
     atomic_json(output / "matrix_execution.json", execution)
-    if args.prune_runs:
-        shutil.rmtree(output / "runs")
-        shutil.rmtree(output / "jobs")
-        shutil.rmtree(output / "logs")
+    failures = []
+    if len(runs) != len(tasks) or len(transactions) != len(tasks) * 36:
+        failures.append("record-count")
+    if args.start == 0 and args.end == 40:
+        if summary["strategies"]["certified"]["semantic_violations"]:
+            failures.append("certified-semantic-violation")
+        failures.extend(f"missing-negative-control:{s}" for s in STRATEGIES[1:]
+                        if not summary["strategies"][s]["violating_runs"])
+    atomic_json(output / "campaign_checks.json", {"pass": not failures, "failures": failures})
     print(json.dumps({"summary": summary, "execution": execution}, indent=2, sort_keys=True))
-    return 0
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":

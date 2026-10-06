@@ -1,0 +1,67 @@
+{
+  "admitted": 2013,
+  "baselines": {
+    "health_gate": {
+      "correct": 2013,
+      "false_admission": 9987,
+      "false_block": 0
+    },
+    "naive_rolling": {
+      "correct": 2013,
+      "false_admission": 9987,
+      "false_block": 0
+    },
+    "schema_only": {
+      "correct": 8884,
+      "false_admission": 3116,
+      "false_block": 0
+    },
+    "stop_the_world": {
+      "correct": 11178,
+      "false_admission": 822,
+      "false_block": 0
+    },
+    "version_negotiation": {
+      "correct": 9596,
+      "false_admission": 415,
+      "false_block": 1989
+    }
+  },
+  "blocked": 9987,
+  "case_count": 12000,
+  "certificate_mutations": {
+    "count": 96,
+    "rejected": 96
+  },
+  "checker_accepts": 12000,
+  "costs": {
+    "certificate_bytes": {
+      "max": 3270,
+      "median": 239.0,
+      "p95": 1256.05
+    },
+    "checker_ms": {
+      "max": 2.7282,
+      "median": 0.42205000000000004,
+      "p95": 1.5025899999999996
+    },
+    "planner_ms": {
+      "max": 7.1577,
+      "median": 0.36970000000000003,
+      "p95": 1.8494449999999991
+    },
+    "sample_count": 1200
+  },
+  "dimension_ablations": {
+    "authorization": 251,
+    "bridge": 264,
+    "endpoint_refinement": 256,
+    "ordering": 18,
+    "replay": 255,
+    "session": 250,
+    "state_migration": 164
+  },
+  "family_count": 8,
+  "pair_count": 24,
+  "planner_oracle_agreement": 12000
+}

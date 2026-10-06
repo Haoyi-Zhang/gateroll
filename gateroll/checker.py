@@ -9,7 +9,7 @@ from collections import deque
 from dataclasses import replace
 from typing import Any
 
-from .model import B, N, O, Edge, Manifest, Service, apply_defects, repaired
+from .model import B, N, O, Edge, Manifest, Service, apply_defects, false_atoms, repaired
 
 
 class CertificateError(ValueError):
@@ -84,6 +84,8 @@ def _schedulable(manifest: Manifest) -> bool:
 
 
 def check(manifest: Manifest, certificate: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(certificate, dict):
+        raise CertificateError("certificate is not an object")
     if certificate.get("case_id") != manifest.case_id:
         raise CertificateError("case identity mismatch")
     if certificate.get("family") != manifest.family or certificate.get("pair") != manifest.pair:
@@ -96,20 +98,29 @@ def check(manifest: Manifest, certificate: dict[str, Any]) -> dict[str, Any]:
     count = len(manifest.services)
     computed = _frontier_codes(manifest)
     supplied_configs = certificate.get("frontier", [])
+    if not isinstance(supplied_configs, list):
+        raise CertificateError("frontier is not a list")
     supplied: set[int] = set()
     for config in supplied_configs:
-        if not isinstance(config, list) or len(config) != count or any(x not in (O, B, N) for x in config):
+        if not isinstance(config, list) or len(config) != count or any(type(x) is not int or x not in (O, B, N) for x in config):
             raise CertificateError("malformed frontier configuration")
         supplied.add(_encode(tuple(config)))
     if supplied != computed:
         raise CertificateError("frontier is not exact")
 
     computed_admitted = 0 in computed
-    if bool(certificate.get("admitted")) != computed_admitted:
+    if type(certificate.get("admitted")) is not bool or certificate["admitted"] != computed_admitted:
         raise CertificateError("admission bit mismatch")
 
     schedule = certificate.get("schedule", [])
-    witness = tuple(certificate.get("witness", []))
+    witness_payload = certificate.get("witness", [])
+    if not isinstance(schedule, list):
+        raise CertificateError("schedule is not a list")
+    if not isinstance(witness_payload, list) or any(not isinstance(x, str) for x in witness_payload):
+        raise CertificateError("malformed witness")
+    witness = tuple(witness_payload)
+    if len(set(witness)) != len(witness) or not set(witness) <= set(false_atoms(manifest)):
+        raise CertificateError("witness must be a set of false manifest atoms")
     target_code = sum(N * (3 ** i) for i in range(count))
     if computed_admitted:
         if witness:
@@ -118,7 +129,7 @@ def check(manifest: Manifest, certificate: dict[str, Any]) -> dict[str, Any]:
             raise CertificateError("admitted certificate lacks schedule")
         codes = []
         for config in schedule:
-            if not isinstance(config, list) or len(config) != count:
+            if not isinstance(config, list) or len(config) != count or any(type(x) is not int or x not in (O, B, N) for x in config):
                 raise CertificateError("malformed schedule state")
             code = _encode(tuple(config))
             if code not in computed:

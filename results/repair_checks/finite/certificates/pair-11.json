@@ -1,0 +1,18 @@
+{
+  "admitted": false,
+  "case_id": "pair-11-case-000",
+  "family": "Google Pub/Sub",
+  "frontier": [],
+  "pair": "publish-replay-break",
+  "schedule": [],
+  "services": [
+    "gateway",
+    "auth",
+    "ledger",
+    "store"
+  ],
+  "topology": "diamond4",
+  "witness": [
+    "service:ledger:idem"
+  ]
+}

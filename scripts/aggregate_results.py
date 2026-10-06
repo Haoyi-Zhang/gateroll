@@ -175,7 +175,7 @@ def main() -> int:
         values = by_strategy[strategy]
         latency_rows.append({
             "strategy": DISPLAY[strategy],
-            "usable_authorized_responses": len(values),
+            "available_authorized_responses": len(values),
             "median_latency_ms": round(statistics.median(values), 6),
             "p95_latency_ms": round(pct(values, 0.95), 6),
             "maximum_latency_ms": round(max(values), 6),

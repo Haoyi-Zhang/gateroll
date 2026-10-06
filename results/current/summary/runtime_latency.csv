@@ -1,0 +1,7 @@
+strategy,available_authorized_responses,median_latency_ms,p95_latency_ms,maximum_latency_ms
+Certified GATEROLL,1060,3.2894,30.719935,69.0799
+Stop-the-world,961,2.9763,25.51,41.0065
+Naive rolling,837,3.0097,26.58652,43.0663
+Schema-only,1061,2.9669,23.9947,42.8588
+Version negotiation,1070,2.9423,25.713095,42.9928
+Health rollback,848,2.97405,26.1612,42.7394

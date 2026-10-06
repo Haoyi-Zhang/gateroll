@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "admitted_dead_end_failures": 0,
+    "cases": 32992,
+    "checker_failures": 0,
+    "decision_mismatches": 0,
+    "frontier_mismatches": 0,
+    "historical_none_decision_artifacts": 16128,
+    "minimum_witness_checks": 884,
+    "minimum_witness_failures": 0
+  },
+  "groups": {
+    "one_service_self_edge_cube": 512,
+    "retained_12000_manifests": 12000,
+    "three_service_direction_cube": 4096,
+    "two_service_14_atom_cube": 16384
+  },
+  "pass": true,
+  "retained_generator_match": true,
+  "scope": "deterministic finite models only; no runtime services"
+}

@@ -11,7 +11,8 @@ import time
 from pathlib import Path
 from typing import Any
 
-from gateroll.campaigns import RuntimeRun, scenario_specs
+from gateroll.campaigns import RuntimeRun, STRATEGIES, scenario_specs
+from gateroll.portable_runtime import private_path, filesystem_path
 from gateroll.checker import check
 from gateroll.families import base_manifest
 from gateroll.model import Manifest
@@ -72,20 +73,34 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--artifact-root", type=Path, default=Path("."))
     parser.add_argument("--campaign", type=int, required=True)
-    parser.add_argument("--strategy", required=True)
+    parser.add_argument("--strategy", choices=STRATEGIES, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--start-gate", type=Path)
     args = parser.parse_args()
     artifact_root = args.artifact_root.resolve()
-    payload = execute(artifact_root, args.campaign, args.strategy, args.run_dir)
-    payload["harness_cleanup"] = _reap_residual_children()
-    atomic_json(args.output, payload)
-    # The job has no in-memory result left to flush.  A direct exit avoids
-    # interpreter-finalizer stalls after thousands of short-lived forked
-    # servers; the explicit child reap above is the cleanup authority.
-    sys.stdout.flush()
-    sys.stderr.flush()
-    os._exit(0)
+    if not 0 <= args.campaign < 40:
+        parser.error("campaign must lie within [0,40)")
+    output = filesystem_path(private_path(artifact_root, args.output))
+    if output.exists():
+        raise FileExistsError(output)
+    if args.start_gate is not None:
+        gate = filesystem_path(private_path(artifact_root, args.start_gate))
+        deadline = time.monotonic() + 10
+        while not gate.exists():
+            if time.monotonic() >= deadline:
+                raise TimeoutError("parent did not release owned-process start gate")
+            time.sleep(0.01)
+    # No children are spawned before the parent attaches its Windows Job Object.
+    try:
+        payload = execute(artifact_root, args.campaign, args.strategy, args.run_dir)
+    finally:
+        cleanup = _reap_residual_children()
+    payload["harness_cleanup"] = cleanup
+    if cleanup["residual_after"]:
+        raise RuntimeError(f"owned children remain: {cleanup}")
+    atomic_json(output, payload)
+    return 0
 
 
 if __name__ == "__main__":

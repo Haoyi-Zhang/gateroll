@@ -10,8 +10,8 @@ The artifact supports a deliberately conditional claim: when relevant endpoint, 
 - `inputs/`: eight normalized public interface vocabularies and 24 controlled release-pair specifications. The mutations are experimental; they are not historical upstream releases.
 - `tests/`: finite-model, corpus, raw-evidence, and executable-preflight tests.
 - `proofs/`: formal definitions, exactness/minimality arguments, runtime assumptions, and counterexamples.
-- `results/raw/`: retained claim-critical outputs from the frozen run.
-- `results/summary/`: tables derived from raw records.
+- `results/current/`: fresh Windows-local evidence, readable summaries/core CSVs, and `runtime-evidence.zip` with complete raw records and logs.
+- `results/raw/` and `results/summary/`: retained historical evidence and its tables, not the current execution.
 - `results/expected/semantic_summary.json`: timing-free expected semantic result used by reproduction.
 - `scripts/`: deterministic evaluation, aggregation, verification, and test entry points.
 - `claim_evidence_ledger.csv`: mapping from manuscript claims to proofs, code, tests, and raw evidence.
@@ -20,27 +20,69 @@ The artifact supports a deliberately conditional claim: when relevant endpoint, 
 
 The implementation uses the Python standard library. It starts only localhost processes and does not contact an external service.
 
-## Full reproduction
+## Current evidence and full reproduction
 
-Run from a clean artifact directory:
+The real 2026-10-06 Windows-local run completed 40 scenarios × six strategies:
+240 runs, 8,640 logical transaction records, and 8,649 workload proxy attempts.
+All campaign jobs succeeded on their first attempt with zero job retries or
+timeouts. Certified records zero violations, 16/16 expected preference cutovers,
+and 24 blocked outcomes. Its mean overall/affected/unaffected availability is
+98.1481%/95%/100%; availability includes wrong successes and is separate from
+correctness. The semantic aggregates match the retained historical campaign
+and frozen expected summary without overwriting either.
+
+`results/current/` is the single current evidence surface. Its
+`runtime-evidence.zip` contains the complete fresh result, five dedicated
+recovery controls and mechanism-disabled ablation, relative to the project root
+(`artifact/results/current/...`). Summaries, core CSVs, recounts, the test log,
+the five `controls/*/control.json` files and `ablation/counterexample.json`
+remain directly readable.
+Unpack into a separate empty directory to inspect every request/reply, state
+file, certificate, and log. Original execution paths inside records are retained
+unchanged. The old current was moved intact outside this project into workspace
+retention; it is not mixed into this archive. Original runs and historical
+failures remain untouched. See `results/current/README.md` for source mappings.
+
+The recorded suite has 46 passes and one optional administrative metadata skip;
+the current compact audit passes. `reproduction_summary.json` has `complete: true`
+for the base scientific pipeline. The top-level `reviewer-hardening-summary.json`
+reports `scientific_complete: true`, `release_complete: false`, `complete: false`:
+its repaired compact digest differs from the retained failed audit, and the
+public-history inputs are unavailable (`pass: null`), not a scientific failure
+or an invented provenance pass.
+
+For a new run from the artifact root, choose a nonexistent private output:
 
 ```sh
-python -B reproduce.py --output ../reproduced
+python -B reproduce.py --output results/runtime_reproductions/new-run --workers 4
 ```
 
-The default command runs the complete 12,000-case finite evaluation, the 256-model exhaustive fragment, all 40 campaigns under six strategies, aggregation, semantic comparison, and the test suite. Up to four campaign jobs run concurrently. The matrix is divided into fresh two-campaign process batches so that descriptor and child-process cleanup cannot accumulate across the full run. On the retained clean run, the finite stage took 19.9 seconds, the 240-strategy campaign matrix 73.9 seconds, and the complete command 98.2 seconds; local timing is environment-specific.
+The command runs 12,000 finite cases, the 256-model fragment, the 240-run matrix,
+aggregation, semantic comparison, tests, and the compact/history checks. Output
+must resolve strictly below `results/runtime_reproductions/` and not already
+exist; replacement and pruning are refused. Windows campaigns use `spawn`, at
+most four independent parents, and owned Windows Job Object cleanup, not POSIX
+fork batches. Job Objects bound owned termination, not CPU or memory use.
 
-The output directory must not already exist unless `--replace` is supplied. A successful run ends with `complete: true` in `reproduction_summary.json` and `semantic_match: true` in `verification_report.json`.
+The measured campaign duration is 153.389 seconds, and the six-stage base
+sequence takes 195.644 seconds. These are instrumented Windows-local durations,
+not portable speedups or production performance claims. The earlier 73.9-second
+campaign/98.2-second base record remains historical and is not relabeled current.
 
 ## Individual checks
 
+For checks over the current raw evidence, first unpack the archive into a
+separate empty directory; `FULL_RAW` below denotes its complete
+`artifact/results/current/raw/`, not the compact outer CSV subset. Choose
+fresh paths for every generated output.
+
 ```sh
-python -B scripts/run_tests.py --artifact-root . --results results/raw
+python -B scripts/run_tests.py --artifact-root . --results FULL_RAW
 python -B scripts/run_finite.py --artifact-root . --output /tmp/gateroll-finite
 python -B scripts/run_tiny.py --output /tmp/gateroll-tiny.json
 python -B scripts/run_campaign_matrix.py \
-  --artifact-root . --output /tmp/gateroll-campaigns \
-  --workers 4 --timeout-seconds 30 --prune-runs
+  --artifact-root . --output results/runtime_reproductions/campaign-new \
+  --workers 4 --timeout-seconds 30
 ```
 
 To recompute claim-facing tables from any complete raw output:
@@ -50,22 +92,31 @@ python -B scripts/aggregate_results.py \
   --raw /tmp/gateroll-raw --output /tmp/gateroll-summary
 ```
 
-## Frozen evidence dimensions
+## Evidence dimensions
 
 The finite corpus contains exactly 500 distinct defect assignments for each of 24 controlled release pairs, for 12,000 cases across eight interface families. Every case is decided by the planner, checked by the independent certificate checker, and compared with a separately structured forward reachability oracle.
 
 The runtime matrix contains 40 scenarios: four topologies crossed with ten fault classes. Each scenario runs six strategies, producing 240 strategy runs and 8,640 transaction records. A transaction records availability and semantic observations separately. The four executable pre-cutover inconsistencies—missing adapter, authorization mismatch, partial migration, and corrupted certificate—are detected by live inventory, migrated-state cardinality, or checker behavior rather than by treating the scenario name as an admission result.
 
+The 96 rejected certificate mutations are four payload classes across 24 representatives: admission flips; frontier omissions or empty-frontier insertions; multi-role schedule steps on admitted certificates or spurious schedules on blocked ones; and spurious or additional witness atoms. All 24 witness mutations fail the actually-false-atom check before the deletion-minimality loop. This count does not directly test deletion-minimality rejection; the reference checker enforces deletion minimality, while the planner's increasing-size search establishes minimum cardinality within the false-atom universe.
+
+For authorized requests reported available, unexpected denial, unsuccessful protocol results, wrong shape, and wrong value are oracle violations; unavailability is an availability loss. Available denials of unauthorized writes are expected, and available non-denied responses to them are violations. Availability counts proxy-reported available authorized requests, including unexpected denials and wrong successes. Affected keys `a0`/`a1` and unaffected keys `u0`/`u1` are workload classes: ordinary transfer copies all keys and receipts, whereas the partial-migration fault omits selected affected keys. The `a0` pause is released before serialized transfer.
+
+The designated duplicate/reorder replay compares its result with the current per-target, per-key expectation, not a general per-identifier saved completion value. Its fixed sequence has no intervening same-target/same-key write; it is not evidence about arbitrary later replay responses.
+
 ## Interpretation boundaries
 
 - Exactness is relative to the finite Boolean manifest and monotone `O -> B -> N` rollout model.
 - Blocking witnesses are minimum-cardinality only within the declared false-atom universe.
-- The runtime argument assumes truthful manifests and semantically correct adapters. Cardinality checking detects omission, not an incorrect value-preserving transform.
-- The local fault model excludes machine loss, Byzantine behavior, torn writes, unrestricted partitions, concurrent controllers, and cross-service transactions.
+- The formal runtime proposition retains truthful manifests/adapters, replica agreement and same-ID resolution before observation as premises. Certified B/N increments now persist a per-key intent before either application. Pending keys block reads and different effects until same-ID/same-effect retries receive two successful equal-value completions; the controller also blocks role migration, preference advancement and old-route reset. Intent survives proxy restart. This implements the local observation barrier, not rollback of a committed half or a general recovery theorem. Cardinality detects omission, not semantic equivalence.
+- Five dedicated controls retain real peer failures/post-commit timeouts and explicit persistent crash cuts. Each restarts the proxy while pending; same-ID completion then permits both route reads of 12,12, while unrelated keys remain serviceable. The two crash-cut cases stage their durable cut state before actual restart, rather than observing an instruction-boundary crash; the secondary-timeout case also stages its primary commit. The explicit mechanism-off ablation still returns successful reads 12 then 11. It preserves the prior gap as a negative control, not repaired-default behavior.
+- Crashes are injected between logical requests. All four certified delay-tagged requests are guest increments denied before endpoint execution: the certified trace has no service-timeout response or retry and does not exercise post-commit timeout reconciliation. Parallel campaign parents are independent deployments, not concurrent clients within one deployment.
+- Recovery requires one proxy and one controller, serialized requests/actions, initial agreement, truthful idempotent endpoints/migration, authentic labels, stable IDs, no bypass writes and atomic same-machine intent/state/receipt persistence. Without same-ID client retry or peer recovery the key stays unavailable. Lost final replies after intent-clear remain ambiguous; there is no exactly-once client acknowledgment, competing-writer synchronization, persistent pin recovery or controller journal replay. General concurrent recovery is not established.
+- The local fault model excludes machine loss, Byzantine behavior, torn writes, unrestricted partitions, competing proxies/controllers, and cross-service transactions.
 - The public interface families contribute normalized vocabulary only. The release mutations and 36-transaction workloads are controlled research fixtures.
 - Baselines are explicit information projections and simple execution strategies, not tuned implementations of named products.
 
-## Final integrity and evidence audit
+## Evidence and delivery utilities
 
 After the normal reproduction, the following commands perform checks that do
 not import the planner, checker, proxy, controller, or paper aggregation code:
@@ -82,8 +133,9 @@ checks, not independent peer review or a proof that the manifest is truthful.
 
 ## Independent semantic audits
 
-The complete entry point also runs `audit/metamorphic_model_audit.py` and
-`audit/frontier_scaling_audit.py`.  The first exhaustively checks every one of
+The packet retains `audit/metamorphic_model_audit.py` and
+`audit/frontier_scaling_audit.py`, but the current wrapper does not run them.
+The first exhaustively checks every one of
 16,384 assignments in a 14-atom two-service model and 768 deterministic larger
 topologies using two separately structured decision procedures plus
 metamorphic properties.  The second executes exact enumeration for three
@@ -106,14 +158,38 @@ not additional production-system claims.
 
 ## Compact-precedence hardening
 
-The final hardening round adds an exact event-precedence normal form for the frozen Boolean language. Admission no longer requires explicit enumeration of all `3^n` deployment configurations: the planner checks required local facts and topologically sorts two events per service. A shortest directed cycle is a minimum-cardinality directional blocker. The independent checker uses a separately implemented graph construction and cycle/order validation.
+The compact implementation adds an event-precedence normal form for the frozen Boolean language: all required local facts must hold and the non-self-edge event graph must be acyclic. Self-edge directional guards are vacuous. This is an additional decision implementation; `gateroll/` and the campaign controller still use explicit certificates. A shortest directional cycle is a minimum-cardinality blocker, and the compact checker independently validates that minimum. All closed states of an admitted static manifest have viable continuations, and every complete path has exactly `2n` steps.
 
-Reproduction now also runs:
+Separate compact/provenance entrypoints exist; the current wrapper runs the compact audit and history verifier after the base pipeline, not the compact test entrypoint below. History inputs remain absent. Choose fresh output filenames rather than overwriting the retained failed compact record:
 
 ```sh
 python3 scripts/test_compact_precedence.py
-python3 scripts/run_compact_precedence_audit.py --output results/compact-precedence-audit.json --random-cases 12000
-python3 scripts/verify_public_history.py --root . --output results/public-history-verification.json
+python3 scripts/run_compact_precedence_audit.py --output results/runtime_reproductions/compact-new.json --random-cases 12000
+python3 scripts/verify_public_history.py --root . --output results/runtime_reproductions/history-new.json
 ```
 
-The compact audit exhausts all 16,384 assignments of the two-service 14-atom language, cross-checks deterministic larger cases, applies metamorphic tests, and exercises certificates through 128 roles. A separate tagged public-schema probe retains exact upstream snapshots and hashes, but is explicitly syntax-only and is not counted as a historical runtime evaluation.
+The original failed audit remains at `results/compact-precedence-audit.json`.
+Earlier repaired finite results are separate, under `results/repair_checks/`.
+The fresh compact run in `results/current/` also checks 16,384 assignments,
+12,000 seeded cases and 27 scale controls, with zero discrepancies;
+`reference-compact-differential.json` checks 32,992 models directly against the
+original planner and forward oracle, including self-edges, and checks minimum
+witness sizes on 884 blocked models. The finite rerun preserves the original
+12,000-case classifications and rejects all 96 mutations. No source snapshot,
+metadata audit or runtime result is fabricated to complete the wrapper.
+
+From the artifact root, the network-free checks are:
+
+```sh
+python -B -m unittest tests.test_model tests.test_repair_model
+python -B -m scripts.run_finite --artifact-root . --output results/runtime_reproductions/finite-new --omit-case-corpus
+python -B scripts/run_compact_precedence_audit.py --output results/runtime_reproductions/compact-new.json --random-cases 12000
+python -B audit/repair_model_audit.py --output results/runtime_reproductions/reference-compact-new.json
+```
+
+The current runtime measures all-N preference with old endpoints still live,
+serialized transfers, a single-key pause demonstration, and target-only RPC
+invocation with annotated-path checks. It implements no session retirement or
+controller journal replay. Those distinctions are reflected in the manuscript
+and runtime proof premises; the repair does not weaken the existing guards,
+receipts, digests, or licenses.

@@ -1,0 +1,11 @@
+{
+  "claim_boundary": "No supplied historical snapshots; controlled pairs are synthetic.",
+  "failures": [],
+  "missing": [
+    "D:\\CodexProjects\\2026-07-13\\new-chat-4\\repair_workspace\\inputs\\P028\\contract-closed-rolling-upgrades-stateful-rpc-services\\artifact\\inputs\\public-history\\public-history-audit.json"
+  ],
+  "pair_count": null,
+  "pass": null,
+  "schema": "gateroll.public-history-verification.v1",
+  "status": "unavailable"
+}
