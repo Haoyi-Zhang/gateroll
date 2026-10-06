@@ -1,4 +1,4 @@
-"""Controlled release-pair construction from normalized public vocabularies."""
+"""Controlled Boolean release pairs with public-interface-inspired family labels."""
 from __future__ import annotations
 
 import json

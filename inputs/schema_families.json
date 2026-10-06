@@ -148,5 +148,5 @@
       ]
     }
   ],
-  "note": "The artifact consumes these normalized operation and field vocabularies. Where a service declaration imports a separate payload schema, source_urls records both official files. The controlled release pairs are experimental mutations, not historical upstream releases."
+  "note": "This inventory documents vocabulary inspirations; the current generator and runtime do not consume its operation or field lists. Family labels refer to public interfaces, while finite cases use a common Boolean contract model and runtime requests use a common read/increment interface. Where a service declaration imports a separate payload schema, source_urls records both official files. The controlled release pairs are experimental mutations, not historical upstream releases."
 }
