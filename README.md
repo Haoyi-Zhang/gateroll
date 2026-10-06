@@ -218,4 +218,7 @@ regressions, not 1,200-role runtime deployments. The normal suite discovers the
 new module on a future reproduction. `.github/workflows/scientific-checks.yml`
 prepares a bounded Ubuntu 24.04 gate for the 13 finite-model unit tests and these
 six depth regressions, with raw output uploaded even on failure. Preparing this
-workflow is not a claim that it has run remotely.
+workflow has since run on Ubuntu 24.04 with CPython 3.12.14: all 19 selected
+tests passed in 5.764 seconds (the test runner's elapsed measurement).
+`results/measurements/current-linux/` retains the measured environment and raw
+output. This does not rerun or replace the 240-deployment Windows campaign.
