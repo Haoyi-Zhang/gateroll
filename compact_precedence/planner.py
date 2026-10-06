@@ -93,21 +93,32 @@ def _schedule_configs(m: Manifest, order: list[str]):
 def strongly_connected_components(m: Manifest):
     nodes,succ,_,_=precedence(m)
     index=0; stack=[]; on=set(); idx={}; low={}; comps=[]
-    def visit(v):
-        nonlocal index
-        idx[v]=low[v]=index; index+=1; stack.append(v); on.add(v)
-        for w in succ[v]:
-            if w not in idx:
-                visit(w); low[v]=min(low[v],low[w])
-            elif w in on: low[v]=min(low[v],idx[w])
-        if low[v]==idx[v]:
-            c=[]
-            while True:
-                w=stack.pop();on.remove(w);c.append(w)
-                if w==v:break
-            comps.append(tuple(sorted(c)))
-    for v in sorted(nodes):
-        if v not in idx:visit(v)
+    # Iterative Tarjan: frames retain each DFS successor iterator, separately
+    # from the stack of vertices whose SCC has not yet been completed.
+    for root in sorted(nodes):
+        if root in idx: continue
+        idx[root]=low[root]=index; index+=1; stack.append(root); on.add(root)
+        frames=[(root,iter(succ[root]))]
+        while frames:
+            v,children=frames[-1]
+            w=next(children,None)
+            if w is not None:
+                if w not in idx:
+                    idx[w]=low[w]=index; index+=1; stack.append(w); on.add(w)
+                    frames.append((w,iter(succ[w])))
+                elif w in on:
+                    low[v]=min(low[v],idx[w])
+                continue
+            frames.pop()
+            if low[v]==idx[v]:
+                c=[]
+                while True:
+                    w=stack.pop();on.remove(w);c.append(w)
+                    if w==v:break
+                comps.append(tuple(sorted(c)))
+            if frames:
+                parent=frames[-1][0]
+                low[parent]=min(low[parent],low[v])
     return tuple(sorted(comps))
 
 def event_enabled(m: Manifest) -> dict[str,bool]:

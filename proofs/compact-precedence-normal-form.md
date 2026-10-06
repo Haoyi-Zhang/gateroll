@@ -23,3 +23,27 @@ If all-old is admitted, every required local fact is true and the event graph is
 
 ## Compact frontier predicate
 A closed configuration corresponds to a predecessor-closed set of completed events. Every nontrivial strongly connected component must be either wholly absent or wholly present, and one-event execution cannot enter an absent cyclic component. Local obligations are event guards: a disabled bridge event may be in the past for a service already in `N`, but no incomplete disabled event can be crossed. Thus a closed configuration is in the reverse-reachable frontier exactly when (1) the all-new target is closed, (2) every cyclic SCC is already completed, and (3) every incomplete event is enabled. The planner reports this summary; the checker reconstructs it with Kosaraju's algorithm, independently of the planner's Tarjan implementation.
+
+## Traversal depth and implementation
+
+The planner's Tarjan traversal keeps a DFS frame stack separately from its
+unfinished-SCC vertex stack. A frame resumes its successor iterator after a
+child completes, propagates the child's low-link value, and emits an SCC when
+the low-link equals the discovery index. These are the recursive algorithm's
+operations, with frames stored explicitly rather than on Python's call stack.
+The checker retains the distinct Kosaraju algorithm: an explicit frame stack
+records first-pass finishing order, then a stack traversal of the reversed graph
+collects each SCC in reverse finishing order. Its separate three-color cycle
+check is also iterative; a back edge to an active frame still rejects a cycle.
+Each graph edge is visited a bounded number of times in these traversals,
+excluding the existing canonical sorting, and auxiliary graph storage is linear.
+
+`tests/test_compact_depth.py` exercises six structural manifests with 1,200
+roles: bridge/new-layer DAGs, bridge/new-layer rings, a deep DAG with a disabled
+bridge, and a deep ring with a smaller local blocker. It constructs expected
+certificates directly from those shapes, checks them before calling the
+planner, compares SCC summaries and minimum witness sizes, and checks all-old
+and all-new frontier membership. This removes a reachable call-stack failure
+in compact planning/checking without raising Python's recursion limit. These
+are finite algorithm regressions, not 1,200-role process deployments or a
+portable performance result; retained campaign and scale-audit runs are unchanged.

@@ -25,13 +25,19 @@ def _graph(m):
 
 def _acyclic(nodes,adj):
     color={x:0 for x in nodes}
-    def dfs(x):
-        color[x]=1
-        for y in adj[x]:
-            if color[y]==1:return False
-            if color[y]==0 and not dfs(y):return False
-        color[x]=2; return True
-    return all(color[x] or dfs(x) for x in nodes)
+    for root in nodes:
+        if color[root]: continue
+        color[root]=1; frames=[(root,iter(adj[root]))]
+        while frames:
+            x,children=frames[-1]
+            y=next(children,None)
+            if y is None:
+                color[x]=2; frames.pop()
+            elif color[y]==1:
+                return False
+            elif color[y]==0:
+                color[y]=1; frames.append((y,iter(adj[y])))
+    return True
 
 def _witness_blocks(m,w):
     if not isinstance(w, dict) or not isinstance(w.get("atoms"), list) or not w["atoms"]: return False
@@ -74,24 +80,29 @@ def _minimum_blocker_size(nodes, adj, local):
 def _frontier_summary(m, nodes, adj, local):
     # Kosaraju, deliberately different from the planner's Tarjan implementation.
     seen=set();order=[]
-    def d1(x):
-        seen.add(x)
-        for y in sorted(adj[x]):
-            if y not in seen:d1(y)
-        order.append(x)
-    for x in sorted(nodes):
-        if x not in seen:d1(x)
+    for root in sorted(nodes):
+        if root in seen: continue
+        seen.add(root); frames=[(root,iter(sorted(adj[root])))]
+        while frames:
+            x,children=frames[-1]
+            y=next(children,None)
+            if y is None:
+                order.append(x); frames.pop()
+            elif y not in seen:
+                seen.add(y); frames.append((y,iter(sorted(adj[y]))))
     rev={x:set() for x in nodes}
     for x in nodes:
         for y in adj[x]:rev[y].add(x)
     seen=set();comps=[]
-    def d2(x,c):
-        seen.add(x);c.append(x)
-        for y in sorted(rev[x]):
-            if y not in seen:d2(y,c)
-    for x in reversed(order):
-        if x not in seen:
-            c=[];d2(x,c);comps.append(tuple(sorted(c)))
+    for root in reversed(order):
+        if root in seen: continue
+        c=[]; seen.add(root); pending=[root]
+        while pending:
+            x=pending.pop();c.append(x)
+            for y in sorted(rev[x]):
+                if y not in seen:
+                    seen.add(y);pending.append(y)
+        comps.append(tuple(sorted(c)))
     cyc=sorted(c for c in comps if len(c)>1 or (len(c)==1 and c[0] in adj[c[0]]))
     enabled={}
     for s,f in m.local:

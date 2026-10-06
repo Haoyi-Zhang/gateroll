@@ -193,3 +193,29 @@ invocation with annotated-path checks. It implements no session retirement or
 controller journal replay. Those distinctions are reflected in the manuscript
 and runtime proof premises; the repair does not weaken the existing guards,
 receipts, digests, or licenses.
+
+## Compact traversal-depth regression
+
+The compact planner's Tarjan SCC traversal and the independent checker's
+Kosaraju SCC and three-color cycle traversals now use explicit stacks. Both
+previous implementations raised `RecursionError` on an admissible owned
+1,200-role precedence DAG at the default Python call-stack limit. The repair
+does not raise that limit, alter manifest digests or change closure/witness
+semantics. Six finite structural regressions cover bridge/new-layer DAGs and
+rings, a disabled bridge, and a smaller local blocker. Their expected
+certificates are constructed from graph shapes before invoking the planner.
+
+From this flat artifact repository root, run:
+
+```sh
+python -B -m unittest tests.test_compact_depth -v
+```
+
+These six local tests are separate from the retained 47-method suite and the
+earlier 240-run Windows-local campaign; neither retained result was rerun or
+relabeled as evidence for the changed compact source. They are finite algorithm
+regressions, not 1,200-role runtime deployments. The normal suite discovers the
+new module on a future reproduction. `.github/workflows/scientific-checks.yml`
+prepares a bounded Ubuntu 24.04 gate for the 13 finite-model unit tests and these
+six depth regressions, with raw output uploaded even on failure. Preparing this
+workflow is not a claim that it has run remotely.
