@@ -3,7 +3,7 @@ from copy import deepcopy
 from dataclasses import replace
 import unittest
 
-from gateroll.model import Manifest, Service
+from gateroll.model import Edge, Manifest, Service
 from gateroll.planner import plan
 from gateroll.checker import CertificateError, check
 from compact_precedence.model import Manifest as CompactManifest, ServiceFacts, EdgeFacts
@@ -37,6 +37,36 @@ class CertificateDomainTests(unittest.TestCase):
     def test_empty_manifest_is_admitted(self):
         manifest = replace(self.manifest, services=())
         self.assertTrue(check(manifest, plan(manifest))["admitted"])
+
+    def test_actual_false_bridge_witness_must_be_deletion_minimal(self):
+        manifest = replace(self.manifest,
+                           services=(Service("a", bridge=False), Service("b", bridge=False)))
+        authentic = plan(manifest)
+        for atom in ("service:a:bridge", "service:b:bridge"):
+            singleton = deepcopy(authentic)
+            singleton["witness"] = [atom]
+            self.assertTrue(check(manifest, singleton)["accepted"])
+        redundant = deepcopy(authentic)
+        redundant["witness"] = ["service:a:bridge", "service:b:bridge"]
+        with self.assertRaisesRegex(CertificateError, "^witness is not deletion-minimal$"):
+            check(manifest, redundant)
+
+    def test_actual_false_cycle_plus_local_witness_is_redundant(self):
+        manifest = replace(self.manifest,
+                           services=(Service("a", bridge=False), Service("b"), Service("c")),
+                           edges=(Edge("a", "b", n2o=False), Edge("b", "c", n2o=False),
+                                  Edge("c", "a", n2o=False)))
+        authentic = plan(manifest)
+        cycle = ["edge:a>b:n2o", "edge:b>c:n2o", "edge:c>a:n2o"]
+        local = ["service:a:bridge"]
+        for witness in (cycle, local):
+            minimal = deepcopy(authentic)
+            minimal["witness"] = witness
+            self.assertTrue(check(manifest, minimal)["accepted"])
+        redundant = deepcopy(authentic)
+        redundant["witness"] = cycle + local
+        with self.assertRaisesRegex(CertificateError, "^witness is not deletion-minimal$"):
+            check(manifest, redundant)
 
     def test_admission_requires_a_boolean(self):
         certificate = plan(self.manifest)

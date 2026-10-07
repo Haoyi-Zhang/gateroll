@@ -28,10 +28,10 @@ jobs:
           set -euo pipefail
           out="$RUNNER_TEMP/p028-scientific-checks"
           mkdir -p "$out"
-          python -B -c 'import json, platform, sys; print(json.dumps({"python": sys.version, "platform": platform.platform(), "scope": "19 finite unit regressions; not runtime campaigns"}, indent=2))' > "$out/environment.json"
+          python -B -c 'import json, platform, sys; print(json.dumps({"python": sys.version, "platform": platform.platform(), "scope": "27 finite unit regressions; not runtime campaigns"}, indent=2))' > "$out/environment.json"
           timeout --signal=TERM --kill-after=5s 120s \
             prlimit --as=1073741824 --cpu=100 --nofile=512 -- \
-            python -B -m unittest tests.test_model tests.test_repair_model tests.test_compact_depth -v \
+            python -B -m unittest tests.test_model tests.test_repair_model tests.test_compact_depth tests.test_topology_reuse -v \
             > "$out/checks.stdout" 2> "$out/checks.stderr"
       - name: Upload raw check output
         if: always()

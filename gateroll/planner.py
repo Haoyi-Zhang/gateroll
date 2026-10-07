@@ -13,6 +13,7 @@ from .model import (
     apply_defects,
     enumerate_configs,
     false_atoms,
+    _is_closed_indexed,
     is_closed,
     predecessors,
     repaired,
@@ -21,7 +22,8 @@ from .model import (
 
 
 def closed_set(manifest: Manifest) -> set[tuple[int, ...]]:
-    return {c for c in enumerate_configs(manifest) if is_closed(manifest, c)}
+    index = {name: i for i, name in enumerate(manifest.names)}
+    return {c for c in enumerate_configs(manifest) if _is_closed_indexed(manifest, c, index)}
 
 
 def exact_frontier(manifest: Manifest) -> set[tuple[int, ...]]:

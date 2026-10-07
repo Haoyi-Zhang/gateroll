@@ -161,6 +161,11 @@ def is_closed(manifest: Manifest, config: tuple[int, ...]) -> bool:
     if len(config) != len(manifest.services):
         return False
     index = {name: i for i, name in enumerate(manifest.names)}
+    return _is_closed_indexed(manifest, config, index)
+
+
+def _is_closed_indexed(manifest: Manifest, config: tuple[int, ...], index: dict[str, int]) -> bool:
+    """Closure on a full-length configuration with a caller-local name index."""
     for i, service in enumerate(manifest.services):
         mode = config[i]
         if mode == B:
