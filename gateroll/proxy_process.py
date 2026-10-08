@@ -54,13 +54,19 @@ class ProxyState:
             alternate = "old" if selected == "new" else "new"
             if service.get(alternate, {}).get("live"):
                 selected = alternate
+        old_only = strategy == "certified" and service["mode"] == "O"
+        if old_only:
+            # Process health does not publish migrated state. Until bridge
+            # entry, only the old endpoint is admitted for this role.
+            selected = "old"
         if session_id:
             with self.lock:
                 if service.get("session_support"):
                     selected = self.pins.setdefault(str(session_id), selected)
                 elif request.get("session_continuation") and request.get("session_origin") != selected:
                     return "protocol-mismatch"
-        return selected
+        # A pin retained across an aborted entry must not bypass publication.
+        return "old" if old_only else selected
 
     def handle(self, request: dict[str, Any]) -> dict[str, Any]:
         # One coordinator serializes forwarding/intent updates. Controller
