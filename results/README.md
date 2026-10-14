@@ -1,6 +1,19 @@
 # Result surfaces
 
-`current/` is the single fresh Windows-local evidence surface. It retains
+`completion-oracle/` and `same-information/` are the current source-bound
+scientific surfaces: exact inputs/replies, fresh full matrix/finite/test/control
+records, same-contract null comparison and environment/source bindings. See
+`../proofs/received-completions-and-policy.md` for scope and entry points.
+`completion-oracle/full-tests.stderr` is the final 81-test log; `tests.stderr`
+retains the earlier 77-test stage. `runtime-recount.json` verifies all current
+matrix replies with the independent corrected completion map. Fresh derived
+semantic/timing summaries and request latency CSV are in `completion-oracle/campaign/`.
+`initial-stage-bindings.json` preserves the source snapshot before the recount
+repair; the root bindings describe the current packet and final test stage.
+Original failed audits, timings and historical raw/current records below are
+unchanged. These results do not establish production validation or acceptance.
+
+`current/` retains its October 6 Windows-local evidence. It retains
 readable summaries, core CSVs, recount, the 46-pass/one-optional-metadata-skip
 test log, five recovery control JSONs and the mechanism-disabled ablation.
 `current/runtime-evidence.zip` contains the complete fresh raw records and logs,
@@ -21,7 +34,7 @@ below are retained historical data, not a substitute for the current run.
 
 `raw/tiny_exhaustive.json` contains complete enumeration of the frozen two-service, eight-atom fragment.
 
-`raw/campaigns/` contains one row per strategy run, one row per transaction, the certified controller journals, bounded execution events, and aggregate campaign and execution summaries. Disposable per-process state directories are not retained.
+`raw/campaigns/` contains one row per strategy run, one row per transaction, certified controller journals, execution events, and campaign/execution summaries. Per-process state directories are not present on this outer historical surface.
 
 `summary/` is derived only from raw records by `scripts/aggregate_results.py`. The semantic summary excludes local timing. The timing summary is retained separately and must not be interpreted as a hardware-independent result.
 

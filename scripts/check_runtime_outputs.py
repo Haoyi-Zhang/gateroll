@@ -64,6 +64,7 @@ def inspect(directory: Path, historical: Path) -> dict:
                 errors.append(f"{key}:availability-{label}")
         # Recompute labels from actual final-attempt replies, not summary rows.
         expected = {}
+        completed = {}
         for row, sequence in zip(selected, attempts):
             entry = sequence[-1]
             request, response = entry["request"], entry["response"]
@@ -79,17 +80,26 @@ def inspect(directory: Path, historical: Path) -> dict:
                 }[row["topology"]]
                 expected[state_key] = 10 * (names.index(target) + 1) + {"a0": 1, "a1": 2, "u0": 3, "u1": 4}[record_key]
             authorized = request["op"] == "read" or request["role"] in ("writer", "admin")
-            duplicate = bool(request.get("logical_duplicate"))
-            value = expected[state_key] + (int(request.get("delta", 1))
-                                          if request["op"] == "inc" and authorized and not duplicate else 0)
+            # Reconstruct received completions independently of RuntimeRun and
+            # of generator hints. Routing/shape/delay do not alter the effect.
+            identity = (target, str(request["req_id"]))
+            effect = (record_key, request["op"], int(request.get("delta", 1)), request["role"])
+            saved = completed.get(identity) if request["op"] == "inc" and authorized else None
+            duplicate = saved is not None
+            effect_changed = duplicate and saved[0] != effect
+            if effect_changed:
+                errors.append(f"{key}:changed-completed-effect:{row['tx_index']}")
+            value = saved[1] if duplicate else expected[state_key] + (
+                int(request.get("delta", 1)) if request["op"] == "inc" and authorized else 0)
             available = bool(response.get("available"))
             violation = False
             if authorized and available:
-                violation = bool(response.get("denied") or not response.get("ok") or
+                violation = bool(effect_changed or response.get("denied") or not response.get("ok") or
                                  not response.get("shape_ok", True) or not response.get("protocol_ok", True) or
                                  response.get("value") != value)
                 if not violation and request["op"] == "inc" and not duplicate:
                     expected[state_key] = value
+                    completed[identity] = (effect, value)
             elif not authorized and available and not response.get("denied"):
                 violation = True
             if (int(violation) != int(row["semantic_violation"]) or value != int(row["expected_value"]) or

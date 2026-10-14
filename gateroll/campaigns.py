@@ -112,6 +112,9 @@ class RuntimeRun:
             for i, role in enumerate(manifest.names)
         }
         self.expected = {role: dict(values) for role, values in self.initial.items()}
+        # Client-observed successful completions, separate from current state.
+        # No completion is inferred from an unavailable or invalid response.
+        self.completed_requests: dict[tuple[str, str], tuple[dict[str, Any], int]] = {}
         self.config: dict[str, Any] = {}
         self.recovery_ms = 0.0
         self.rollout_start = 0.0
@@ -467,9 +470,15 @@ class RuntimeRun:
         op = str(request["op"])
         caller_role = str(request["role"])
         authorized = op == "read" or caller_role in {"writer", "admin"}
-        logical_duplicate = bool(request.get("logical_duplicate"))
+        completion_key = (target, str(request["req_id"]))
+        completion = self.completed_requests.get(completion_key) if op == "inc" and authorized else None
+        logical_duplicate = completion is not None
         before = self.expected[target].get(key, 0)
-        if op == "inc" and authorized and not logical_duplicate:
+        if completion is not None:
+            if PendingWrites.effect(request) != completion[0]:
+                raise ValueError("oracle history reuses a completed identifier with a different effect")
+            expected_value = completion[1]
+        elif op == "inc" and authorized:
             expected_value = before + int(request.get("delta", 1))
         else:
             expected_value = before
@@ -493,6 +502,7 @@ class RuntimeRun:
                     violation = True
                 if not violation and op == "inc" and not logical_duplicate:
                     self.expected[target][key] = expected_value
+                    self.completed_requests[completion_key] = (PendingWrites.effect(request), expected_value)
             # Unavailable authorized traffic is an availability loss, not a wrong success.
         else:
             if available and response.get("denied"):
@@ -529,6 +539,8 @@ class RuntimeRun:
             "latency_ms": round(latency_ms, 6),
             "error": response.get("error", ""),
             "logical_duplicate": int(logical_duplicate),
+            "request_id": str(request["req_id"]),
+            "generator_replay_hint": int(bool(request.get("logical_duplicate"))),
         }
         self.request_count += 1
         return row

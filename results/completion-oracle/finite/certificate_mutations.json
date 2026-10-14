@@ -1,0 +1,674 @@
+[
+  {
+    "case_id": "pair-00-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 0,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-00-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 0,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-00-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 0,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-00-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 0,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-01-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 1,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-01-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 1,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-01-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 1,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-01-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 1,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-02-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 2,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-02-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 2,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-02-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 2,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-02-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 2,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-03-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 3,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-03-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 3,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-03-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 3,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-03-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 3,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-04-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 4,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-04-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 4,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-04-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 4,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-04-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 4,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-05-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 5,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-05-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 5,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-05-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 5,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-05-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 5,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-06-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 6,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-06-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 6,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-06-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 6,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-06-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 6,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-07-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 7,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-07-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 7,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-07-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 7,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-07-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 7,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-08-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 8,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-08-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 8,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-08-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 8,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-08-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 8,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-09-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 9,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-09-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 9,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-09-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 9,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-09-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 9,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-10-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 10,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-10-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 10,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-10-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 10,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-10-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 10,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-11-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 11,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-11-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 11,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-11-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 11,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-11-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 11,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-12-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 12,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-12-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 12,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-12-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 12,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-12-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 12,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-13-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 13,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-13-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 13,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-13-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 13,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-13-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 13,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-14-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 14,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-14-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 14,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-14-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 14,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-14-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 14,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-15-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 15,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-15-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 15,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-15-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 15,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-15-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 15,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-16-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 16,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-16-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 16,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-16-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 16,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-16-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 16,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-17-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 17,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-17-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 17,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-17-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 17,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-17-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 17,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-18-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 18,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-18-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 18,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-18-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 18,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-18-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 18,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-19-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 19,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-19-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 19,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-19-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 19,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-19-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 19,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-20-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 20,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-20-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 20,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-20-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 20,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-20-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 20,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-21-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 21,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-21-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 21,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-21-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 21,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-21-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 21,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-22-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 22,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-22-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 22,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-22-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 22,
+    "reason": "blocked certificate contains schedule",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-22-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 22,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-23-case-000",
+    "mutation": "flip-admission",
+    "pair_index": 23,
+    "reason": "admission bit mismatch",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-23-case-000",
+    "mutation": "alter-frontier",
+    "pair_index": 23,
+    "reason": "frontier is not exact",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-23-case-000",
+    "mutation": "invalid-schedule-payload",
+    "pair_index": 23,
+    "reason": "schedule changes more than one role",
+    "rejected": true
+  },
+  {
+    "case_id": "pair-23-case-000",
+    "mutation": "invalid-witness-payload",
+    "pair_index": 23,
+    "reason": "witness must be a set of false manifest atoms",
+    "rejected": true
+  }
+]

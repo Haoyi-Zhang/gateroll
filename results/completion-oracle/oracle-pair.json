@@ -1,0 +1,368 @@
+{
+  "before_source_sha256": "d9f8f3630973c530492bbf10027db30a01a56f0757ebae8de05f3cb4abc4b7c9",
+  "current_source_sha256": "da919b5ae2b830df86e68f4cfb61528d85ee63cf101d7dc03f44e0761344ab90",
+  "native_history_sha256": "609311f834814a258a45d53e3e915b62b71d3a5a9eef368aaeadf293b12e1443",
+  "records": [
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 12
+      },
+      "before_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "label": "first-old-write",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "first",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 13
+      },
+      "before_oracle": {
+        "expected_value": 13,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 13,
+        "semantic_violation": 0
+      },
+      "label": "second-old-write",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "second",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": true,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 12
+      },
+      "before_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 1
+      },
+      "current_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "label": "old-late-replay",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "first",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 13
+      },
+      "before_oracle": {
+        "expected_value": 13,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 13,
+        "semantic_violation": 0
+      },
+      "label": "old-current-read",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "read",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "read-old",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": true,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 12
+      },
+      "before_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 1
+      },
+      "current_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "label": "bridge-late-replay",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "first",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "old",
+        "shape": "old",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 14
+      },
+      "before_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "label": "bridge-fresh-write",
+      "request": {
+        "client_shape": "old",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "third",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": true,
+        "service_version": "new",
+        "shape": "new",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 12
+      },
+      "before_oracle": {
+        "expected_value": 15,
+        "semantic_violation": 1
+      },
+      "current_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "label": "new-late-replay",
+      "request": {
+        "client_shape": "new",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "first",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "new",
+        "shape": "new",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 14
+      },
+      "before_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "label": "new-current-read",
+      "request": {
+        "client_shape": "new",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "read",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "read-new",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": true,
+        "service_version": "new",
+        "shape": "new",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 12
+      },
+      "before_oracle": {
+        "expected_value": 15,
+        "semantic_violation": 1
+      },
+      "current_oracle": {
+        "expected_value": 12,
+        "semantic_violation": 0
+      },
+      "label": "restarted-proxy-late-replay",
+      "request": {
+        "client_shape": "new",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "inc",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "first",
+        "role": "writer",
+        "target": "gateway"
+      }
+    },
+    {
+      "actual_response": {
+        "available": true,
+        "denied": false,
+        "ok": true,
+        "protocol_ok": true,
+        "replayed": false,
+        "service_version": "new",
+        "shape": "new",
+        "shape_ok": true,
+        "target": "gateway",
+        "value": 14
+      },
+      "before_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "current_oracle": {
+        "expected_value": 14,
+        "semantic_violation": 0
+      },
+      "label": "restarted-current-read",
+      "request": {
+        "client_shape": "new",
+        "cmd": "request",
+        "delta": 1,
+        "key": "a0",
+        "op": "read",
+        "path": [
+          "gateway"
+        ],
+        "req_id": "read-restarted",
+        "role": "writer",
+        "target": "gateway"
+      }
+    }
+  ],
+  "scope": "Fresh replay of recorded actual native replies through the reviewed incoming oracle; endpoint execution is the separate history run, not repeated here."
+}

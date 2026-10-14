@@ -4,7 +4,7 @@
 
 The campaign oracle first classifies a request as authorized when it is a read or its caller is a writer or administrator. For an authorized request reported available, an unexpected denial, unsuccessful protocol result, wrong response shape, or wrong logical value is a semantic violation. An unavailable authorized request is an availability loss, not a semantic violation. For an unauthorized write, an available denial is expected; any available response without a denial is a violation. Unavailability is not labeled a semantic violation in either branch. Availability is the proxy-reported available fraction of authorized requests, so it includes available unexpected denials and wrong successes rather than measuring usable or correct responses.
 
-The expected logical value advances only after an authorized, nonduplicate increment returns an available response without a violation. The designated duplicate does not advance it again; the oracle compares that response with the current per-target, per-key expectation. It does not maintain a general saved completion value for every identifier. The fixed replay sequence has no intervening write to that target/key between the designated request and its replay; arbitrary later replays are outside this oracle's demonstrated scope.
+The expected current state advances only after an authorized increment returns an available response without a violation. The oracle separately saves that received completion's effect and value by target/request identifier. A completed identifier is recognized from this map, not a generator label; its replay must return the saved value and cannot advance current state, even after later writes. An unavailable or invalid reply supplies no saved completion. Reusing a saved identifier for a different effect is an invalid oracle history and is rejected before sending. This client-observed map does not infer an unobserved commit or recover a crashed controller.
 
 ## Runtime assumptions
 
@@ -60,6 +60,20 @@ The fresh serialized campaign does not test recovery of an interrupted dual writ
 The five actual controls in `results/current/controls/` cover a failed secondary, primary and secondary post-commit timeouts, an intent-only cut, and a both-committed-before-clear cut. Each kills/restarts its owned proxy while pending and retains the intent. Both route reads, new-ID/changed-effect writes and three controller actions remain blocked; unrelated `u0` reads return 13. Same-ID completion clears pending and both routes then read 12,12; completed-ID replay changes neither state nor receipt set. The intent-only and both-committed cases explicitly construct persistent cuts and then restart the real proxy, with `partial_response: null`, not an invented observed failure reply. The secondary-timeout case also labels a staged primary-commit cut. This is bounded mechanism evidence, separate from the ordinary 40×6 regression matrix.
 
 The actual `results/current/ablation/counterexample.json` explicitly disables pending recovery (`pending_dual_write_enabled: false`) and reproduces the prior unavailable write, physical 12/11 split and successful reads 12 then 11. It identifies the earlier missing synchronization mechanism; narrowing a proposition alone was not an implementation repair. This is not repaired-default behavior or a counterexample under assumption 9. The old control and prior full result remain outside canonical current, and their original workspace outputs are untouched.
+
+## Received-completion history
+
+Four owned controls first failed against the incoming oracle: it rejected a
+valid late replay, accepted a current-value replay, relied on a generator hint,
+and treated a retry after an unavailable attempt as an already saved completion.
+The repaired oracle passes all four. `scripts/run_completion_history.py` sends
+ten actual sequential requests through owned localhost service/proxy processes.
+Two old-mode increments yield 12 and 13; replay returns 12 and a read returns
+13. Migration copies values and receipts. Bridge-mode replay returns 12, a fresh
+increment reaches 14, and new-preference replay/read return 12/14. After an actual
+proxy kill/restart they still return 12/14. Both endpoint states contain 14 and
+exactly the three completed increment IDs. The controller/oracle stays alive;
+this is neither controller restart nor a lost-final-reply proof.
 
 ## Boundary
 

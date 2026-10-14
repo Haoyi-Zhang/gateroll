@@ -1,0 +1,110 @@
+{
+  "campaign_matrix": {
+    "attempts": 240,
+    "campaign_end": 40,
+    "campaign_start": 0,
+    "jobs": 240,
+    "owned_subtree_cleanup": "Windows Job Object",
+    "platform": "win32",
+    "retries": 0,
+    "start_method": "spawn",
+    "timeout_seconds_per_strategy_run": 30.0,
+    "timeouts": 0,
+    "wall_seconds": 148.559796,
+    "workers": 4
+  },
+  "offline_cost_sample": {
+    "certificate_bytes": {
+      "max": 3270,
+      "median": 239.0,
+      "p95": 1256.05
+    },
+    "checker_ms": {
+      "max": 2.5852,
+      "median": 0.40265,
+      "p95": 1.4520199999999999
+    },
+    "planner_ms": {
+      "max": 4.9476,
+      "median": 0.22525,
+      "p95": 1.1639549999999999
+    },
+    "sample_count": 1200
+  },
+  "run_rollout_ms": {
+    "certified": {
+      "maximum": 575.3475,
+      "median": 120.3262,
+      "p95": 525.644765
+    },
+    "health_rollback": {
+      "maximum": 516.5178,
+      "median": 110.70275,
+      "p95": 397.384765
+    },
+    "naive_rolling": {
+      "maximum": 605.0275,
+      "median": 113.79485,
+      "p95": 410.58593
+    },
+    "schema_only": {
+      "maximum": 508.4594,
+      "median": 147.5074,
+      "p95": 264.73838
+    },
+    "stop_the_world": {
+      "maximum": 262.8818,
+      "median": 122.8348,
+      "p95": 198.6974
+    },
+    "version_negotiation": {
+      "maximum": 263.2064,
+      "median": 121.6743,
+      "p95": 207.280135
+    }
+  },
+  "runtime_latency": [
+    {
+      "available_authorized_responses": 1060,
+      "maximum_latency_ms": 57.6017,
+      "median_latency_ms": 2.80185,
+      "p95_latency_ms": 27.162005,
+      "strategy": "Certified GATEROLL"
+    },
+    {
+      "available_authorized_responses": 961,
+      "maximum_latency_ms": 43.0264,
+      "median_latency_ms": 2.7159,
+      "p95_latency_ms": 23.8675,
+      "strategy": "Stop-the-world"
+    },
+    {
+      "available_authorized_responses": 837,
+      "maximum_latency_ms": 43.0248,
+      "median_latency_ms": 2.7247,
+      "p95_latency_ms": 23.28948,
+      "strategy": "Naive rolling"
+    },
+    {
+      "available_authorized_responses": 1061,
+      "maximum_latency_ms": 44.4662,
+      "median_latency_ms": 2.7121,
+      "p95_latency_ms": 22.7389,
+      "strategy": "Schema-only"
+    },
+    {
+      "available_authorized_responses": 1070,
+      "maximum_latency_ms": 42.687,
+      "median_latency_ms": 2.6543,
+      "p95_latency_ms": 19.13156,
+      "strategy": "Version negotiation"
+    },
+    {
+      "available_authorized_responses": 848,
+      "maximum_latency_ms": 39.0906,
+      "median_latency_ms": 2.67205,
+      "p95_latency_ms": 21.50258,
+      "strategy": "Health rollback"
+    }
+  ]
+}

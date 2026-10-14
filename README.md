@@ -10,7 +10,8 @@ The artifact supports a deliberately conditional claim: when relevant endpoint, 
 - `inputs/`: eight normalized public interface vocabularies and 24 controlled release-pair specifications. The mutations are experimental; they are not historical upstream releases.
 - `tests/`: finite-model, corpus, raw-evidence, and executable-preflight tests.
 - `proofs/`: formal definitions, exactness/minimality arguments, runtime assumptions, and counterexamples.
-- `results/current/`: fresh Windows-local evidence, readable summaries/core CSVs, and `runtime-evidence.zip` with complete raw records and logs.
+- `results/completion-oracle/` and `results/same-information/`: current source-bound completion, full matrix and same-information controls.
+- `results/current/`: retained October 6 Windows-local evidence and original archive/source bindings, not rewritten for new source.
 - `results/raw/` and `results/summary/`: retained historical evidence and its tables, not the current execution.
 - `results/expected/semantic_summary.json`: timing-free expected semantic result used by reproduction.
 - `scripts/`: deterministic evaluation, aggregation, verification, and test entry points.
@@ -31,7 +32,7 @@ and 24 blocked outcomes. Its mean overall/affected/unaffected availability is
 correctness. The semantic aggregates match the retained historical campaign
 and frozen expected summary without overwriting either.
 
-`results/current/` is the single current evidence surface. Its
+The retained `results/current/` surface is unchanged. Its
 `runtime-evidence.zip` contains the complete fresh result, five dedicated
 recovery controls and mechanism-disabled ablation, relative to the project root
 (`artifact/results/current/...`). Summaries, core CSVs, recounts, the test log,
@@ -102,7 +103,32 @@ The 96 rejected certificate mutations are four payload classes across 24 represe
 
 For authorized requests reported available, unexpected denial, unsuccessful protocol results, wrong shape, and wrong value are oracle violations; unavailability is an availability loss. Available denials of unauthorized writes are expected, and available non-denied responses to them are violations. Availability counts proxy-reported available authorized requests, including unexpected denials and wrong successes. Affected keys `a0`/`a1` and unaffected keys `u0`/`u1` are workload classes: ordinary transfer copies all keys and receipts, whereas the partial-migration fault omits selected affected keys. The `a0` pause is released before serialized transfer.
 
-The designated duplicate/reorder replay compares its result with the current per-target, per-key expectation, not a general per-identifier saved completion value. Its fixed sequence has no intervening same-target/same-key write; it is not evidence about arbitrary later replay responses.
+The current oracle saves received successful increment completions by target/request ID separately from current state. Late replay returns its saved value without another state advance, independent of the generator hint. Unavailable or invalid replies supply no completion. The original matrix still has no intervening same-key write in its replay sequence; the additional ten-request history covers later writes, migration, new preference and proxy restart. It does not recover a crashed controller or infer a lost final reply.
+
+## Current completion and same-information results
+
+The complete original 240-run/8,640-transaction matrix was rerun against the
+corrected oracle; semantic aggregates and negative controls are unchanged.
+Fresh 12,000-case evaluation, 256-model fragment, 16,384-assignment compact
+audit plus 12,000 seeded cases, full 81-test discovery (80 passed, one optional
+metadata skip), five recovery controls and mechanism-off ablation are retained
+in `results/completion-oracle/`. Exact source/environment bindings accompany
+inputs and results; historical receipts are not relabelled. The independent
+RPC/CSV recount applies the same received-completion contract, with four further
+red-to-green recorded-history controls; its fresh 8,649-attempt result and final
+test log are retained alongside the earlier 77-test log and initial bindings.
+
+An ordinary closed-step policy obtains identical full certificates on all
+12,000 existing inputs. Forty paired native scenarios (80 runs/2,880 transactions)
+also tie: zero violations, sixteen preference cutovers and unaffected availability
+1.0 per policy. Both include the same frontier/blocker generation, checker,
+inventory/migration, pins, guards and dual writes. The null result isolates missing
+information/enforcement in projections, not superiority over an equally informed
+simple policy. [Method, costs, limitations and commands](proofs/received-completions-and-policy.md)
+describe the shared implementation and unmeasured child/resource costs.
+The simple policy's schedule/frontier consistency guard raises explicitly even
+under optimized Python (`-O`); the focused regression passes in normal and
+optimized modes. This source check did not rerun the retained paired scenarios.
 
 ## Interpretation boundaries
 
@@ -153,8 +179,6 @@ clean reproductions after deleting only measurement-specific fields.  The third
 checks citation closure, template identity, page boundaries, fonts, build logs,
 anonymity-sensitive text, and raster page margins.  These are release checks,
 not additional production-system claims.
-
-
 
 ## Compact-precedence hardening
 
@@ -227,8 +251,10 @@ minimum cardinality. These supplement, not replace or inflate, the retained
 96 mutation outcomes or 46-pass runtime suite. No timing, sockets, persistence,
 fault campaign or deployment evidence is generated by these methods.
 Default reproduction discovery includes the tests; the existing scientific
-workflow selects all 27 finite methods and the eight routing regressions.
-Its retained19-method Ubuntu measurements remain bound to their own execution.
+workflow selects all 27 finite methods, eight routing regressions and four
+simple-policy tests, then reruns those four under optimized Python (`-O`) on
+pushes, pull requests and manual dispatch.
+Its retained 19-method Ubuntu measurements remain bound to their own execution.
 
 ## Compact traversal-depth regression
 

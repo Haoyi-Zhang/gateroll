@@ -1,0 +1,8 @@
+{
+  "campaigns": 40,
+  "differences": [],
+  "finite_cases": 12000,
+  "semantic_match": true,
+  "strategy_runs": 240,
+  "transaction_records": 8640
+}

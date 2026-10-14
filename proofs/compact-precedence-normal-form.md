@@ -21,6 +21,27 @@ The separate `gateroll/` reference planner and campaign controller still use exp
 
 If all-old is admitted, every required local fact is true and the event graph is acyclic. Closure makes the completed events of any configuration predecessor-closed. Any such prefix can be extended by a topological order of the remaining events; local obligations cannot disable the extension. Hence `F_M = C_M` for an admitted manifest. Closed nonviable states do exist in blocked manifests: with one false bridge fact and no edges, `O` is closed but cannot advance, whereas `N` is closed and already at the target. The frozen model does not exhibit a safe greedy prefix that later gets stuck after starting an admitted rollout. All complete schedules also have exactly `2|S|` advances, so minimum step length does not distinguish their order.
 
+## Same-information ordinary policy
+
+The no-closed-dead-end result also justifies a simple policy for this static
+language. First reject a false eventually required local fact. Then scan roles
+in manifest order and take the first closed one-mode successor. With an acyclic
+event graph, completed events form a predecessor-closed set, and some minimal
+uncompleted event is enabled; every chosen closed prefix has a continuation.
+If the scan stalls before all-new with all required facts true, the manifest is
+blocked. Each successful step raises the rank by one, so at most `2|S|` steps
+are executed. This is a consequence of the existing normal form, not a novel
+planner or an optimal rollout-cost result. The direct scan performs at most
+`2n*n` closure probes; with the public `O(n+m)` closure wrapper and copied tuples,
+schedule selection costs `O(n^2(n+m))` operations and `O(n^2)` output words.
+
+`gateroll/simple_policy.py` retains exact frontier generation and minimum
+declared-blocker construction to meet the same full certificate contract as
+the reference. Both policies use the same certificate checker and native
+runtime; those shared costs and trust boundaries are not omitted. The separate
+12,000-case and 40-paired-scenario comparisons measure a functional null, not
+independently implemented enforcement or a new standard graph reduction.
+
 ## Compact frontier predicate
 A closed configuration corresponds to a predecessor-closed set of completed events. Every nontrivial strongly connected component must be either wholly absent or wholly present, and one-event execution cannot enter an absent cyclic component. Local obligations are event guards: a disabled bridge event may be in the past for a service already in `N`, but no incomplete disabled event can be crossed. Thus a closed configuration is in the reverse-reachable frontier exactly when (1) the all-new target is closed, (2) every cyclic SCC is already completed, and (3) every incomplete event is enabled. The planner reports this summary; the checker reconstructs it with Kosaraju's algorithm, independently of the planner's Tarjan implementation.
 

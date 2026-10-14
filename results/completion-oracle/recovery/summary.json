@@ -1,0 +1,1 @@
+{"case_names":["secondary-down","primary-timeout","secondary-timeout","intent-only-crash-cut","both-committed-crash-cut"],"cases":5,"pass":true,"schema":"gateroll.dual-write-recovery-controls.v1","scope":"Single authority; serialized requests/actions; local persistent files; same-ID client retry."}
