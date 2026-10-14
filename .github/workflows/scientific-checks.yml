@@ -22,20 +22,20 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
-      - name: Check finite models, route publication, and same-information policy
+      - name: Check finite models, route publication, policy, and figure inputs
         shell: bash
         run: |
           set -euo pipefail
           out="$RUNNER_TEMP/p028-scientific-checks"
           mkdir -p "$out"
-          python -B -c 'import json, platform, sys; print(json.dumps({"python": sys.version, "platform": platform.platform(), "scope": "39 normal finite/routing/simple-policy tests plus 4 optimized simple-policy tests; includes an owned loopback TCP case, not full runtime campaigns"}, indent=2))' > "$out/environment.json"
+          python -B -c 'import json, platform, sys; print(json.dumps({"python": sys.version, "platform": platform.platform(), "scope": "43 normal finite/routing/simple-policy/figure-input tests plus 8 optimized policy/figure-input tests; includes an owned loopback TCP case, not full runtime campaigns"}, indent=2))' > "$out/environment.json"
           timeout --signal=TERM --kill-after=5s 120s \
             prlimit --as=1073741824 --cpu=100 --nofile=512 -- \
-            python -B -m unittest tests.test_model tests.test_repair_model tests.test_compact_depth tests.test_topology_reuse tests.test_route_publication tests.test_simple_policy -v \
+            python -B -m unittest tests.test_model tests.test_repair_model tests.test_compact_depth tests.test_topology_reuse tests.test_route_publication tests.test_simple_policy tests.test_completion_figure_inputs -v \
             > "$out/checks.stdout" 2> "$out/checks.stderr"
           timeout --signal=TERM --kill-after=5s 30s \
             prlimit --as=1073741824 --cpu=25 --nofile=512 -- \
-            python -B -O -m unittest tests.test_simple_policy -v \
+            python -B -O -m unittest tests.test_simple_policy tests.test_completion_figure_inputs -v \
             > "$out/optimized-policy.stdout" 2> "$out/optimized-policy.stderr"
       - name: Upload raw check output
         if: always()
