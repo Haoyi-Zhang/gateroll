@@ -9,23 +9,6 @@ The artifact supports a deliberately conditional claim: when relevant endpoint, 
 - `gateroll/`: planner, checker, oracle, corpus generator, proxy, service processes, and campaign controller.
 - `inputs/`: eight normalized public interface vocabularies and 24 controlled release-pair specifications. The mutations are experimental; they are not historical upstream releases.
 - `tests/`: finite-model, corpus, raw-evidence, and executable-preflight tests.
-
-## Received-completion figure
-
-`scripts/plot_completion_history.py` plots the ten retained received replies
-and client current states from `results/completion-oracle/history.json`.
-The optional `--csv` input must match every retained row and column; the four
-tests in `tests/test_completion_figure_inputs.py` reject missing, unchecked,
-unavailable or mistyped observations and divergent CSV projections.
-
-With ReportLab and TeX Live font lookup available, choose a new output path:
-
-```sh
-python -B scripts/plot_completion_history.py --out .completion-history.pdf
-```
-
-The vector figure embeds the manuscript's Times family. It redraws the retained
-observations without starting the services or collecting new timings.
 - `proofs/`: formal definitions, exactness/minimality arguments, runtime assumptions, and counterexamples.
 - `results/completion-oracle/` and `results/same-information/`: current source-bound completion, full matrix and same-information controls.
 - `results/current/`: retained October 6 Windows-local evidence and original archive/source bindings, not rewritten for new source.
@@ -37,6 +20,41 @@ observations without starting the services or collecting new timings.
 - `external_resources.csv`: public-interface, scholarly-source, license, and venue-rule inventory.
 
 The implementation uses the Python standard library. It starts only localhost processes and does not contact an external service.
+
+## Quick start: bounded checks
+
+Use Python 3.10 or newer (the scientific workflow uses Python 3.12). No package
+installation is needed for the model, routing and evidence-input tests. From
+this artifact root:
+
+```sh
+python -B -m unittest tests.test_model tests.test_repair_model tests.test_compact_depth tests.test_topology_reuse tests.test_route_publication tests.test_simple_policy tests.test_completion_figure_inputs -v
+python -B -O -m unittest tests.test_simple_policy tests.test_completion_figure_inputs -v
+```
+
+Expected: 43 normal-mode tests and eight optimized-mode tests pass without
+skips. One routing test opens owned loopback TCP servers. These checks do not
+rerun the 240-run campaign. For a complete scientific reproduction and fresh
+raw outputs, use the separate command below.
+
+## Received-completion figure
+
+`scripts/plot_completion_history.py` plots the ten retained received replies
+and client current states from `results/completion-oracle/history.json`.
+The optional `--csv` input must match every retained row and column; the four
+tests in `tests/test_completion_figure_inputs.py` reject missing, unchecked,
+unavailable or mistyped observations and divergent CSV projections.
+
+Only figure rendering additionally requires ReportLab and TeX Live's
+`kpsewhich`, with the `utmr8a.afm` and `utmr8a.pfb` Times font files available.
+Choose a new output path outside the checkout, for example on POSIX:
+
+```sh
+python -B scripts/plot_completion_history.py --out /tmp/gateroll-completion-history.pdf
+```
+
+The vector figure embeds the manuscript's Times family. It redraws the retained
+observations without starting the services or collecting new timings.
 
 ## Current evidence and full reproduction
 
@@ -161,18 +179,29 @@ optimized modes. This source check did not rerun the retained paired scenarios.
 
 ## Evidence and delivery utilities
 
-After the normal reproduction, the following commands perform checks that do
-not import the planner, checker, proxy, controller, or paper aggregation code:
+The CSV recount does not import the planner, checker, proxy, controller, or
+paper aggregation code. Point it at one raw-evidence surface, not a directory
+containing several historical and current runs. For example, to recount the
+readable October 6 CSVs without modifying their saved audit (POSIX example;
+choose a fresh output path):
 
 ```sh
-python3 audit/reconcile_evidence.py --root . --output audit/reconciled-evidence.json
-python3 audit/verify_delivery.py --root ..
+python -B audit/reconcile_evidence.py --root results/current/raw --output /tmp/gateroll-recount-new.json
 ```
 
 `reconcile_evidence.py` independently recounts the finite cases, run records,
-and transaction records.  `verify_delivery.py` checks archive shape, retained
-SHA-256 hashes, and citation closure.  These are delivery and accounting
-checks, not independent peer review or a proof that the manifest is truthful.
+and transaction records. After a fresh reproduction, use its `raw/` directory
+instead. A CSV recount is an accounting check, not independent peer review or
+a proof that the manifest is truthful.
+
+`audit/verify_delivery.py` and `audit/verify_delivery_base.py` are retained
+historical package checks, not runnable acceptance commands for this tree.
+Their frozen `audit/FILES.json` describes an earlier layout and files, and the
+extended check additionally requires the absent `reference-metadata-audit.json`,
+`paper-release-audit.json` and `clean-source-rebuild-audit.json` under `audit/`.
+The retained hashes and failure records have not been refreshed to manufacture
+a passing release check. Use the bounded tests above, or `reproduce.py` for a
+new scientific run; neither certifies the unavailable release evidence.
 
 ## Independent semantic audits
 
