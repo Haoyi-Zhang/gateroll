@@ -331,3 +331,13 @@ workflow has since run on Ubuntu 24.04 with CPython 3.12.14: all 19 selected
 tests passed in 5.764 seconds (the test runner's elapsed measurement).
 `results/measurements/current-linux/` retains the measured environment and raw
 output. This does not rerun or replace the 240-deployment Windows campaign.
+
+## Manuscript schematics
+
+The architecture and blocked-frontier example are drawn directly in Python as
+font-embedded vector PDFs. They describe the declared mechanisms and finite
+states, rather than measurements. With Python 3.9+ and Matplotlib, run:
+
+```sh
+python -B figures/draw_schematics.py --output figures
+```
